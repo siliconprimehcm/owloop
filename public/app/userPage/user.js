@@ -12,17 +12,17 @@ userModule.config(function($stateProvider, $urlRouterProvider) {
             views: {
 
 	            // the main template will be placed here (relatively named)
-	            '': { templateUrl: 'app/userPage/home.html' },
+                '': { templateUrl: 'public/app/userPage/home.html' },
 
 	            // the child views will be defined here (absolutely named)
 	            'columnOne@home': {
-	            	templateUrl: 'app/userPage/column1.html',
+	                templateUrl: 'public/app/userPage/column1.html',
 	            	controller: 'columnOneController'
 	             },
 
 	            // for column two, we'll define a separate controller 
 	            'columnTwo@home': { 
-	                templateUrl: 'app/userPage/column2.html',
+	                templateUrl: 'public/app/userPage/column2.html',
 	                controller: 'columnTwoController'
 	            }
        		},

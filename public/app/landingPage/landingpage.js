@@ -9,7 +9,7 @@ landingPageModule.config(function($stateProvider, $urlRouterProvider) {
         // HOME STATES AND NESTED VIEWS ========================================
         .state('landingpage', {
             url: '/landingpage',
-            templateUrl: 'app/landingPage/landingpage.html'
+            templateUrl: 'public/app/landingPage/landingpage.html'
         })
         
         // nested list with custom controller
