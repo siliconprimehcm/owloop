@@ -41,9 +41,8 @@ userModule.config(function($stateProvider, $urlRouterProvider) {
 				        'X-Requested-With': 'XMLHttpRequest'              
 				    };
 
-                    Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST({"userId": 1}, '', {}, header).then(function(data){
-			            console.log(data);
-			           
+                    return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST({"userId": 1}, '', {}, header).then(function(data){
+			            return data;
 			        });
                 },
 
@@ -53,13 +52,14 @@ userModule.config(function($stateProvider, $urlRouterProvider) {
 });
 
 userModule.controller('columnOneController', function($scope, data) {
-
+	
+	$scope.privateLoops = data.objectValue.privateLoops;
+	$scope.publicLoops = data.objectValue.publicLoops;
+	
 });
 
-userModule.controller('columnTwoController', function($scope) {
-	$scope.feeds = [
-		{
-
-		}
-	]
+userModule.controller('columnTwoController', function($scope, data) {
+	$scope.postLoops = data.objectValue.posts;
+	$scope.questionPostLoops = data.objectValue.questionPosts;
+	$scope.popularLoops = data.objectValue.loopPopulars;
 });

@@ -18,8 +18,8 @@ loopApp.config(function($httpProvider, RestangularProvider) {
 loopApp.factory("authenticationSvc", function($q, $localStorage, $state, $timeout) {
     return {
         requireLogin: function() {
-            //if ($localStorage['authenticate']) {
-            if (1) {
+            if ($localStorage['authenticate']) {
+            //if (1) {
                 return $q.when();
             }else {
                 $timeout(function() {
