@@ -21,7 +21,7 @@ userModule.config(function($stateProvider, $urlRouterProvider) {
 	             },
 
 	            // for column two, we'll define a separate controller 
-	            'columnTwo@home': { 
+	            'columnTwo@home': {
 	                templateUrl: 'public/app/userPage/column2.html',
 	                controller: 'columnTwoController'
 	            }
@@ -52,14 +52,14 @@ userModule.config(function($stateProvider, $urlRouterProvider) {
 });
 
 userModule.controller('columnOneController', function($scope, data) {
-	
 	$scope.privateLoops = data.objectValue.privateLoops;
 	$scope.publicLoops = data.objectValue.publicLoops;
 	
 });
 
-userModule.controller('columnTwoController', function($scope, data) {
-	$scope.postLoops = data.objectValue.posts;
-	$scope.questionPostLoops = data.objectValue.questionPosts;
-	$scope.popularLoops = data.objectValue.loopPopulars;
+userModule.controller('columnTwoController', function ($scope, data) {
+    debugger;
+    $scope.questionsPosts = data.objectValue.questionsPosts;
+    $scope.posts = data.objectValue.posts;
+    $scope.loopPopulars = data.objectValue.loopPopulars;
 });

@@ -1,95 +1,20 @@
 
-<div class="main-column">
+<div class="main-column" >
     <div class="content-column-one ">
-
-
-        <div ng-repeat="feed in feeds">
-
-            <div class="card-main ">
-                <div class="title-category">
-                    <a href="#">Female Professionals</a>
-                </div>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="./public/images/item/item_avatar_default.png" width="34" height="34" class="img-circle"></img>
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Jessica Alba</a>
-                        </span>
-                        <span class="time-created">
-                            <a>
-                                created a question 2 hours ago
-                            </a>
-                        </span>
+        <div >
+            
+            <div class="question-post" ng-repeat="post in questionsPosts">
+                <div class="card-main ">
+                    <div class="title-category">
+                        <a href="#">Female Professionals</a>
                     </div>
-                </div>
-                <div class="summary">
-                    <div class="title">Wage Negotiation </div>
-                    <div class="description">
-                        I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary
-                    </div>
-                </div>
-                <div class="footer clearfix">
-                    <div class="pull-left totlal-likes">
-                        <span class="icon"><i class="fa fa-heart"></i></span>
-                        <span>135 likes</span>
-                    </div>
-                    <div class="pull-left total-comments">
-                        <span class="icon"><i class="fa fa-comments"></i></span>
-                        <span>6 Replies</span>
-                    </div>
-                    <div class="pull-right dots">
-                        <span><i class="fa fa-ellipsis-h"></i></span>
-                    </div>
-                </div>
-            </div>
-            <div class="card-main ">
-                <div class="title-category">
-                    <a href="#">Female Professionals</a>
-                </div>
-                <div class="profile-avatar clearfix hidden">
-                    <a href="#" class="avartar">
-                        <img src="./public/images/item/item_avatar_default.png" width="34" height="34" class="img-circle"></img>
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Jessica Alba</a>
-                        </span>
-                        <span class="time-created">
-                            <a>
-                                created a question 2 hours ago
-                            </a>
-                        </span>
-                    </div>
-                </div>
-                <div class="summary">
-                    <div class="title">Wage Negotiation </div>
-                    <div class="description">
-                        I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary
-                    </div>
-                </div>
-                <div class="footer clearfix">
-                    <div class="pull-left totlal-likes">
-                        <span class="icon"><i class="fa fa-heart"></i></span>
-                        <span>135 likes</span>
-                    </div>
-                    <div class="pull-left total-comments hidden">
-                        <span class="icon"><i class="fa fa-comments"></i></span>
-                        <span>6 Replies</span>
-                    </div>
-                    <div class="pull-right dots">
-                        <span><i class="fa fa-ellipsis-h"></i></span>
-                    </div>
-                </div>
-                <div class="enter-comments">
                     <div class="profile-avatar clearfix">
                         <a href="#" class="avartar">
-                            <img src="./public/images/item/item_avatar_default.png" width="34" height="34" class="img-circle"></img>
+                            <img src="{{post.OwnerAvatarUrl}}" height="34" class="img-circle"></img>
                         </a>
                         <div class="info">
                             <span class="name">
-                                <a>Jessica Alba</a>
+                                <a>{{post.OwnerUserName}}</a>
                             </span>
                             <span class="time-created">
                                 <a>
@@ -98,155 +23,81 @@
                             </span>
                         </div>
                     </div>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Write your answer, or answer later...."></input>
+                    <div class="summary">
+                        <div class="title">{{post.Title}}</div>
+                        <div class="description">
+                            {{post.Content}}
                         </div>
-                    </form>
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left totlal-likes">
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span>{{post.TotalLike}} likes</span>
+                        </div>
+                        <div class="pull-left total-comments">
+                            <span class="icon"><i class="fa fa-comments"></i></span>
+                            <span>{{post.TotalComment}} Replies</span>
+                        </div>
+                        <div class="pull-right dots">
+                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="card-main ">
-                <div class="title-category">
-                    <a href="#">Female Professionals</a>
-                </div>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="/public/images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Jessica Alba</a>
-                        </span>
-                        <span class="time-created">
-                            <a>
-                                created a question 2 hours ago
-                            </a>
-                        </span>
+            <div class="post-normal" ng-repeat="post in posts">
+                <div class="card-main ">
+                    <div class="title-category">
+                        <a href="#">Female Professionals</a>
                     </div>
-                </div>
-                <div class="summary">
-                    <div class="title">Wage Negotiation </div>
-                    <div class="description">
-                        I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary
+                    <div class="profile-avatar clearfix">
+                        <a href="#" class="avartar">
+                            <img src="{{post.OwnerAvatarUrl}}" height="34" class="img-circle"></img>
+                        </a>
+                        <div class="info">
+                            <span class="name">
+                                <a>{{post.OwnerUserName}}</a>
+                            </span>
+                            <span class="time-created">
+                                <a>
+                                    created a question 2 hours ago
+                                </a>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="footer clearfix">
-                    <div class="pull-left totlal-likes">
-                        <span class="icon"><i class="fa fa-heart"></i></span>
-                        <span>135 likes</span>
+                    <div class="summary">
+                        <div class="title">{{post.Title}}</div>
+                        <div class="description">
+                            {{post.Content}}
+                        </div>
                     </div>
-                    <div class="pull-left total-comments">
-                        <span class="icon"><i class="fa fa-comments"></i></span>
-                        <span>6 Replies</span>
-                    </div>
-                    <div class="pull-right dots">
-                        <span><i class="fa fa-ellipsis-h"></i></span>
-                    </div>
-                </div>
-            </div>
-            <div class="card-main ">
-                <div class="title-category">
-                    <a href="#">Female Professionals</a>
-                </div>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="/public/images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Jessica Alba</a>
-                        </span>
-                        <span class="time-created">
-                            <a>
-                                created a question 2 hours ago
-                            </a>
-                        </span>
-                    </div>
-                </div>
-                <div class="summary">
-                    <div class="title">Wage Negotiation </div>
-                    <div class="description clearfix">
-                        <p>I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary</p>
-                        <p class="img">
-                            <img src="/public/images/item/item_add.jpg" />
-                            <img src="/public/images/item/item_add.jpg" />
-                        </p>
-                    </div>
-                </div>
-                <div class="footer clearfix">
-                    <div class="pull-left totlal-likes">
-                        <span class="icon"><i class="fa fa-heart"></i></span>
-                        <span>135 likes</span>
-                    </div>
-                    <div class="pull-left total-comments">
-                        <span class="icon"><i class="fa fa-comments"></i></span>
-                        <span>6 Replies</span>
-                    </div>
-                    <div class="pull-right dots">
-                        <span><i class="fa fa-ellipsis-h"></i></span>
+                    <div class="footer clearfix">
+                        <div class="pull-left totlal-likes">
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span>{{post.TotalLike}} likes</span>
+                        </div>
+                        <div class="pull-left total-comments">
+                            <span class="icon"><i class="fa fa-comments"></i></span>
+                            <span>{{post.TotalComment}} Replies</span>
+                        </div>
+                        <div class="pull-right dots">
+                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card-main ">
-                <div class="title-category">
-                    <a href="#">Female Professionals</a>
-                </div>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="/public/images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Jessica Alba</a>
-                        </span>
-                        <span class="time-created">
-                            <a>
-                                created a question 2 hours ago
-                            </a>
-                        </span>
-                    </div>
-                </div>
-                <div class="summary">
-                    <div class="title">Wage Negotiation </div>
-                    <div class="description">
-                        I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary
-                    </div>
-                </div>
-                <div class="footer clearfix">
-                    <div class="pull-left totlal-likes">
-                        <span class="icon"><i class="fa fa-heart"></i></span>
-                        <span>135 likes</span>
-                    </div>
-                    <div class="pull-left total-comments">
-                        <span class="icon"><i class="fa fa-comments"></i></span>
-                        <span>6 Replies</span>
-                    </div>
-                    <div class="pull-right dots">
-                        <span><i class="fa fa-ellipsis-h"></i></span>
-                    </div>
-                </div>
-            </div>
+            
+           
         </div>
 
     </div>
     <div class="content-column-two">
         <div class="title">Most Popular</div>
-        <div class="list-card-sub-one">
+        <div class="list-card-sub-one" ng-repeat="loop in loopPopulars">
             <div class="card-sub">
-                <div class="img" style="background-image: url('images/item/item_demo.jpg')"></div>
-                <div class="title">Street style lovers</div>
-                <div class="description">Donec et ullamcorper ligula. Vestibulum ante ipsum primis</div>
-            </div>
-            <div class="card-sub">
-                <div class="img" style="background-image: url('images/item/item_demo.jpg')"></div>
-                <div class="title">Street style lovers</div>
-                <div class="description">Donec et ullamcorper ligula. Vestibulum ante ipsum primis</div>
-            </div>
-            <div class="card-sub">
-                <div class="img" style="background-image: url('images/item/item_demo.jpg')"></div>
-                <div class="title">Street style lovers</div>
-                <div class="description">Donec et ullamcorper ligula. Vestibulum ante ipsum primis</div>
+                <div class="img" style="background-image: url('{{loop.AvatarUrl}}')"></div>
+                <div class="title">{{loop.Name}}</div>
+                <div class="description">{{loop.Description}}</div>
             </div>
         </div>
     </div>
