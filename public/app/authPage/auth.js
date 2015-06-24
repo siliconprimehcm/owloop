@@ -75,7 +75,8 @@ signupModule.controller('authController', function($scope, Restangular, $localSt
         });
     };
 
-    $scope.logout = function(){
+    $scope.logout = function () {
+        debugger;
             $localStorage['authenticate'] = null
             $state.go('login');
     };
