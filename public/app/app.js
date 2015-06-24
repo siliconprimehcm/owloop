@@ -15,13 +15,18 @@ loopApp.config(function($httpProvider, RestangularProvider) {
     RestangularProvider.setBaseUrl('http://owloopstaging-api.azurewebsites.net');
 });
 
-// loopApp.factory("authenticationSvc", function($q, $localStorage, $state, $timeout) {
-//     if ($localStorage['authenticate']) {
-//         return $q.when();
-//     }else {
-//         $timeout(function() {
-//           $state.go('signup')
-//         });
-//         return $q.reject();
-//     }
-// })
+loopApp.factory("authenticationSvc", function($q, $localStorage, $state, $timeout) {
+    return {
+        requireLogin: function() {
+            //if ($localStorage['authenticate']) {
+            if (1) {
+                return $q.when();
+            }else {
+                $timeout(function() {
+                  $state.go('signup')
+                });
+                return $q.reject();
+            }
+        }
+    }
+})

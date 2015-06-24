@@ -27,15 +27,10 @@ userModule.config(function($stateProvider, $urlRouterProvider) {
 	            }
        		},
        		resolve: {
-       			authenticate: function ($q, $localStorage, $state, $timeout) {
-			        if (1) {
-			        	return $q.when();
-			        } else {
-			        	$timeout(function() {$state.go('signup')});
-			        	return $q.reject();
-			    	}
+       			authenticate: function (authenticationSvc) {
+			        return authenticationSvc.requireLogin();
 			    },
-                data: function(Restangular) {
+                data: function(authenticate, Restangular) {
                 	var header = {
 				        'Content-type': 'application/json',
 				        'ApplicationKey': 'HuDNpU8EjgJJhsSV',
@@ -57,8 +52,8 @@ userModule.config(function($stateProvider, $urlRouterProvider) {
         
 });
 
-userModule.controller('columnOneController', function($scope) {
-       
+userModule.controller('columnOneController', function($scope, data) {
+
 });
 
 userModule.controller('columnTwoController', function($scope) {
