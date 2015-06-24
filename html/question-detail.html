@@ -1,0 +1,593 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no ">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <title>Owloop</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Plugin Fonts -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet" type="text/css" />
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src=""></script><![endif]-->
+    <!--<script src=""></script>-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-fixed-top">
+        <div class="container clearfix">
+            <div class="logo pull-left">
+                <a>
+                    <img src="images/ic/ic_logo.png" />
+                </a>
+            </div>
+            <form class="navbar-left form-inline form-search">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Owloop">
+                        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                    </div>
+                </div>
+            </form>
+            <div class="explore pull-left">
+                <a href="#">Explore</a>
+            </div>
+            <div class="pull-right">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                            <span class="badge">1</span>
+                        </a>
+                        <div class="dropdown-menu notification-list">
+                            <i class="fa fa-caret-up"></i>
+                            <ul>
+                                <li>
+                                    <div class="profile-avatar clearfix">
+                                        <a href="#" class="avartar">
+                                            <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                        </a>
+                                        <div class="info">
+                                            <span class="name">
+                                                <a>John T.</a> <span class="add-note">started following you</span>
+                                            </span>
+                                            <span class="time-created">
+                                                <a>
+                                                    created a question 2 hours ago
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="profile-avatar clearfix">
+                                        <a href="#" class="avartar">
+                                            <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                        </a>
+                                        <div class="info">
+                                            <span class="name">
+                                                <a>John T.</a> <span class="add-note">started following you</span>
+                                            </span>
+                                            <span class="time-created">
+                                                <a>
+                                                    created a question 2 hours ago
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="profile-avatar clearfix">
+                                        <a href="#" class="avartar">
+                                            <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                        </a>
+                                        <div class="info">
+                                            <span class="name">
+                                                <a>John T.</a> <span class="add-note">started following you</span>
+                                            </span>
+                                            <span class="time-created">
+                                                <a>
+                                                    created a question 2 hours ago
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="profile-avatar clearfix">
+                                        <a href="#" class="avartar">
+                                            <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                        </a>
+                                        <div class="info">
+                                            <span class="name">
+                                                <a>John T.</a> <span class="add-note">started following you</span>
+                                            </span>
+                                            <span class="time-created">
+                                                <a>
+                                                    created a question 2 hours ago
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="profile-avatar clearfix">
+                                        <a href="#" class="avartar">
+                                            <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                        </a>
+                                        <div class="info">
+                                            <span class="name">
+                                                <a>John T.</a> <span class="add-note">started following you</span>
+                                            </span>
+                                            <span class="time-created">
+                                                <a>
+                                                    created a question 2 hours ago
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="see-all">See All</div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="profile-nav" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <img src="images/item/item_avatar_default.png" width="26" height="26" class="img-circle" />
+                            <span class="name">
+                                Jessica Alba
+                            </span>
+                            <span class="down">
+                                <i class="fa fa-caret-down"></i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <i class="fa fa-caret-up"></i>
+                            <li><a href="#">Invite friends</a></li>
+                            <li><a href="#">Edit your profile</a></li>
+                            <li><a href="#">Change password</a></li>
+                            <li><a href="#">Link account</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="left-column">
+            <div class="content">
+                <div class="function-list">
+                    <div class="list-item">
+                        <div class="item-main">
+                            <div class="title">My loops public </div>
+                            <ul>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-play"></i></span>
+                                        <span class="name">Nulla at sapien at ju...</span>
+                                        <span class="count">1</span>
+                                    </a>
+                                </li>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-diagram"></i></span>
+                                        <span class="name">Sed in ornare</span>
+                                        <span class="count">99+</span>
+                                    </a>
+                                </li>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-fleg"></i></span>
+                                        <span class="name">WWCD New York</span>
+                                        <span class="count">2</span>
+                                    </a>
+                                </li>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-bus"></i></span>
+                                        <span class="name">Maecenas po neque</span>
+                                        <span class="count">4</span>
+                                    </a>
+                                </li>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-bag"></i></span>
+                                        <span class="name">Quisque turpis nibh</span>
+                                        <span class="count">15</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="item-main">
+                            <div class="title">My loops private</div>
+                            <ul>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-play"></i></span>
+                                        <span class="name">Nulla at sapien at ju...</span>
+                                        <span class="count">1</span>
+                                    </a>
+                                </li>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-diagram"></i></span>
+                                        <span class="name">Sed in ornare</span>
+                                        <span class="count">99+</span>
+                                    </a>
+                                </li>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-fleg"></i></span>
+                                        <span class="name">WWCD New York</span>
+                                        <span class="count">2</span>
+                                    </a>
+                                </li>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-bus"></i></span>
+                                        <span class="name">Maecenas po neque</span>
+                                        <span class="count">4</span>
+                                    </a>
+                                </li>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-bag"></i></span>
+                                        <span class="name">Quisque turpis nibh</span>
+                                        <span class="count">15</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="item-main">
+                            <div class="title">My profiles</div>
+                            <ul>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-play"></i></span>
+                                        <span class="name">Change profile pic</span>
+                                        <span class="count"></span>
+                                    </a>
+                                </li>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-diagram"></i></span>
+                                        <span class="name">Interest</span>
+                                        <span class="count"></span>
+                                    </a>
+                                </li>
+                                <li class="line">
+                                    <a>
+                                        <span class="icon"><i class="icon-x1-fleg"></i></span>
+                                        <span class="name">Edit my Bio</span>
+                                        <span class="count"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-column">
+            <div class="content-column-one ">
+                <div class="card-main ">
+                    <div class="title-category">
+                        <a href="#">Female Professionals</a>
+                    </div>
+                    <div class="profile-avatar clearfix hidden">
+                        <a href="#" class="avartar">
+                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                        </a>
+                        <div class="info">
+                            <span class="name">
+                                <a>Jessica Alba</a>
+                            </span>
+                            <span class="time-created">
+                                <a>
+                                    created a question 2 hours ago
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary">
+                        <div class="title">Wage Negotiation </div>
+                        <div class="description">
+                            Hi travel experts, my fiancee and I are getting married in December this year. I would like to surprise her with a honeymoon destination but I'm deciding between Maldives and Bora Bora. If anyone has traveled to these two places, please let me know which one I should pick for my honeymoon
+                        </div>
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left totlal-likes">
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span>135 likes</span>
+                        </div>
+                        <div class="pull-left total-comments hidden">
+                            <span class="icon"><i class="fa fa-comments"></i></span>
+                            <span>6 Replies</span>
+                        </div>
+                        <div class="pull-right dots">
+                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
+                    </div>
+                    <div class="enter-comments">
+                        <div class="profile-avatar clearfix">
+                            <a href="#" class="avartar">
+                                <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                            </a>
+                            <div class="info">
+                                <span class="name">
+                                    <a>Jessica Alba</a>
+                                </span>
+                                <span class="time-created">
+                                    <a>
+                                        created a question 2 hours ago
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Write your answer, or answer later....">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-main ">
+                    <div class="title-category">
+                        <a href="#">Female Professionals</a>
+                    </div>
+                    <div class="profile-avatar clearfix">
+                        <a href="#" class="avartar">
+                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                        </a>
+                        <div class="info">
+                            <span class="name">
+                                <a>Jessica Alba</a>
+                            </span>
+                            <span class="time-created">
+                                <a>
+                                    created a question 2 hours ago
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary">
+                        <div class="title">Wage Negotiation </div>
+                        <div class="description">
+                            Go for three weeks and split the time between the Maldives and Bora Bora!
+                        </div>
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left totlal-likes">
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span>135 likes</span>
+                        </div>
+                        <div class="pull-left total-comments">
+                            <span class="icon"><i class="fa fa-comments"></i></span>
+                            <span>6 Replies</span>
+                        </div>
+                        <div class="pull-right dots">
+                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-main ">
+                    <div class="title-category">
+                        <a href="#">Female Professionals</a>
+                    </div>
+                    <div class="profile-avatar clearfix">
+                        <a href="#" class="avartar">
+                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                        </a>
+                        <div class="info">
+                            <span class="name">
+                                <a>Jessica Alba</a>
+                            </span>
+                            <span class="time-created">
+                                <a>
+                                    created a question 2 hours ago
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary">
+                        <div class="title">Wage Negotiation </div>
+                        <div class="description">
+                            <p>
+                                I can offer some advice as I fly from NYC as well and have done both trips you describe (except the Napa Valley part).
+                            </p>
+                            <p>
+                                September is a good time of year for travel to French Polynesia. We were there in September and the weather was generally nice and the water visibility was great.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left totlal-likes">
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span>135 likes</span>
+                        </div>
+                        <div class="pull-left total-comments">
+                            <span class="icon"><i class="fa fa-comments"></i></span>
+                            <span>6 Replies</span>
+                        </div>
+                        <div class="pull-right dots">
+                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-main ">
+                    <div class="title-category">
+                        <a href="#">Female Professionals</a>
+                    </div>
+                    <div class="profile-avatar clearfix">
+                        <a href="#" class="avartar">
+                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                        </a>
+                        <div class="info">
+                            <span class="name">
+                                <a>Jessica Alba</a>
+                            </span>
+                            <span class="time-created">
+                                <a>
+                                    created a question 2 hours ago
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary">
+                        <div class="title">Wage Negotiation </div>
+                        <div class="description">
+                            I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary
+                        </div>
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left totlal-likes">
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span>135 likes</span>
+                        </div>
+                        <div class="pull-left total-comments">
+                            <span class="icon"><i class="fa fa-comments"></i></span>
+                            <span>6 Replies</span>
+                        </div>
+                        <div class="pull-right dots">
+                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-main ">
+                    <div class="title-category">
+                        <a href="#">Female Professionals</a>
+                    </div>
+                    <div class="profile-avatar clearfix">
+                        <a href="#" class="avartar">
+                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                        </a>
+                        <div class="info">
+                            <span class="name">
+                                <a>Jessica Alba</a>
+                            </span>
+                            <span class="time-created">
+                                <a>
+                                    created a question 2 hours ago
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary">
+                        <div class="title">Wage Negotiation </div>
+                        <div class="description">
+                            I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary
+                        </div>
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left totlal-likes">
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span>135 likes</span>
+                        </div>
+                        <div class="pull-left total-comments">
+                            <span class="icon"><i class="fa fa-comments"></i></span>
+                            <span>6 Replies</span>
+                        </div>
+                        <div class="pull-right dots">
+                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-column-two">
+                <div class="title">Hot questions</div>
+                <div class="list-card-sub-two">
+                    <div class="card-sub">
+                        <div class="title">Street style lovers</div>
+                        <div class="description">
+                            <p>
+                                Can I write a psychoanalysis of a character in a novel for my English Extended Essay?
+                            </p>
+                            <p>
+                                Is this a good research question for my English IB Extended Essay?
+                            </p>
+                            <p>
+                                For my extended essay in IB, I'm comparing The Catcher In The Rye and The Perks of Being A Wallflower. So, I haven't even ...
+                            </p>
+                            <p>
+                                Would I be able to write an IB Extended Essay for literature on this book?
+                            </p>
+                            <p>
+                                Is an IB Diploma any good? Is it informative and does it help in self-development?
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-sub">
+                        <div class="title">Happy bride-to-bes</div>
+                        <div class="description ">
+                            <p>
+                                Can I write a psychoanalysis of a character in a novel for my English Extended Essay?
+                            </p>
+                            <p>
+                                Is this a good research question for my English IB Extended Essay?
+                            </p>
+                            <p>
+                                For my extended essay in IB, I'm comparing The Catcher In The Rye and The Perks of Being A Wallflower. So, I haven't even ...
+                            </p>
+                            <p>
+                                Would I be able to write an IB Extended Essay for literature on this book?
+                            </p>
+                            <p>
+                                Is an IB Diploma any good? Is it informative and does it help in self-development?
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-sub">
+                        <div class="title">Female Professionals</div>
+                        <div class="description">
+                            <p>
+                                Can I write a psychoanalysis of a character in a novel for my English Extended Essay?
+                            </p>
+                            <p>
+                                Is this a good research question for my English IB Extended Essay?
+                            </p>
+                            <p>
+                                For my extended essay in IB, I'm comparing The Catcher In The Rye and The Perks of Being A Wallflower. So, I haven't even ...
+                            </p>
+                            <p>
+                                Would I be able to write an IB Extended Essay for literature on this book?
+                            </p>
+                            <p>
+                                Is an IB Diploma any good? Is it informative and does it help in self-development?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>
