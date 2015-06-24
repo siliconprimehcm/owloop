@@ -802,21 +802,33 @@ a {
     .content-column-one .list-card-sub-one {
        
     }
-.list-card-explorer .card-sub {
+.list-card-explore .card-sub {
   padding: 15px;
   background-color: #fff;
   border-radius: 5px;
   margin-bottom: 15px;
   text-align: center;
 }
-.list-card-explorer .img {
-  width: 200px;
-  height: 200px;
+.list-card-explore .img {
+  width: 190px;
+  height: 190px;
   margin: auto;
   border-radius: 50%;
   background-position: top center;
   margin-bottom: 15px;
 }
+.list-card-explore .title {
+    font-size: 16px;
+  font-weight: bold;
+  color: #5d5d5d;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.list-card-explore .description{
+      color: #bdbdbd;
+}
+
 
 .list-card-sub-one .card-sub {
     padding: 15px;
@@ -839,11 +851,13 @@ a {
         font-size: 16px;
         font-weight: bold;
         color: #5d5d5d;
+        padding: 0;
         margin-bottom: 5px;
     }
 
     .list-card-sub-one .card-sub .description {
         color: #bdbdbd;
+        padding: 0 15px
     }
 /*Post*/
 .list-post .post {
