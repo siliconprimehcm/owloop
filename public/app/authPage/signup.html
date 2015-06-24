@@ -4,7 +4,7 @@
     <form name="form" ng-submit="register()" role="form">
 
         <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
-            <label for="username">Last name</label>
+            <label for="username">Email</label>
             <input type="text" name="lastName" id="Text1" class="form-control" ng-model="user.email" required />
             <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
         </div>

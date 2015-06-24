@@ -3,9 +3,10 @@ var loopApp = angular.module('loopApp',[
     'restangular'
     ,'ngStorage'
 
+    ,'owloop.auth'
     ,'owloop.user'
     ,'owloop.landingPage'
-    ,'owloop.auth'
+    
 ]);
 
 loopApp.config(function($httpProvider, RestangularProvider) {

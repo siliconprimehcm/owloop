@@ -7,7 +7,7 @@ signupModule.config(function($stateProvider) {
     $stateProvider
         .state('signup', {
             url: '/signup',
-            templateUrl: 'app/authPage/signup.html',
+            templateUrl: 'public/app/authPage/signup.html',
             controller: 'authController'
         })
         .state('login', {
@@ -24,7 +24,7 @@ signupModule.config(function($stateProvider) {
    
 });
 
-signupModule.controller('authController', function($scope, Restangular, $localStorage) {
+signupModule.controller('authController', function($scope, Restangular, $localStorage, $state) {
     
     $scope.user = {
         username:'',
