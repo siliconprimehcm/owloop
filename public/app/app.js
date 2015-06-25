@@ -76,7 +76,7 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
             url:'/homefeed',
             views:{
                 'content@app.user':{
-                    templateUrl:'public/app/user/homefeed/content.html',
+                    templateUrl:'public/app/user/homefeed/homefeed.html',
                     controller:'userController'
                 }
             },
@@ -100,7 +100,43 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
                     });
                 },
             }
-        })    
+        })
+        .state('app.user.question',{
+            url:'/question',
+            views:{
+                'content@app.user':{
+                    templateUrl:'public/app/user/questiondetail/questiondetail.html',
+                    controller:'userController'
+                }
+            }
+        })
+        .state('app.user.post',{
+            url:'/post',
+            views:{
+                'content@app.user':{
+                    templateUrl:'public/app/user/postdetail/postdetail.html',
+                    controller:'userController'
+                }
+            }
+        })
+        .state('app.user.album',{
+            url:'/album',
+            views:{
+                'content@app.user':{
+                    templateUrl:'public/app/user/albumdetail/albumdetail.html',
+                    controller:'userController'
+                }
+            }
+        })
+        .state('app.user.profile',{
+            url:'/profile',
+            views:{
+                'content@app.user':{
+                    templateUrl:'public/app/user/profile/profile.html',
+                    controller:'userController'
+                }
+            }
+        })         
 });
 
 loopApp.factory("authenticationSvc", function($q, $localStorage, $state, $timeout) {
