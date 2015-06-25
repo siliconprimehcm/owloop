@@ -3,7 +3,7 @@ var loopApp = angular.module('loopApp',[
     ,'restangular'
     ,'ngStorage'
 
-    //,'owloop.auth'
+    ,'owloop.auth'
     ,'owloop.user'
     ,'owloop.landingPage'
     
@@ -15,7 +15,7 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     RestangularProvider.setBaseUrl('http://owloopstaging-api.azurewebsites.net');
 
-    $urlRouterProvider.otherwise('/landing');
+    $urlRouterProvider.otherwise('/user/homefeed');
 
     $stateProvider
 
@@ -30,6 +30,29 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
                 '':{
                     templateUrl:'public/app/landing/landingpage.html',
                     controller:'landingController'
+                }
+            }
+        })
+        .state('app.auth',{
+            abstract: true,
+            url:'/auth',
+            template: '<ui-view/>'
+        })
+        .state('app.auth.signup',{
+            url:'/signup',
+            views:{
+                '':{
+                    templateUrl:'public/app/auth/signup.html',
+                    controller:'authController'
+                }
+            }
+        })
+        .state('app.auth.login',{
+            url:'/login',
+            views:{
+                '':{
+                    templateUrl:'public/app/auth/login.html',
+                    controller:'authController'
                 }
             }
         })

@@ -1,28 +1,4 @@
-var signupModule = angular.module('owloop.auth', ['ui.router']);
-
-signupModule.config(function($stateProvider) {
-    
-   // $urlRouterProvider.otherwise('/home');
-    
-    $stateProvider
-        .state('signup', {
-            url: '/signup',
-            templateUrl: 'public/app/authPage/signup.html',
-            controller: 'authController'
-        })
-        .state('login', {
-            url: '/login',
-            templateUrl: 'app/authPage/login.html',
-            controller: 'authController'
-        })
-        .state('forgotpassword', {
-            url: '/forgotpassword',
-            templateUrl: 'app/authPage/forgotpassword.html',
-            controller: 'authController'
-        })
-
-   
-});
+var signupModule = angular.module('owloop.auth', []);
 
 signupModule.controller('authController', function($scope, Restangular, $localStorage, $state) {
     
