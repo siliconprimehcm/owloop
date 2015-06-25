@@ -1,12 +1,13 @@
 var userModule = angular.module('owloop.user',[]);
 
 userModule.controller('leftbarController', function($scope, loopList) {
+	console.log('leftbarController');
 	// $scope.privateLoops = data.objectValue.privateLoops;
 	// $scope.publicLoops = data.objectValue.publicLoops;
  //    $scope.questionsPosts = data.objectValue.questionsPosts;
  //    $scope.posts = data.objectValue.posts;
  //    $scope.loopPopulars = data.objectValue.loopPopulars;
-    console.log('leftbarController');
+    
     // Restangular.one('/v1/Post/GetPostById').customPOST({"userId": 1}, '', {}, header).then(function(data){
     // 	console.log('xxxxxxxxxxx');
     // 	console.log(data);
@@ -15,13 +16,10 @@ userModule.controller('leftbarController', function($scope, loopList) {
 });
 
 userModule.controller('homefeedController', function($scope, newsfeed) {
-
-    // $scope.questionsPosts = data.objectValue.questionsPosts;
-    // $scope.posts = data.objectValue.posts;
-    // $scope.loopPopulars = data.objectValue.loopPopulars;
-    console.log('homefeedController');
-    console.log(newsfeed);
-
+	console.log('homefeedController');
+    $scope.questionsPosts = newsfeed.objectValue.questionsPosts;
+    $scope.posts = newsfeed.objectValue.posts;
+    $scope.loopPopulars = newsfeed.objectValue.loopPopulars;
 });
 
 userModule.controller('postController', function($scope) {
