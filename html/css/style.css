@@ -895,3 +895,98 @@ a {
     }
 
 /*Profile*/
+
+/*--- Login ---*/
+.container-login {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            bottom: 0;
+
+        }
+
+            .container-login .img-bg {
+                width: 1320px;
+            }
+
+        .input-group .icon-addon .form-control {
+            border-radius: 0;
+        }
+
+        .icon-addon {
+            position: relative;
+            color: #555;
+            display: block;
+        }
+
+            .icon-addon:after,
+            .icon-addon:before {
+                display: table;
+                content: " ";
+            }
+
+            .icon-addon:after {
+                clear: both;
+            }
+
+            .icon-addon .glyphicon,
+            .icon-addon .fa {
+                position: absolute;
+                z-index: 2;
+                left: 10px;
+                font-size: 14px;
+                width: 20px;
+                margin-left: -2.5px;
+                text-align: center;
+                padding: 10px 0;
+                top: 1px;
+            }
+
+            .icon-addon.addon-lg .form-control {
+                line-height: 1.33;
+                height: 60px;
+                font-size: 18px;
+                padding: 10px 16px 10px 40px;
+                border-top: 0;
+                border-left: 0;
+                border-right: 0;
+                border-radius: 0;
+            }
+            .icon-addon.addon-lg .form-control:focus{
+                box-shadow: none
+            }
+
+            .icon-addon.addon-lg .fa,
+            .icon-addon.addon-lg .glyphicon {
+                font-size: 18px;
+                margin-left: 0;
+                left: 11px;
+                top: 9px;
+            }
+
+        .content-login {
+            position: absolute;
+            width: 500px;
+            bottom: 100px;
+            left: 50%;
+            margin-left: -250px;
+            background-color: #fff;
+            padding: 0 10px;
+            border-radius: 5px;
+        }
+       .content-login .form-group{
+           margin-bottom: 0
+       }
+       .form-group-button{
+           text-align: center
+       }
+       .form-group-button .btn-signup{
+            background-color: #0abbb5;
+            color: #fff;
+            height: 50px;
+            min-width: 180px;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 20px auto
+       }
+/*--- #Login--*/
