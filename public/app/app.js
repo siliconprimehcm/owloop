@@ -64,32 +64,41 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
                     templateUrl:'public/app/user/layout.html'
                 },
                 'leftbar@app.user':{
-                    templateUrl:'public/app/user/leftbar.html',
-                    controller:'userController'
+                    templateUrl:'public/app/user/leftbar.html'
+                    ,controller:'leftbarController'
                 },
                 'content@app.user':{
-                    template: '<ui-view/>',
-                }
-            }
-        })
-        .state('app.user.homefeed', {
-            url:'/homefeed',
-            views:{
-                'content@app.user':{
-                    templateUrl:'public/app/user/homefeed/homefeed.html',
-                    controller:'userController'
+                    template: '<ui-view/>'
                 }
             },
             resolve: {
                 authenticate: function (authenticationSvc) {
                     return authenticationSvc.requireLogin();
                 },
-                data: function(authenticate, Restangular, authenticationSvc) {
+                loopList: function(authenticate, Restangular, authenticationSvc) {
                     var header = authenticationSvc.getHeader();
-                    console.log(header);
-                    return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST({"userId": 1}, '', {}, header).then(function(data){
+                    // return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST({"userId": 1}, '', {}, header).then(function(data){
+                    //     return data;
+                    // });
+                    return 1
+                },
+            }
+        })
+        .state('app.user.homefeed', {
+            url:'/homefeed',
+            views:{
+                'content@app.user':{
+                    templateUrl:'public/app/user/homefeed/homefeed.html'
+                    ,controller:'homefeedController'
+                }
+            },
+            resolve: {
+                newsfeed: function(authenticate, Restangular, authenticationSvc) {
+                    var header = authenticationSvc.getHeader();
+                    return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST({"loopId": 1}, '', {}, header).then(function(data){
                         return data;
                     });
+                    // return 1
                 },
             }
         })
@@ -98,7 +107,7 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
             views:{
                 'content@app.user':{
                     templateUrl:'public/app/user/questiondetail/questiondetail.html',
-                    controller:'userController'
+                    controller:'questionController'
                 }
             }
         })
@@ -107,7 +116,7 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
             views:{
                 'content@app.user':{
                     templateUrl:'public/app/user/postdetail/postdetail.html',
-                    controller:'userController'
+                    controller:'postController'
                 }
             }
         })
@@ -116,7 +125,7 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
             views:{
                 'content@app.user':{
                     templateUrl:'public/app/user/albumdetail/albumdetail.html',
-                    controller:'userController'
+                    controller:'albumController'
                 }
             }
         })
@@ -125,7 +134,7 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
             views:{
                 'content@app.user':{
                     templateUrl:'public/app/user/profile/profile.html',
-                    controller:'userController'
+                    controller:'profileController'
                 }
             }
         })         
@@ -139,7 +148,7 @@ loopApp.factory("authenticationSvc", function($q, $localStorage, $state, $timeou
                 return $q.when();
             }else {
                 $timeout(function() {
-                  $state.go('signup')
+                  $state.go('app.auth.signup');
                 });
                 return $q.reject();
             }
@@ -155,9 +164,6 @@ loopApp.factory("authenticationSvc", function($q, $localStorage, $state, $timeou
                 'Os': 0,
                 'X-Requested-With': 'XMLHttpRequest'              
             };
-
-            console.log(header);
-
             return header;
         }
     }
