@@ -796,8 +796,13 @@ a {
         }
 
         .card-main .enter-comments .form-group {
-            margin-bottom: 0;
+            margin-bottom: 10px;
         }
+   
+    .card-main .checkbox-inline{
+        display: inline-block;
+        cursor: pointer
+    }
 
 .content-column-two {
     margin-left: 700px;
