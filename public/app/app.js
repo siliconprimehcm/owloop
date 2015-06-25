@@ -23,8 +23,8 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
             abstract: true,
             url:'',
             template: '<ui-view/>'
-        }).
-        state('app.landing',{
+        })
+        .state('app.landing',{
             url:'/landing',
             views:{
                 '':{
@@ -84,17 +84,9 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
                 authenticate: function (authenticationSvc) {
                     return authenticationSvc.requireLogin();
                 },
-                data: function(authenticate, Restangular) {
-                    var header = {
-                        'Content-type': 'application/json',
-                        'ApplicationKey': 'HuDNpU8EjgJJhsSV',
-                        'CustomerId': '',
-                        'AuthenKey':'',
-                        'BuildNumber': '',
-                        'Os': 0,
-                        'X-Requested-With': 'XMLHttpRequest'              
-                    };
-
+                data: function(authenticate, Restangular, authenticationSvc) {
+                    var header = authenticationSvc.getHeader();
+                    console.log(header);
                     return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST({"userId": 1}, '', {}, header).then(function(data){
                         return data;
                     });
@@ -142,8 +134,7 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
 loopApp.factory("authenticationSvc", function($q, $localStorage, $state, $timeout) {
     return {
         requireLogin: function () {
-            debugger;
-            //if ($localStorage['authenticate']) {
+            //if ($localStorage['owloopAuth']) {
             if (1) {
                 return $q.when();
             }else {
@@ -152,6 +143,22 @@ loopApp.factory("authenticationSvc", function($q, $localStorage, $state, $timeou
                 });
                 return $q.reject();
             }
+        },
+
+        getHeader: function () {
+            var header = {
+                'Content-type': 'application/json',
+                'ApplicationKey': 'HuDNpU8EjgJJhsSV',
+                'CustomerId': '',
+                'AuthenKey':'',
+                'BuildNumber': '',
+                'Os': 0,
+                'X-Requested-With': 'XMLHttpRequest'              
+            };
+
+            console.log(header);
+
+            return header;
         }
     }
 })

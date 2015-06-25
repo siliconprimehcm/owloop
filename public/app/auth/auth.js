@@ -1,6 +1,7 @@
 var signupModule = angular.module('owloop.auth', []);
 
-signupModule.controller('authController', function($scope, Restangular, $localStorage, $state) {
+signupModule.controller('authController', function(
+    $scope, Restangular, $localStorage, $state, authenticationSvc) {
     
     $scope.user = {
         username:'',
@@ -8,15 +9,7 @@ signupModule.controller('authController', function($scope, Restangular, $localSt
         email:''
     };
 
-    var header = {
-        'Content-type': 'application/json',
-        'ApplicationKey': 'HuDNpU8EjgJJhsSV',
-        'CustomerId': '',
-        'AuthenKey':'',
-        'BuildNumber': '',
-        'Os': 0,
-        'X-Requested-With': 'XMLHttpRequest'              
-    }
+    var header = authenticationSvc.getHeader();
         
     $scope.register = function(){
         console.log($scope.user);
@@ -24,13 +17,13 @@ signupModule.controller('authController', function($scope, Restangular, $localSt
         Restangular.one('/v1/Customer/SignupEmail').customPOST($scope.user, '', {}, header).then(function(data){
             console.log(data);
             if(data && data.objectValue){
-                $localStorage['authenticate'] = {
+                $localStorage['owloopAuth'] = {
                     authenKey: data.objectValue.authenKey,
                     customerId: data.objectValue.customerId
                 };
-                $state.go('home');
+                $state.go('app.user.homefeed');
             }else{
-                $state.go('login');
+                $state.go('app.user.signup');
             }
         });
     };
@@ -40,20 +33,20 @@ signupModule.controller('authController', function($scope, Restangular, $localSt
         Restangular.one('/v1/Customer/LoginEmail').customPOST($scope.user, '', {}, header).then(function(data){
             console.log(data);
             if(data && data.objectValue){
-                $localStorage['authenticate'] = {
+                $localStorage['owloopAuth'] = {
                     authenKey: data.objectValue.authenKey,
                     customerId: data.objectValue.customerId
                 };
-                $state.go('home');
+                $state.go('app.user.homefeed');
             }else{
-                $state.go('login');
+                $state.go('app.user.login');
             }
         });
     };
 
     $scope.logout = function () {
         debugger;
-            $localStorage['authenticate'] = null
-            $state.go('login');
+            $localStorage['owloopAuth'] = null
+            $state.go('app.user.login');
     };
 });
