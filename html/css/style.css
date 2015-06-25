@@ -990,3 +990,127 @@ a {
             margin: 20px auto
        }
 /*--- #Login--*/
+
+/*--- Search ---*/
+.nav-search{
+    background-color: #fff;
+    border: 1px solid #d8dfe2;
+    border-radius: 5px;
+    
+}
+.nav-search ul{
+
+}
+.nav-search ul li{
+    display: inline-block;
+    padding: 10px 20px 0;
+    position: relative
+}
+
+.nav-search ul li:first-child:after{
+    width: 0
+}
+
+.nav-search ul li:after {
+  background: #0cc7c2;
+  background: rgba(0, 0, 0, .1);
+  content: '';
+  height: 26px;
+  left: 0px;
+  position: absolute;
+  top: 6px;
+  width: 1px;
+}
+
+.nav-search ul li a{
+    color: #bcbcbc;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none
+}
+
+.nav-search ul li.active a{
+      border-bottom: 3px solid #0cc7c2;
+  display: block;
+  height: 30px;
+}
+
+.result-search-list {
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 15px;
+   background-color: #fff;
+   position: relative;
+   border: 1px solid #dee2e3;
+   border-bottom: 0
+}
+
+   .result-search-list .see-all {
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+        padding: 10px;
+        background-color: #f5f5f5;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: -40px;
+        border: 1px solid #dee2e3
+    }
+
+.result-search-list .profile-avatar {
+    padding: 8px 10px;
+    padding-left: 0
+}
+
+    .result-search-list .profile-avatar .avartar {
+        float: left;
+    }
+
+    .result-search-list .profile-avatar .info {
+        margin-left: 50px;
+        padding-left: 10px;
+        padding-top: 4px;
+    }
+
+.result-search-list li {
+    border-bottom: 1px solid #e5e5e5;
+}
+    .result-search-list li:hover {
+        cursor: pointer;
+    }
+
+.result-search-list .profile-avatar .info span.name {
+    font-size: 18px;
+}
+
+.result-search-list .profile-avatar .info span.sub-description{
+    font-size: 16px;
+    color: #c3c3c3
+}
+
+.result-search-list .profile-avatar .info span {
+    display: block;
+}
+
+    .result-search-list .profile-avatar .info span.add-note {
+        display: inline-block;
+        color: #5d5d5d;
+    }
+
+.result-search-list .profile-avatar a:hover {
+    text-decoration: none;
+}
+
+.result-search-list .profile-avatar .name a {
+    margin-left: 5px;
+    color: #5d5d5d;
+    font-weight: bold;
+}
+
+.result-search-list .profile-avatar .sub-description a {
+    margin-left: 5px;
+    color: #bbbbbb;
+}
+/*--- #Search---*/
