@@ -2,6 +2,7 @@ var loopApp = angular.module('loopApp',[
     'ui.router'
     ,'restangular'
     ,'ngStorage'
+    ,'satellizer'
 
     ,'owloop.auth'
     ,'owloop.user'
@@ -77,10 +78,16 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
                 },
                 loopList: function(authenticate, Restangular, authenticationSvc) {
                     var header = authenticationSvc.getHeader();
-                    // return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST({"userId": 1}, '', {}, header).then(function(data){
-                    //     return data;
-                    // });
-                    return 1
+                    console.log(header);
+                    var param = {
+                        "lastUpdate": 1234.5678,
+                        "pageSize": 10,
+                        "keyword": "keyword",
+                        "loopType":null,
+                    }
+                    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function(data){
+                        return data;
+                    });
                 },
             }
         })
@@ -95,7 +102,10 @@ loopApp.config(function($httpProvider, RestangularProvider, $urlRouterProvider, 
             resolve: {
                 newsfeed: function(authenticate, Restangular, authenticationSvc) {
                     var header = authenticationSvc.getHeader();
-                    return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST({"loopId": 1}, '', {}, header).then(function(data){
+                    var param = {
+                        "loopId": 1
+                    }
+                    return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST(param, '', {}, header).then(function(data){
                         return data;
                     });
                     // return 1
@@ -155,11 +165,17 @@ loopApp.factory("authenticationSvc", function($q, $localStorage, $state, $timeou
         },
 
         getHeader: function () {
+            var authenKey = '';
+            var customerId = '';
+            if($localStorage.owloopAuth){
+                authenKey = $localStorage.owloopAuth.authenKey;
+                customerId = $localStorage.owloopAuth.customerId;
+            };
             var header = {
                 'Content-type': 'application/json',
                 'ApplicationKey': 'HuDNpU8EjgJJhsSV',
-                'CustomerId': '',
-                'AuthenKey':'',
+                'CustomerId': customerId,
+                'AuthenKey': authenKey,
                 'BuildNumber': '',
                 'Os': 0,
                 'X-Requested-With': 'XMLHttpRequest'              

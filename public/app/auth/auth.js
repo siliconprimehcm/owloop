@@ -1,7 +1,14 @@
 var signupModule = angular.module('owloop.auth', []);
 
+signupModule.config(function($authProvider) {
+    $authProvider.facebook({
+      clientId: '1625789900991409',
+      redirectUri: 'http://localhost:3000/'
+    });
+});
+
 signupModule.controller('authController', function(
-    $scope, Restangular, $localStorage, $state, authenticationSvc) {
+    $scope, Restangular, $localStorage, $state, authenticationSvc, $auth) {
     
     $scope.user = {
         username:'',
@@ -26,6 +33,10 @@ signupModule.controller('authController', function(
                 $state.go('app.user.signup');
             }
         });
+    };
+
+    $scope.facebookLogin = function(provider) {
+        $auth.authenticate(provider);
     };
 
     $scope.login = function(){

@@ -4,15 +4,7 @@ userModule.controller('leftbarController', function($scope, loopList) {
 	console.log('leftbarController');
 	// $scope.privateLoops = data.objectValue.privateLoops;
 	// $scope.publicLoops = data.objectValue.publicLoops;
- //    $scope.questionsPosts = data.objectValue.questionsPosts;
- //    $scope.posts = data.objectValue.posts;
- //    $scope.loopPopulars = data.objectValue.loopPopulars;
-    
-    // Restangular.one('/v1/Post/GetPostById').customPOST({"userId": 1}, '', {}, header).then(function(data){
-    // 	console.log('xxxxxxxxxxx');
-    // 	console.log(data);
-    // })
-	
+    console.log(loopList);	
 });
 
 userModule.controller('homefeedController', function($scope, newsfeed) {
