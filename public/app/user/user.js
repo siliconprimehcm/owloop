@@ -9,22 +9,7 @@ userModule.controller('leftbarController', function($scope, loopList) {
     console.log(loopList);	
 });
 
-userModule.controller('homefeedController', function($scope, newsfeed) {
-	console.log('homefeedController');
-    $scope.questionsPosts = newsfeed.objectValue.questionsPosts;
-    $scope.posts = newsfeed.objectValue.posts;
-    $scope.loopPopulars = newsfeed.objectValue.loopPopulars;
-});
 
-userModule.controller('postController', function($scope) {
-
-    console.log('postController');
-});
-
-userModule.controller('profileController', function($scope) {
-
-    console.log('profileController');
-});
 
 userModule.controller('questionController', function($scope) {
 

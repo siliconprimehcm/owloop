@@ -36,7 +36,9 @@ signupModule.controller('authController', function(
     };
 
     $scope.facebookLogin = function(provider) {
-        $auth.authenticate(provider);
+        $auth.authenticate(provider).then(function(response) {
+          console.log(response);
+        });
     };
 
     $scope.login = function(){
