@@ -85,7 +85,7 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                         "keyword": "keyword",
                         "loopType": null,
                     };
-                    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function(data){
+                    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
                         return data;
                     });
                 },
@@ -100,12 +100,12 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 }
             },
             resolve: {
-                newsfeed: function(Restangular, authenticationSvc) {
+                newsfeed: function (Restangular, authenticationSvc) {
                     var header = authenticationSvc.getHeader();
                     var param = {
                         "loopId": 1
                     };
-                    return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST(param, '', {}, header).then(function(data){
+                    return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST(param, '', {}, header).then(function (data) {
                         return data;
                     });
                     // return 1
@@ -113,19 +113,19 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             }
         })
         .state('app.user.explore', {
-            url:'/explore',
-            views:{
-                'leftbar@app.user':{
-                    templateUrl:'public/app/user/explore/leftbar.html'
-                    ,controller:'exploreController'
+            url: '/explore',
+            views: {
+                'leftbar@app.user': {
+                    templateUrl: 'public/app/user/explore/leftbar.html'
+                    , controller: 'exploreController'
                 },
-                'content@app.user':{
-                    templateUrl:'public/app/user/explore/explore.html'
-                    ,controller:'exploreController'
+                'content@app.user': {
+                    templateUrl: 'public/app/user/explore/explore.html'
+                    , controller: 'exploreController'
                 }
             },
             resolve: {
-                loopCategories: function(Restangular, authenticationSvc) {
+                loopCategories: function (Restangular, authenticationSvc) {
                     var header = authenticationSvc.getHeader();
                     var param = {};
                     return Restangular.one('/v1/Loop/GetLoopCategory').customPOST(param, '', {}, header).then(function(data) {
@@ -135,12 +135,12 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 },
             }
         })
-        .state('app.user.question',{
-            url:'/question',
-            views:{
-                'content@app.user':{
-                    templateUrl:'public/app/user/questiondetail/questiondetail.html',
-                    controller:'questionController'
+        .state('app.user.question', {
+            url: '/question',
+            views: {
+                'content@app.user': {
+                    templateUrl: 'public/app/user/questiondetail/questiondetail.html',
+                    controller: 'questionController'
                 }
             }
         })
@@ -171,6 +171,15 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 }
             }
         })
+       .state('app.user.loop', {
+           url: '/loop',
+           views: {
+               'content@app.user': {
+                   templateUrl: 'public/app/user/loop/loop.html',
+                   controller: 'loopController'
+               }
+           }
+       })
 });
 
 loopApp.factory("authenticationSvc", function ($q, $localStorage, $state, $timeout) {
