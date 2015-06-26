@@ -33,3 +33,10 @@ userModule.controller('albumController', function($scope) {
 
     console.log('albumController');
 });
+userModule.controller('exploreController', function ($scope) {
+    console.log('exploreController');
+
+});
+userModule.controller('leftbar2ndController', function ($scope) {
+    console.log('leftbar2ndController');
+});
