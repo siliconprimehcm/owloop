@@ -989,8 +989,11 @@ a {
     left: 50%;
     margin-left: -250px;
     background-color: #fff;
-    padding: 0 15px;
     border-radius: 5px;
+}
+.content-login .content-signup,
+.content-login .content-signin{
+    padding: 0 15px
 }
 
     .content-login .form-group {
@@ -1067,7 +1070,145 @@ a {
         text-decoration: underline
     }
 /*--- #Login--*/
+/*--- InviteFriend---*/
+.invite-friends-list {
+    width: 100%;
+    padding: 0;
+}
 
+   
+
+.invite-friends-list .profile-avatar {
+    padding: 8px 10px;
+    position: relative
+}
+
+    .invite-friends-list .profile-avatar .avartar {
+        float: left;
+    }
+
+    .invite-friends-list .profile-avatar .info {
+        margin-left: 50px;
+        padding-left: 10px;
+        padding-top: 4px;
+    }
+
+.invite-friends-list li {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+
+.invite-friends-list .profile-avatar .info span.name {
+    font-size: 16px;
+}
+
+.invite-friends-list .profile-avatar .info span.description {
+    font-size: 14px;
+    
+}
+    .invite-friends-list .profile-avatar .info span.description a {
+        color: #878787;
+    }
+.invite-friends-list .profile-avatar .info span {
+    display: block;
+}
+
+    .invite-friends-list .profile-avatar .info span.company{
+        display: inline-block;
+        color: #bbbbbb
+    }
+
+.invite-friends-list .profile-avatar a:hover {
+    text-decoration: none;
+}
+
+.invite-friends-list .profile-avatar .name a {
+    margin-left: 5px;
+    color: #5d5d5d;
+    font-weight: bold;
+}
+
+.invite-friends-list .profile-avatar .description a {
+    margin-left: 5px;
+    color: #bbbbbb;
+}
+.invite-friends-list .profile-avatar .profile-button{
+    position: absolute;
+    right: 5px;
+    top: 17px
+}
+.invite-friends-list .profile-avatar .profile-button .btn{
+    min-width: 110px;
+    text-align: left;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.invite-friends-list .profile-avatar .profile-button .btn i{
+    margin-right: 5px;
+    width: 12px
+}
+.invite-friends-list .profile-avatar .profile-button .btn-follow{
+    background-color: #bbbbbb;
+}
+.invite-friends-list .profile-avatar .profile-button .btn-following{
+    background-color: #0abbb5;
+}
+.content-invite-friend{
+    position: relative;
+   
+}
+.content-invite-friend .top-invite{
+      width: 100%;
+      background-color: #0abbb5;
+      height: 50px;
+      text-align: center;
+      line-height: 50px
+}
+.content-invite-friend .top-invite a{
+    display: block;
+    float: left;
+    width: 20%;
+    font-size: 18px;
+}
+.content-invite-friend .top-invite .title{
+    font-size: 22px;
+    color: #fff;
+    width: 60%
+}
+.content-invite-friend .invite-friends-list{
+    padding: 0 15px
+}
+
+ .invite-friends-list .bottom-invite {
+        text-align: center;
+     margin: 15px 40px;
+    }
+ .invite-friends-list .bottom-invite .btn-invite{
+  
+     background-color: #0abbb5;
+     color: #fff;
+     width: 100%;
+     height: 50px;
+     font-size: 18px;
+     padding-top: 0;
+     padding-bottom: 0;
+     line-height: 50px
+ }
+  .invite-friends-list .follow-all{
+      text-align: right;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 10px  0
+  }
+ .invite-friends-list .follow-all a{
+     color: #0abbb5;
+     font-size: 16px;
+ }
+   .invite-friends-list ul{
+       max-height: 400px;
+       overflow-y: auto;
+   }
+/*---#InviteFriend ----*/
 /*--- Search ---*/
 .nav-search {
     background-color: #fff;
