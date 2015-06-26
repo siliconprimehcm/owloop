@@ -101,7 +101,10 @@ a {
         padding-right: 7.5px;
         padding-left: 7.5px;
     }
-
+    .modal-backdrop{
+        bottom: 0;
+        z-index: 1039
+    }
 /*Navbar*/
 
 /* Non-responsive overrides
@@ -652,25 +655,28 @@ a {
             border-radius: 5px;
             padding: 5px;
         }
-        .cover-wrapper .cover-profile .avatar .upload-avatar span{
-            margin-left: 5px
-        }
-        .cover-wrapper .cover-profile .avatar .upload-avatar{
-              background: rgba(0, 0, 0, .8);
-              color: #fff;
-              padding: 10px;
-              text-align: center;
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              width: 100%;
-              display: none;
-        }
-         .cover-wrapper .cover-profile .avatar:hover .upload-avatar
-         {
-             cursor: pointer;
-             display:block
-         }
+
+            .cover-wrapper .cover-profile .avatar .upload-avatar span {
+                margin-left: 5px;
+            }
+
+            .cover-wrapper .cover-profile .avatar .upload-avatar {
+                background: rgba(0, 0, 0, .8);
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                display: none;
+            }
+
+            .cover-wrapper .cover-profile .avatar:hover .upload-avatar {
+                cursor: pointer;
+                display: block;
+            }
+
             .cover-wrapper .cover-profile .avatar img {
                 width: 150px;
                 height: 150px;
@@ -700,6 +706,12 @@ a {
 
             .cover-wrapper .cover-profile .name-feed .user {
                 font-size: 16px;
+            }
+
+            .cover-wrapper .cover-profile .name-feed .description {
+                font-size: 14px;
+                width: 400px;
+                margin-top: 5px;
             }
 
 .card-main {
@@ -816,10 +828,10 @@ a {
         .card-main .enter-comments .form-group {
             margin-bottom: 10px;
         }
-   
-    .card-main .checkbox-inline{
+
+    .card-main .checkbox-inline {
         display: inline-block;
-        cursor: pointer
+        cursor: pointer;
     }
 
 .content-column-two {
@@ -1009,23 +1021,27 @@ a {
     background-color: #fff;
     border-radius: 5px;
 }
-.content-login .content-signup,
-.content-login .content-signin{
-    padding: 0 15px
-}
+
+    .content-login .content-signup,
+    .content-login .content-signin {
+        padding: 0 15px;
+    }
 
     .content-login .form-group {
         margin-bottom: 0;
     }
-    .content-login .form-group-signin-link{
+
+    .content-login .form-group-signin-link {
         text-align: center;
-        margin-bottom: 15px
+        margin-bottom: 15px;
     }
-      .content-login .form-group-signin-link a{
-          color: #b3b3b3;
-          text-transform: uppercase;
-          text-decoration: underline
-      }
+
+        .content-login .form-group-signin-link a {
+            color: #b3b3b3;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+
 .form-group-button {
     text-align: center;
 }
@@ -1070,23 +1086,26 @@ a {
         z-index: 1;
         font-size: 16px;
     }
-    .content-login .form-group-link{
-        padding: 15px 0 0
-    }
-    .form-group-link a{
-        color: #b3b3b3;
-        font-size: 16px;
-        font-weight: 400
-    }
-    .form-group-link .forgot-password{
-        float: left;
-        
-    }
-    .form-group-link .sign-up-with-email{
-        float: right;
-        text-transform: uppercase;
-        text-decoration: underline
-    }
+
+.content-login .form-group-link {
+    padding: 15px 0 0;
+}
+
+.form-group-link a {
+    color: #b3b3b3;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.form-group-link .forgot-password {
+    float: left;
+}
+
+.form-group-link .sign-up-with-email {
+    float: right;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
 /*--- #Login--*/
 /*--- InviteFriend---*/
 .invite-friends-list {
@@ -1094,139 +1113,162 @@ a {
     padding: 0;
 }
 
-   
 
-.invite-friends-list .profile-avatar {
-    padding: 8px 10px;
-    position: relative
-}
 
-    .invite-friends-list .profile-avatar .avartar {
-        float: left;
-        position: relative
+    .invite-friends-list .profile-avatar {
+        padding: 8px 10px;
+        position: relative;
     }
 
-    .invite-friends-list .profile-avatar .info {
-        margin-left: 50px;
-        padding-left: 10px;
-        padding-top: 4px;
-    }
+        .invite-friends-list .profile-avatar .avartar {
+            float: left;
+            position: relative;
+        }
 
-.invite-friends-list li {
-    border-bottom: 1px solid #e5e5e5;
-}
+        .invite-friends-list .profile-avatar .info {
+            margin-left: 50px;
+            padding-left: 10px;
+            padding-top: 4px;
+        }
 
-
-
-.invite-friends-list .profile-avatar .info span.name {
-    font-size: 16px;
-}
-
-.invite-friends-list .profile-avatar .info span.description {
-    font-size: 14px;
-    
-}
-    .invite-friends-list .profile-avatar .info span.description a {
-        color: #878787;
-    }
-.invite-friends-list .profile-avatar .info span {
-    display: block;
-}
-
-    .invite-friends-list .profile-avatar .info span.company{
-        display: inline-block;
-        color: #bbbbbb
-    }
-
-.invite-friends-list .profile-avatar a:hover {
-    text-decoration: none;
-}
-
-.invite-friends-list .profile-avatar .name a {
-    margin-left: 5px;
-    color: #5d5d5d;
-    font-weight: bold;
-}
-
-.invite-friends-list .profile-avatar .description a {
-    margin-left: 5px;
-    color: #bbbbbb;
-}
-.invite-friends-list .profile-avatar .profile-button{
-    position: absolute;
-    right: 5px;
-    top: 17px
-}
-.invite-friends-list .profile-avatar .profile-button .btn{
-    min-width: 110px;
-    text-align: left;
-    padding-top: 3px;
-    padding-bottom: 3px;
-}
-.invite-friends-list .profile-avatar .profile-button .btn i{
-    margin-right: 5px;
-    width: 12px
-}
-.invite-friends-list .profile-avatar .profile-button .btn-follow{
-    background-color: #bbbbbb;
-}
-.invite-friends-list .profile-avatar .profile-button .btn-following{
-    background-color: #0abbb5;
-}
-.content-invite-friend{
-    position: relative;
-   
-}
-.content-invite-friend .top-invite{
-      width: 100%;
-      background-color: #0abbb5;
-      height: 50px;
-      text-align: center;
-      line-height: 50px
-}
-.content-invite-friend .top-invite a{
-    display: block;
-    float: left;
-    width: 20%;
-    font-size: 18px;
-}
-.content-invite-friend .top-invite .title{
-    font-size: 22px;
-    color: #fff;
-    width: 60%
-}
-.content-invite-friend .invite-friends-list{
-    padding: 0 15px
-}
-
- .invite-friends-list .bottom-invite {
-        text-align: center;
-     margin: 15px 40px;
-    }
- .invite-friends-list .bottom-invite .btn-invite{
-  
-     background-color: #0abbb5;
-     color: #fff;
-     width: 100%;
-     height: 50px;
-     font-size: 18px;
-     padding-top: 0;
-     padding-bottom: 0;
-     line-height: 50px
- }
-  .invite-friends-list .follow-all{
-      text-align: right;
+    .invite-friends-list li {
         border-bottom: 1px solid #e5e5e5;
-        padding: 10px  0
-  }
- .invite-friends-list .follow-all a{
-     color: #0abbb5;
-     font-size: 16px;
- }
-   .invite-friends-list ul{
-       max-height: 400px;
-       overflow-y: auto;
-   }
+    }
+
+
+
+    .invite-friends-list .profile-avatar .info span.name {
+        font-size: 16px;
+    }
+
+    .invite-friends-list .profile-avatar .info span.description {
+        font-size: 14px;
+    }
+
+        .invite-friends-list .profile-avatar .info span.description a {
+            color: #878787;
+        }
+
+    .invite-friends-list .profile-avatar .info span {
+        display: block;
+    }
+
+        .invite-friends-list .profile-avatar .info span.company {
+            display: inline-block;
+            color: #bbbbbb;
+        }
+
+    .invite-friends-list .profile-avatar a:hover {
+        text-decoration: none;
+    }
+
+    .invite-friends-list .profile-avatar .name a {
+        margin-left: 5px;
+        color: #5d5d5d;
+        font-weight: bold;
+    }
+
+    .invite-friends-list .profile-avatar .description a {
+        margin-left: 5px;
+        color: #bbbbbb;
+    }
+
+    .invite-friends-list .profile-avatar .profile-button {
+        position: absolute;
+        right: 5px;
+        top: 17px;
+    }
+
+        .invite-friends-list .profile-avatar .profile-button .btn {
+            min-width: 110px;
+            text-align: left;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+            .invite-friends-list .profile-avatar .profile-button .btn i {
+                margin-right: 5px;
+                width: 12px;
+            }
+
+        .invite-friends-list .profile-avatar .profile-button .btn-follow {
+            background-color: #bbbbbb;
+        }
+
+        .invite-friends-list .profile-avatar .profile-button .btn-following {
+            background-color: #0abbb5;
+        }
+
+.content-invite-friend {
+    position: relative;
+}
+
+    .content-invite-friend .top-invite {
+        width: 100%;
+        background-color: #0abbb5;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+    }
+
+        .content-invite-friend .top-invite a {
+            display: block;
+            float: left;
+            width: 20%;
+            font-size: 18px;
+        }
+
+            .content-invite-friend .top-invite a:first-child {
+                text-align: left;
+                padding-left: 15px;
+            }
+
+            .content-invite-friend .top-invite a:last-child {
+                text-align: right;
+                padding-right: 15px;
+            }
+
+        .content-invite-friend .top-invite .title {
+            font-size: 22px;
+            color: #fff;
+            width: 60%;
+        }
+
+    .content-invite-friend .invite-friends-list {
+        padding: 0 15px;
+    }
+
+.invite-friends-list .bottom-invite {
+    text-align: center;
+    margin: 15px 40px;
+}
+
+    .invite-friends-list .bottom-invite .btn-invite {
+        background-color: #0abbb5;
+        color: #fff;
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: 50px;
+    }
+
+.invite-friends-list .follow-all {
+    text-align: right;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 10px 0;
+}
+
+    .invite-friends-list .follow-all a {
+        color: #0abbb5;
+        font-size: 16px;
+    }
+
+.invite-friends-list ul {
+    max-height: 400px;
+    overflow-y: auto;
+}
 /*---#InviteFriend ----*/
 /*--- Search ---*/
 .nav-search {
@@ -1352,3 +1394,128 @@ a {
         color: #bbbbbb;
     }
 /*--- #Search---*/
+/*---Loop Media---*/
+
+.list-card-media .card-sub {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    border: 1px solid #bbbbbb;
+    height: 270px;
+}
+
+    .list-card-media .card-sub.create-album {
+        border: 1px dashed #bbb;
+        padding-top: 90px;
+    }
+
+        .list-card-media .card-sub.create-album:hover {
+            cursor: pointer;
+        }
+
+        .list-card-media .card-sub.create-album i {
+            display: block;
+            font-size: 40px;
+            color: #5d5d5d;
+        }
+
+        .list-card-media .card-sub.create-album .label {
+            display: block;
+            color: #5d5d5d;
+            font-size: 20px;
+        }
+
+.list-card-media .img {
+    width: 100%;
+    height: 210px;
+    margin: auto;
+    background-position: top center;
+    margin-bottom: 5px;
+}
+
+.list-card-media .title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #5d5d5d;
+    text-align: left;
+    margin-bottom: 5px;
+    padding: 0 10px;
+}
+
+.list-card-media .description {
+    color: #bdbdbd;
+    padding: 0 10px;
+    margin-bottom: 5px;
+}
+
+
+.content-create-album {
+    position: relative;
+    
+}
+
+    .content-create-album .top-create {
+        width: 100%;
+        background-color: #0abbb5;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 5px 5px 0 0
+    }
+
+        .content-create-album .top-create a {
+            display: block;
+            float: left;
+            width: 20%;
+            font-size: 18px;
+        }
+
+            .content-create-album .top-create a:first-child {
+                text-align: left;
+                padding-left: 15px;
+            }
+
+            .content-create-album .top-create a:last-child {
+                text-align: right;
+                padding-right: 15px;
+            }
+
+        .content-create-album .top-create .title {
+            font-size: 22px;
+            color: #fff;
+            width: 60%;
+        }
+
+    .content-create-album .invite-friends-list {
+        padding: 0 15px;
+    }
+    .content-create-album form .form-group{
+        margin-bottom: 0;
+    }
+    .content-create-album form .form-group input{
+        height: 50px;
+        border-radius: 0;
+        border: 0;
+        border-bottom: 1px solid #bbbbbb
+    }
+   .content-create-album form .form-preview{
+       height: 150px
+   }
+   .content-create-album .bottom{
+       margin: 20px 100px
+   }
+    .content-create-album .btn-create {
+         background-color: #0abbb5;
+  color: #fff;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 50px;
+}
+.content-create-album .btn-create i{
+    margin-right: 5px
+}
+/*---#Loop Media---*/
