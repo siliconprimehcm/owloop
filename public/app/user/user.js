@@ -1,22 +1,18 @@
 var userModule = angular.module('owloop.user', []);
 
-
-
-userModule.controller('leftbarController', function($scope, loopList) {
+userModule.controller('leftbarController', function($scope, Restangular, authenticationSvc) {
 	console.log('leftbarController');
-	// $scope.privateLoops = data.objectValue.privateLoops;
-	// $scope.publicLoops = data.objectValue.publicLoops;
-    console.log(loopList);	
+	var header = authenticationSvc.getHeader();
+    var param = {
+        "lastUpdate": 1234.5678,
+        "pageSize": 10,
+        "keyword": "keyword",
+        "loopType": null,
+    };
+    Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
+    	$scope.privateLoops = data.objectValue.privateLoops;
+		$scope.publicLoops = data.objectValue.publicLoops;
+    })
 });
 
 
-
-userModule.controller('questionController', function($scope) {
-
-    console.log('questionController');
-});
-
-userModule.controller('albumController', function($scope) {
-
-    console.log('albumController');
-});
