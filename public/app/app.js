@@ -128,7 +128,8 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 loopCategories: function(Restangular, authenticationSvc) {
                     var header = authenticationSvc.getHeader();
                     var param = {};
-                    return Restangular.one('/v1/Loop/GetLoopCategory').customPOST(param, '', {}, header).then(function(data){
+                    return Restangular.one('/v1/Loop/GetLoopCategory').customPOST(param, '', {}, header).then(function(data) {
+                        debugger;
                         return data;
                     });
                 },
@@ -176,7 +177,7 @@ loopApp.factory("authenticationSvc", function ($q, $localStorage, $state, $timeo
     return {
         requireLogin: function () {
             //if ($localStorage['owloopAuth']) {
-            if (1) {
+            if ($localStorage['owloopAuth']) {
                 return $q.when();
             } else {
                 $timeout(function () {

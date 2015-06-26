@@ -1,4 +1,6 @@
-var userModule = angular.module('owloop.user',[]);
+var userModule = angular.module('owloop.user', []);
+
+
 
 userModule.controller('leftbarController', function($scope, loopList) {
 	console.log('leftbarController');
