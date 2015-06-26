@@ -1,14 +1,15 @@
-var signupModule = angular.module('owloop.auth', []);
+var authModule = angular.module('owloop.auth', []);
 
-signupModule.config(function($authProvider) {
+authModule.config(function($authProvider) {
     $authProvider.facebook({
       clientId: '1625789900991409',
-      redirectUri: 'http://localhost:3000/'
+      responseType: 'token',
+      redirectUri: 'http://owloop-test.azurewebsites.net/#/user/homefeed'
     });
 });
 
-signupModule.controller('authController', function(
-    $scope, Restangular, $localStorage, $state, authenticationSvc, $auth) {
+authModule.controller('authController', function(
+    $scope, Restangular, $localStorage, $state, authenticationSvc, $auth, Account) {
     
     $scope.user = {
         username:'',
@@ -38,6 +39,14 @@ signupModule.controller('authController', function(
     $scope.facebookLogin = function(provider) {
         $auth.authenticate(provider).then(function(response) {
           console.log(response);
+          Account.getProfile()
+            .success(function(data) {
+              $scope.user = data;
+              console.log(data);
+            })
+            .error(function(error) {
+                console.log(error);
+            });
         });
     };
 
@@ -61,5 +70,17 @@ signupModule.controller('authController', function(
         debugger;
             $localStorage['owloopAuth'] = null
             $state.go('app.user.login');
+    };
+});
+
+
+authModule.factory('Account', function($http) {
+    return {
+        getProfile: function() {
+            return $http.get('/api/me');
+        },
+        updateProfile: function(profileData) {
+            return $http.put('/api/me', profileData);
+        }
     };
 });

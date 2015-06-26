@@ -150,12 +150,12 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
 loopApp.factory("authenticationSvc", function ($q, $localStorage, $state, $timeout) {
     return {
         requireLogin: function () {
-            //if ($localStorage['owloopAuth']) {
-            if ($localStorage['owloopAuth']) {
+            if (1) {
+            // if ($localStorage['owloopAuth']) {
                 return $q.when();
             } else {
                 $timeout(function () {
-                    $state.go('app.auth.signup');
+                    $state.go('app.auth.login');
                 });
                 return $q.reject();
             }
