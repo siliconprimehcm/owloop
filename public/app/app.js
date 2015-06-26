@@ -84,8 +84,8 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                         "pageSize": 10,
                         "keyword": "keyword",
                         "loopType": null,
-                    }
-                    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
+                    };
+                    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function(data){
                         return data;
                     });
                 },
@@ -100,24 +100,46 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 }
             },
             resolve: {
-                newsfeed: function (authenticate, Restangular, authenticationSvc) {
+                newsfeed: function(Restangular, authenticationSvc) {
                     var header = authenticationSvc.getHeader();
                     var param = {
                         "loopId": 1
-                    }
-                    return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST(param, '', {}, header).then(function (data) {
+                    };
+                    return Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST(param, '', {}, header).then(function(data){
                         return data;
                     });
                     // return 1
                 },
             }
         })
-        .state('app.user.question', {
-            url: '/question',
-            views: {
-                'content@app.user': {
-                    templateUrl: 'public/app/user/questiondetail/questiondetail.html',
-                    controller: 'questionController'
+        .state('app.user.explore', {
+            url:'/explore',
+            views:{
+                'leftbar@app.user':{
+                    templateUrl:'public/app/user/explore/leftbar.html'
+                    ,controller:'exploreController'
+                },
+                'content@app.user':{
+                    templateUrl:'public/app/user/explore/explore.html'
+                    ,controller:'exploreController'
+                }
+            },
+            resolve: {
+                loopCategories: function(Restangular, authenticationSvc) {
+                    var header = authenticationSvc.getHeader();
+                    var param = {};
+                    return Restangular.one('/v1/Loop/GetLoopCategory').customPOST(param, '', {}, header).then(function(data){
+                        return data;
+                    });
+                },
+            }
+        })
+        .state('app.user.question',{
+            url:'/question',
+            views:{
+                'content@app.user':{
+                    templateUrl:'public/app/user/questiondetail/questiondetail.html',
+                    controller:'questionController'
                 }
             }
         })
@@ -145,19 +167,6 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 'content@app.user': {
                     templateUrl: 'public/app/user/profile/profile.html',
                     controller: 'profileController'
-                }
-            }
-        })
-        .state('app.user.explore', {
-            url: '/explore',
-            views: {
-                'leftbar@app.user': {
-                    templateUrl: 'public/app/user/explore/leftbar.html'
-                    , controller: 'leftbar2ndController'
-                },
-                'content@app.user': {
-                    templateUrl: 'public/app/user/explore/explore.html',
-                    controller: 'exploreController'
                 }
             }
         })
