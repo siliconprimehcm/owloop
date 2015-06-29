@@ -2,7 +2,7 @@ var loopApp = angular.module('loopApp', [
     'ui.router'
     , 'restangular'
     , 'ngStorage'
-    , 'satellizer'
+    ,'facebook'
 
     , 'owloop.auth'
     , 'owloop.user'

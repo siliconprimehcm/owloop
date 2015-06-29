@@ -1,15 +1,12 @@
 var authModule = angular.module('owloop.auth', []);
 
-authModule.config(function($authProvider) {
-    $authProvider.facebook({
-      clientId: '1625789900991409',
-      responseType: 'token',
-      redirectUri: 'http://owloop-test.azurewebsites.net/#/user/homefeed'
-    });
+authModule.config(function(FacebookProvider) {
+
+    FacebookProvider.init('1625789900991409');
 });
 
 authModule.controller('authController', function(
-    $scope, Restangular, $localStorage, $state, authenticationSvc, $auth, Account) {
+    $scope, Restangular, $localStorage, $state, authenticationSvc, Facebook) {
     
     $scope.user = {
         username:'',
@@ -36,19 +33,29 @@ authModule.controller('authController', function(
         });
     };
 
-    $scope.facebookLogin = function(provider) {
-        $auth.authenticate(provider).then(function(response) {
-          console.log(response);
-          Account.getProfile()
-            .success(function(data) {
-              $scope.user = data;
-              console.log(data);
-            })
-            .error(function(error) {
-                console.log(error);
+    $scope.facebookLogin = function(aaaa) {
+      // From now on you can use the Facebook service just as Facebook api says
+        Facebook.login(function(response) {
+
+            console.log(response);
+
+            Facebook.api('/me', function(me) {
+                console.log(me);
+                var path = '/' + me.id + '/nonapp_friends'
+                Facebook.api(path, function(friends) {
+                    console.log(friends);;
+                });
             });
-        });
+        },{scope: 'email, user_friends'});
     };
+
+    $scope.$watch(function() {
+      // This is for convenience, to notify if Facebook is loaded and ready to go.
+      return Facebook.isReady();
+    }, function(newVal) {
+      // You might want to use this to disable/show/hide buttons and else
+      $scope.facebookReady = true;
+    });
 
     $scope.login = function(){
 
@@ -74,13 +81,13 @@ authModule.controller('authController', function(
 });
 
 
-authModule.factory('Account', function($http) {
-    return {
-        getProfile: function() {
-            return $http.get('/api/me');
-        },
-        updateProfile: function(profileData) {
-            return $http.put('/api/me', profileData);
-        }
-    };
-});
+// authModule.factory('Account', function($http) {
+//     return {
+//         getProfile: function() {
+//             return $http.get('/api/me');
+//         },
+//         updateProfile: function(profileData) {
+//             return $http.put('/api/me', profileData);
+//         }
+//     };
+// });
