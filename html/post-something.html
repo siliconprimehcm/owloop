@@ -43,11 +43,15 @@
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search Owloop">
                         <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
                     </div>
                 </div>
             </form>
             <div class="explore pull-left">
                 <a href="#">Explore</a>
+            </div>
+            <div class="post-something-link pull-left">
+                <a href="#" data-toggle="modal" data-target="#modalPostSomething">Post Something</a>
             </div>
             <div class="pull-right">
                 <ul class="nav navbar-nav navbar-right">
@@ -161,7 +165,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <i class="fa fa-caret-up"></i>
-                            <li><a href="#">Invite friends</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#modalInviteFriend">Invite friends</a></li>
                             <li><a href="#">Edit your profile</a></li>
                             <li><a href="#">Change password</a></li>
                             <li><a href="#">Link account</a></li>
@@ -264,22 +268,8 @@
                             <ul>
                                 <li class="line">
                                     <a>
-                                        <span class="icon"><i class="icon-x1-play"></i></span>
-                                        <span class="name">Change profile pic</span>
-                                        <span class="count"></span>
-                                    </a>
-                                </li>
-                                <li class="line">
-                                    <a>
-                                        <span class="icon"><i class="icon-x1-diagram"></i></span>
-                                        <span class="name">Interest</span>
-                                        <span class="count"></span>
-                                    </a>
-                                </li>
-                                <li class="line">
-                                    <a>
                                         <span class="icon"><i class="icon-x1-fleg"></i></span>
-                                        <span class="name">Edit my Bio</span>
+                                        <span class="name">Edit my profile</span>
                                         <span class="count"></span>
                                     </a>
                                 </li>
@@ -292,45 +282,31 @@
         </div>
         <div class="main-column">
             <div class="content-column-one ">
+                <div class="cover-wrapper">
+                    <div class="cover" style="background-image: url('images/item/item_cover.jpg');"></div>
+                    <div class="cover-profile">
+                        <div class="avatar">
+                            <img src="images/item/item_avatar.jpg" />
+                        </div>
+                        <div class="name-feed">
+                            Youth Development <i class="fa fa-bell"></i>
+                            <div class="user">
+                                <i class="fa fa-users"></i> 2561
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cover-menu">
+                        <ul class="menu">
+                            <li><a href="#">Newsfeed</a></li>
+                            <li><a href="#">Media</a></li>
+                            <li><a href="#">Loop setting</a></li>
+                        </ul>
+                        <a href="#" class="btn btn-followed"><i class="fa fa-plus"></i> Joined</a>
+                    </div>
+                </div>
                 <div class="card-main ">
-                    <div class="title-category">
-                        <a href="#">Female Professionals</a>
-                    </div>
-                    <div class="profile-avatar clearfix hidden">
-                        <a href="#" class="avartar">
-                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
-                        </a>
-                        <div class="info">
-                            <span class="name">
-                                <a>Jessica Alba</a>
-                            </span>
-                            <span class="time-created">
-                                <a>
-                                    created a question 2 hours ago
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="summary">
-                        <div class="title">Wage Negotiation </div>
-                        <div class="description">
-                            Hi travel experts, my fiancee and I are getting married in December this year. I would like to surprise her with a honeymoon destination but I'm deciding between Maldives and Bora Bora. If anyone has traveled to these two places, please let me know which one I should pick for my honeymoon
-                        </div>
-                    </div>
-                    <div class="footer clearfix">
-                        <div class="pull-left totlal-likes">
-                            <span class="icon"><i class="fa fa-heart"></i></span>
-                            <span>135 likes</span>
-                        </div>
-                        <div class="pull-left total-comments hidden">
-                            <span class="icon"><i class="fa fa-comments"></i></span>
-                            <span>6 Replies</span>
-                        </div>
-                        <div class="pull-right dots">
-                            <span><i class="fa fa-ellipsis-h"></i></span>
-                        </div>
-                    </div>
-                    <div class="enter-comments">
+                    <div class="enter-comments no-border">
                         <div class="profile-avatar clearfix">
                             <a href="#" class="avartar">
                                 <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
@@ -350,45 +326,21 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Write your answer, or answer later....">
                             </div>
+                            <div class="form-group">
+                                <textarea placeholder="Post something...." class="form-control"></textarea>
+                            </div>
                         </form>
                     </div>
-                </div>
-                <div class="card-main ">
-                    <div class="title-category">
-                        <a href="#">Female Professionals</a>
-                    </div>
-                    <div class="profile-avatar clearfix">
-                        <a href="#" class="avartar">
-                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
-                        </a>
-                        <div class="info">
-                            <span class="name">
-                                <a>Jessica Alba</a>
-                            </span>
-                            <span class="time-created">
-                                <a>
-                                    created a question 2 hours ago
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="summary">
-                        <div class="title">Wage Negotiation </div>
-                        <div class="description">
-                            Go for three weeks and split the time between the Maldives and Bora Bora!
-                        </div>
-                    </div>
                     <div class="footer clearfix">
-                        <div class="pull-left totlal-likes">
-                            <span class="icon"><i class="fa fa-heart"></i></span>
-                            <span>135 likes</span>
-                        </div>
-                        <div class="pull-left total-comments">
-                            <span class="icon"><i class="fa fa-comments"></i></span>
-                            <span>6 Replies</span>
-                        </div>
-                        <div class="pull-right dots">
-                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        <div class="text-right">
+
+                            <label class="checkbox-inline">
+                                <input type="checkbox"> This is a question
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox">Anonymous
+                            </label>
+
                         </div>
                     </div>
                 </div>
@@ -414,12 +366,7 @@
                     <div class="summary">
                         <div class="title">Wage Negotiation </div>
                         <div class="description">
-                            <p>
-                                I can offer some advice as I fly from NYC as well and have done both trips you describe (except the Napa Valley part).
-                            </p>
-                            <p>
-                                September is a good time of year for travel to French Polynesia. We were there in September and the weather was generally nice and the water visibility was great.
-                            </p>
+                            I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary
                         </div>
                     </div>
                     <div class="footer clearfix">
@@ -514,75 +461,393 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="card-main ">
+                    <div class="title-category">
+                        <a href="#">Female Professionals</a>
+                    </div>
+                    <div class="profile-avatar clearfix">
+                        <a href="#" class="avartar">
+                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                        </a>
+                        <div class="info">
+                            <span class="name">
+                                <a>Jessica Alba</a>
+                            </span>
+                            <span class="time-created">
+                                <a>
+                                    created a question 2 hours ago
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary">
+                        <div class="title">Wage Negotiation </div>
+                        <div class="description">
+                            I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary
+                        </div>
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left totlal-likes">
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span>135 likes</span>
+                        </div>
+                        <div class="pull-left total-comments">
+                            <span class="icon"><i class="fa fa-comments"></i></span>
+                            <span>6 Replies</span>
+                        </div>
+                        <div class="pull-right dots">
+                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-main ">
+                    <div class="title-category">
+                        <a href="#">Female Professionals</a>
+                    </div>
+                    <div class="profile-avatar clearfix">
+                        <a href="#" class="avartar">
+                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                        </a>
+                        <div class="info">
+                            <span class="name">
+                                <a>Jessica Alba</a>
+                            </span>
+                            <span class="time-created">
+                                <a>
+                                    created a question 2 hours ago
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary">
+                        <div class="title">Wage Negotiation </div>
+                        <div class="description clearfix">
+                            <p>I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary</p>
+                            <p class="img">
+                                <img src="images/item/item_add.jpg" />
+                                <img src="images/item/item_add.jpg" />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left totlal-likes">
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span>135 likes</span>
+                        </div>
+                        <div class="pull-left total-comments">
+                            <span class="icon"><i class="fa fa-comments"></i></span>
+                            <span>6 Replies</span>
+                        </div>
+                        <div class="pull-right dots">
+                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-main ">
+                    <div class="title-category">
+                        <a href="#">Female Professionals</a>
+                    </div>
+                    <div class="profile-avatar clearfix">
+                        <a href="#" class="avartar">
+                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                        </a>
+                        <div class="info">
+                            <span class="name">
+                                <a>Jessica Alba</a>
+                            </span>
+                            <span class="time-created">
+                                <a>
+                                    created a question 2 hours ago
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary">
+                        <div class="title">Wage Negotiation </div>
+                        <div class="description">
+                            I just got an offer from one of the most well-known consulting firm. It is definitely my dream job so I'm not sure if I should negotiate for my salary
+                        </div>
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left totlal-likes">
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span>135 likes</span>
+                        </div>
+                        <div class="pull-left total-comments">
+                            <span class="icon"><i class="fa fa-comments"></i></span>
+                            <span>6 Replies</span>
+                        </div>
+                        <div class="pull-right dots">
+                            <span><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
+
             <div class="content-column-two">
-                <div class="title">Hot questions</div>
-                <div class="list-card-sub-two">
+                <div class="title">Most Popular</div>
+                <div class="list-card-sub-one">
                     <div class="card-sub">
+                        <div class="img" style="background-image: url('images/item/item_demo.jpg')"></div>
                         <div class="title">Street style lovers</div>
-                        <div class="description">
-                            <p>
-                                Can I write a psychoanalysis of a character in a novel for my English Extended Essay?
-                            </p>
-                            <p>
-                                Is this a good research question for my English IB Extended Essay?
-                            </p>
-                            <p>
-                                For my extended essay in IB, I'm comparing The Catcher In The Rye and The Perks of Being A Wallflower. So, I haven't even ...
-                            </p>
-                            <p>
-                                Would I be able to write an IB Extended Essay for literature on this book?
-                            </p>
-                            <p>
-                                Is an IB Diploma any good? Is it informative and does it help in self-development?
-                            </p>
-                        </div>
+                        <div class="description">Donec et ullamcorper ligula. Vestibulum ante ipsum primis</div>
                     </div>
                     <div class="card-sub">
-                        <div class="title">Happy bride-to-bes</div>
-                        <div class="description ">
-                            <p>
-                                Can I write a psychoanalysis of a character in a novel for my English Extended Essay?
-                            </p>
-                            <p>
-                                Is this a good research question for my English IB Extended Essay?
-                            </p>
-                            <p>
-                                For my extended essay in IB, I'm comparing The Catcher In The Rye and The Perks of Being A Wallflower. So, I haven't even ...
-                            </p>
-                            <p>
-                                Would I be able to write an IB Extended Essay for literature on this book?
-                            </p>
-                            <p>
-                                Is an IB Diploma any good? Is it informative and does it help in self-development?
-                            </p>
-                        </div>
+                        <div class="img" style="background-image: url('images/item/item_demo.jpg')"></div>
+                        <div class="title">Street style lovers</div>
+                        <div class="description">Donec et ullamcorper ligula. Vestibulum ante ipsum primis</div>
                     </div>
                     <div class="card-sub">
-                        <div class="title">Female Professionals</div>
-                        <div class="description">
-                            <p>
-                                Can I write a psychoanalysis of a character in a novel for my English Extended Essay?
-                            </p>
-                            <p>
-                                Is this a good research question for my English IB Extended Essay?
-                            </p>
-                            <p>
-                                For my extended essay in IB, I'm comparing The Catcher In The Rye and The Perks of Being A Wallflower. So, I haven't even ...
-                            </p>
-                            <p>
-                                Would I be able to write an IB Extended Essay for literature on this book?
-                            </p>
-                            <p>
-                                Is an IB Diploma any good? Is it informative and does it help in self-development?
-                            </p>
-                        </div>
+                        <div class="img" style="background-image: url('images/item/item_demo.jpg')"></div>
+                        <div class="title">Street style lovers</div>
+                        <div class="description">Donec et ullamcorper ligula. Vestibulum ante ipsum primis</div>
                     </div>
                 </div>
             </div>
         </div>
 
     </div> <!-- /container -->
+    <!-- Invite Friend Modal -->
+    <div class="modal fade" id="modalInviteFriend" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="content-invite-friend">
+                    <div class="top-invite">
+                        <a href="#" data-dismiss="modal" aria-label="Close">Cancel</a>
+                        <a href="#" class="title">Invite friends</a>
+                        <a href="#">Done</a>
+                    </div>
+                    <div class="invite-friends-list">
+                        <ul>
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John Smith</a>
+                                        </span>
+                                        <span class="description">
+                                            <a>
+                                                Senior Design / <span class="company">Lazada</span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="profile-button">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox">
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John Smith</a>
+                                        </span>
+                                        <span class="description">
+                                            <a>
+                                                Senior Design / <span class="company">Lazada</span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="profile-button">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox">
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John Smith</a>
+                                        </span>
+                                        <span class="description">
+                                            <a>
+                                                Senior Design / <span class="company">Lazada</span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="profile-button">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox">
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John Smith</a>
+                                        </span>
+                                        <span class="description">
+                                            <a>
+                                                Senior Design / <span class="company">Lazada</span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="profile-button">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox">
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John Smith</a>
+                                        </span>
+                                        <span class="description">
+                                            <a>
+                                                Senior Design / <span class="company">Lazada</span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="profile-button">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox">
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John Smith</a>
+                                        </span>
+                                        <span class="description">
+                                            <a>
+                                                Senior Design / <span class="company">Lazada</span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="profile-button">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox">
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John Smith</a>
+                                        </span>
+                                        <span class="description">
+                                            <a>
+                                                Senior Design / <span class="company">Lazada</span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="profile-button">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox">
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPostSomething" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="content-post-something">
+                    <div class="enter-comments no-border">
+                        <div class="profile-avatar clearfix">
+                            <a href="#" class="avartar">
+                                <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                            </a>
+                            <div class="info">
+                                <span class="name">
+                                    <a>Jessica Alba</a>
+                                </span>
+                                <span class="time-created">
+                                    <a>
+                                        created a question 2 hours ago
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="dropdown post-st-option">
+                                <span class="title">Post to loop</span>
+                                <a id="dLabel" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Famale Professionals
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                    ...
+                                </ul>
+                            </div>
+                        </div>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Write your answer, or answer later....">
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Post something...." class="form-control"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left text-right">
+
+                            <label class="checkbox-inline">
+                                <input type="checkbox"> This is a question
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox">Anonymous
+                            </label>
+
+                        </div>
+                        <div class="pull-right">
+                            <a href="#" data-dismiss="modal" aria-label="Close">Cancel</a>
+                            <a href="#">Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
