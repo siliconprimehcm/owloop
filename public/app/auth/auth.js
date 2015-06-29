@@ -10,8 +10,9 @@ authModule.controller('authController', function(
     
     $scope.user = {
         username:'',
+        email:'',
         password:'',
-        email:''
+        confirm:''
     };
 
     var header = authenticationSvc.getHeader();
@@ -27,8 +28,6 @@ authModule.controller('authController', function(
                     customerId: data.objectValue.customerId
                 };
                 $state.go('app.user.homefeed');
-            }else{
-                $state.go('app.user.signup');
             }
         });
     };
@@ -47,6 +46,9 @@ authModule.controller('authController', function(
                     console.log(friends);;
                 });
             });
+
+            $state.go('app.user.homefeed');
+
         },{scope: 'email, user_friends'});
     };
 
@@ -68,8 +70,6 @@ authModule.controller('authController', function(
                     customerId: data.objectValue.customerId
                 };
                 $state.go('app.user.homefeed');
-            }else{
-                $state.go('app.user.login');
             }
         });
     };
@@ -80,15 +80,3 @@ authModule.controller('authController', function(
             $state.go('app.user.login');
     };
 });
-
-
-// authModule.factory('Account', function($http) {
-//     return {
-//         getProfile: function() {
-//             return $http.get('/api/me');
-//         },
-//         updateProfile: function(profileData) {
-//             return $http.put('/api/me', profileData);
-//         }
-//     };
-// });
