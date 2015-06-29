@@ -2,7 +2,7 @@
     <div class="container clearfix">
         <div class="logo pull-left">
             <a href="./#/user/homefeed">
-                <img src="./public/images/ic/ic_logo.png" />
+                <img src="/public/images/ic/ic_logo.png" />
             </a>
         </div>
         <form class="navbar-left form-inline form-search">
@@ -18,7 +18,7 @@
             <a ui-sref="app.user.explore">Explore</a>
         </div>
         <div class="post-something-link pull-left">
-            <a href="#" data-toggle="modal" data-target="#modalPostSomething">Post Something</a>
+            <a href="#" ng-click="OpenModalAddPost('modalPostSomething')">Post Something</a>
         </div>
         <div class="pull-right">
             <ul class="nav navbar-nav navbar-right">
@@ -151,5 +151,42 @@
     <div class="main-column">
         <div ui-view="content"></div>
         <div ui-view="rightbar"></div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalPostSomething" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="content-create-album">
+                <form id="idAddPost" name="addPostForm">
+                    <div class="form-group">
+                        <div class="col-xs-6"></div>
+                        <div class="col-xs-6">
+                            <label> Post to loop:</label>
+                            <select ng-model="postModel.loopId" convert-to-number>
+                                <option ng-repeat="userLoop in userLoops" ng-selected="$first" value="{{userLoop.loopId}}">{{userLoop.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="title" class="form-control" ng-model="postModel.title">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Post Somethings" ng-model="postModel.content" class="form-control">
+                    </div>
+                    <div class="form-preview"></div>
+                    <div class="bottom">
+                        <a class="btn btn-create">
+                            <i class="fa fa-upload"></i>
+                            +
+                        </a>
+                    </div>
+                    <div class="form-group-button">
+                        <button ng-click="idAddPost.submit(addPostForm)" type="submit" class="btn btn-signup">Add Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
