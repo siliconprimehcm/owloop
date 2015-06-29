@@ -62,7 +62,8 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             url: '/user',
             views: {
                 '': {
-                    templateUrl: 'public/app/user/layout.html'
+                    templateUrl: 'public/app/user/layout.html',
+                    controller: 'layoutController'
                 },
                 'leftbar@app.user': {
                     templateUrl: 'public/app/user/leftbar.html'
@@ -70,12 +71,52 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 },
                 'content@app.user': {
                     template: '<ui-view/>'
-                }
+                },
+                'rightbar@app.user': {
+                    templateUrl: 'public/app/user/rightbar.html'
+                   , controller: 'rightbarController'
+                },
             },
             resolve: {
                 authenticate: function (authenticationSvc) {
                     return authenticationSvc.requireLogin();
-                }
+                },
+
+                publicCategories: function (Restangular, authenticationSvc) {
+                    var header = authenticationSvc.getHeader();
+                    return Restangular.one('/v1/Loop/GetLoopCategory').customPOST({}, '', {}, header).then(function (data) {
+                        debugger;
+                        if (data.statusCode == 0)
+                            return data.objectValue.data;
+                        else
+                            return [];
+                    });
+                },
+                loopPopulars: function (Restangular, authenticationSvc) {
+                    var header = authenticationSvc.getHeader();
+                    var param = {
+                        "pageSize": 10
+                    };
+                    return Restangular.one('/v1/Loop/GetPopularLoop').customPOST(param, '', {}, header).then(function (data) {
+                        if (data.statusCode == 0)
+                            return data.objectValue.data;
+                        else
+                            return [];
+                    });
+                },
+                loopList: function (authenticate, Restangular, authenticationSvc) {
+                    var header = authenticationSvc.getHeader();
+                    console.log(header);
+                    var param = {
+                        "lastUpdate": 1234.5678,
+                        "pageSize": 10,
+                        "keyword": "keyword",
+                        "loopType": null,
+                    };
+                    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
+                        return data;
+                    });
+                },
             }
         })
         .state('app.user.homefeed', {

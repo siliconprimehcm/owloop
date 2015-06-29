@@ -1,20 +1,21 @@
-var userModule = angular.module('owloop.user', [
-	'owloop.user.loop'
-]);
+var userModule = angular.module('owloop.user', []);
 
-userModule.controller('leftbarController', function($scope, Restangular, authenticationSvc) {
-	console.log('leftbarController');
-	var header = authenticationSvc.getHeader();
-    var param = {
-        "lastUpdate": 1234.5678,
-        "pageSize": 10,
-        "keyword": "keyword",
-        "loopType": null,
+userModule.controller('layoutController', function ($scope, loopList, $localStorage, $state) {
+    $scope.userData = $localStorage['owloopAuth'];
+
+
+    $scope.logout = function () {
+        $localStorage['owloopAuth'] = null;
+        $state.go('app.auth.login');
     };
-    Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
-    	$scope.privateLoops = data.objectValue.privateLoops;
-		$scope.publicLoops = data.objectValue.publicLoops;
-    })
 });
 
+userModule.controller('leftbarController', function ($scope, publicCategories) {
+    $scope.publicCategories = publicCategories;
+});
 
+userModule.controller('rightbarController', function ($scope, loopPopulars) {
+    debugger;
+    console.log('rightbarController');
+    $scope.loopPopulars = loopPopulars;
+});
