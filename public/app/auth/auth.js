@@ -33,6 +33,7 @@ authModule.controller('authController', function(
         });
     };
 
+
     $scope.facebookLogin = function(aaaa) {
       // From now on you can use the Facebook service just as Facebook api says
         Facebook.login(function(response) {
@@ -41,7 +42,7 @@ authModule.controller('authController', function(
 
             Facebook.api('/me', function(me) {
                 console.log(me);
-                var path = '/' + me.id + '/nonapp_friends'
+                var path = '/' + me.id + '/friends'
                 Facebook.api(path, function(friends) {
                     console.log(friends);;
                 });
