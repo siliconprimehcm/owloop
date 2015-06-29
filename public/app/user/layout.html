@@ -34,7 +34,7 @@
                             <li>
                                 <div class="profile-avatar clearfix">
                                     <a href="#" class="avartar">
-                                        <img src="./public/images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                        <img src="/public/images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
                                     </a>
                                     <div class="info">
                                         <span class="name">
@@ -122,9 +122,9 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="profile-nav" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="./public/images/item/item_avatar_default.png" width="26" height="26" class="img-circle" />
+                        <img src="{{userData.avatarUrl}}" width="26" height="26" class="img-circle" />
                         <span class="name">
-                            Jessica Alba
+                           {{userData.firstName +" " + userData.lastName}}
                         </span>
                         <span class="down">
                             <i class="fa fa-caret-down"></i>

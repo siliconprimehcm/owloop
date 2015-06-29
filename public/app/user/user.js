@@ -1,8 +1,12 @@
 var userModule = angular.module('owloop.user', []);
 
 userModule.controller('layoutController', function ($scope, Restangular, $localStorage, $state, authenticationSvc) {
-    $scope.userData = $localStorage['owloopAuth'];
-
+   
+    var userData = $localStorage['owloopAuth'];
+    if (userData && (!userData.avatarUrl || userData.avatarUrl == '')) {
+        userData.avatarUrl = '/public/images/item/item_avatar_default.png';
+    }
+    $scope.userData = userData;
     $scope.postModel = {
         loopId: 0,
         title: '',
