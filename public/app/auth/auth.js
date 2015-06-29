@@ -87,7 +87,28 @@ authModule.controller('authController', function(
                                 console.log(friends);;
                             });
                         });
+    $scope.$watch(function() {
+      // This is for convenience, to notify if Facebook is loaded and ready to go.
+      return Facebook.isReady();
+    }, function(newVal) {
+      // You might want to use this to disable/show/hide buttons and else
+      $scope.facebookReady = true;
+    });
 
+    $scope.idloginForm = {
+        checkValid: $validationProvider.checkValid,
+        submit: function (form) {
+            if (!$validationProvider.checkValid(form)) {
+                $validationProvider.validate(form);
+            } else {
+                Restangular.one('/v1/Customer/LoginEmail').customPOST($scope.user, '', {}, header).then(function (data) {
+                    console.log(data);
+                    debugger;
+                    if (data && data.objectValue) {
+                        $localStorage['owloopAuth'] = {
+                            authenKey: data.objectValue.authenKey,
+                            customerId: data.objectValue.customerId
+                        };
                         $state.go('app.user.homefeed');
 
                     },{scope: 'email, user_friends'});

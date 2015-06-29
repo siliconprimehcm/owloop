@@ -82,16 +82,6 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                     return authenticationSvc.requireLogin();
                 },
 
-                publicCategories: function (Restangular, authenticationSvc) {
-                    var header = authenticationSvc.getHeader();
-                    return Restangular.one('/v1/Loop/GetLoopCategory').customPOST({}, '', {}, header).then(function (data) {
-                        debugger;
-                        if (data.statusCode == 0)
-                            return data.objectValue.data;
-                        else
-                            return [];
-                    });
-                },
                 loopPopulars: function (Restangular, authenticationSvc) {
                     var header = authenticationSvc.getHeader();
                     var param = {
@@ -108,12 +98,15 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                     var header = authenticationSvc.getHeader();
                     console.log(header);
                     var param = {
-                        "lastUpdate": 1234.5678,
+                        "lastUpdate": 0,
                         "pageSize": 10,
-                        "keyword": "keyword",
+                        "keyword": "",
                         "loopType": null,
+                        "getNotifCount":true,
                     };
+
                     return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
+                        debugger;
                         return data;
                     });
                 },
@@ -218,6 +211,7 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
 loopApp.factory("authenticationSvc", function ($q, $localStorage, $state, $timeout) {
     return {
         requireLogin: function () {
+            debugger;
             if ($localStorage['owloopAuth']) {
             // if ($localStorage['owloopAuth']) {
                 return $q.when();
