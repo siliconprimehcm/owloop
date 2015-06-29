@@ -478,7 +478,7 @@ a {
 /*Sprite Image*/
 [class^="icon-x1"],
 [class*="icon-x1"] {
-    background-image: url(../images/ic/ic_sprite_left_1.png);
+    background-image: url(../../images/ic/ic_sprite_left_1.png);
     text-decoration: none;
     position: relative;
     top: 1px;
