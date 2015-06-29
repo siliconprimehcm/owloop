@@ -2,6 +2,15 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
+.validation-valid {
+    color: #0074D9;
+}
+
+
+.validation-invalid {
+    color: #FF4136;
+}
+
 
 section.main {
 }

@@ -2,7 +2,7 @@
     <div class="container">
         <img src="public/images/bg/bg_signup.jpg" class="img-bg" />
         <div class="content-login">
-            
+
             <div class="content-signin ">
                 <div class="facbook-login">
                     <a ng-click="facebookLogin('facebook')" class="btn btn-facebook">Log In/Sign Up with Facebook</a>
@@ -11,28 +11,36 @@
                 <div class="line-or">
                     <span>or</span>
                 </div>
-                <div class="form-group">
-                    <div class="icon-addon addon-lg">
-                        <input type="text" placeholder="Username" class="form-control" ng-model="user.username">
-                        <label for="username" class="fa fa-user"></label>
+                <form name="loginForm" id="idloginForm">
+                    <div class="form-group">
+                        <div class="icon-addon addon-lg">
+                            <input type="text" name="username" placeholder="Username" class="form-control" ng-model="user.username"
+                                   validator="required" valid-method="submit" message-id="requiredLoginSubmit" server-error>
+                            <label for="username" class="fa fa-user"></label>
+                            <span id="requiredLoginSubmit"></span>
+                            <span class="validation-invalid" ng-show="loginForm.username.$error.server">{{ errorLogins.username }}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="icon-addon addon-lg">
-                        <input type="text" placeholder="Password" class="form-control" ng-model="user.password">
-                        <label for="password" class="fa fa-lock"></label>
+                    <div class="form-group">
+                        <div class="icon-addon addon-lg">
+                            <input type="password" name="password" placeholder="Password" class="form-control" ng-model="user.password"
+                                   validator="required" valid-method="submit" message-id="passwordLoginSubmit">
+                            <label for="password" class="fa fa-lock"></label>
+                            <span id="passwordLoginSubmit"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group-link clearfix">
-                    <a class="forgot-password">Forgot Password?</a>
-                    <a ui-sref ="app.auth.signup" class="sign-up-with-email">Sign Up with Email</a>
-                </div>
-                <div class="form-group-button">
-                    <button ng-click="login()" type="submit" class="btn btn-signup">Sign In</button>
-                </div>
+                    <div class="form-group-link clearfix">
+                        <a class="forgot-password">Forgot Password?</a>
+                        <a ui-sref="app.auth.signup" class="sign-up-with-email">Sign Up with Email</a>
+                    </div>
+                    <div class="form-group-button">
+                        <button ng-click="idloginForm.submit(loginForm)" type="submit" class="btn btn-signup">Sign In</button>
+                    </div>
+                </form>
+
             </div>
         </div>
-        
+
     </div>
-   
+
 </div>

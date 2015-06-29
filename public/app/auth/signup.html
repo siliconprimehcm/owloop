@@ -1,44 +1,60 @@
-<div class="container-login">
-    <div class="container">
-        <img src="public/images/bg/bg_signup.jpg" class="img-bg" />
-        <div class="content-login">
-            <div class="content-signup">
-                <div class="form-group">
-                    <div class="icon-addon addon-lg">
-                        <input type="text" placeholder="Email" class="form-control" ng-model="user.email">
-                        <label for="email" class="fa fa-search"></label>
+<form name="signupForm" id="idsignupForm" server-validate novalidate>
+    <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+
+    <div class="container-login">
+        <div class="container">
+            <img src="public/images/bg/bg_signup.jpg" class="img-bg" />
+            <div class="content-login">
+                <div class="content-signup">
+                    <div class="form-group">
+                        <div class="icon-addon addon-lg">
+                            <input type="email" validator="email" valid-method="submit" message-id="emailSubmit"
+                                   name="emailSubmit" placeholder="Email" class="form-control" ng-model="user.email">
+                            <label for="emailSubmit" class="fa fa-search"></label>
+                            <span id="emailSubmit"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="icon-addon addon-lg">
-                        <input type="text" placeholder="Username" class="form-control" ng-model="user.username">
-                        <label for="username" class="fa fa-user"></label>
+                    <div class="form-group">
+                        <div class="icon-addon addon-lg">
+                            <input type="text" placeholder="Username"
+                                   class="form-control" name="name" ng-model="user.username" server-error
+                                   validator="required" valid-method="submit" message-id="requiredSubmit">
+                            <label for="name" class="fa fa-user"></label>
+                            <span id="requiredSubmit"></span>
+                            <span class="validation-invalid" ng-show="signupForm.name.$error.server">{{ errors.name }}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="icon-addon addon-lg">
-                        <input type="text" placeholder="Password" class="form-control" ng-model="user.password">
-                        <label for="password" class="fa fa-lock"></label>
+                    <div class="form-group">
+                        <div class="icon-addon addon-lg">
+                            <input type="password" name="password" placeholder="Password"
+                                   validator="required" valid-method="submit" message-id="passwordrequiredSubmit"
+                                   class="form-control" ng-model="user.password">
+                            <label for="password" class="fa fa-lock"></label>
+                            <span id="passwordrequiredSubmit"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="icon-addon addon-lg">
-                        <input type="text" placeholder="Confirm Password" class="form-control" ng-model="user.confirm">
-                        <label for="password"  class="fa fa-lock"></label>
+                    <div class="form-group">
+                        <div class="icon-addon addon-lg">
+                            <input type="password" name="confirmpassword"
+                                   validator="confirmpassword" valid-method="submit" message-id="confirmpasswordSubmit"
+                                   placeholder="Confirm Password" class="form-control" ng-model="user.confirm">
+                            <label for="password" class="fa fa-lock"></label>
+                            <span id="confirmpasswordSubmit"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group-button">
-                    <button ng-click="register()" type="submit" class="btn btn-signup">Sign Up</button>
-                </div>
-                <div class="form-group-signin-link">
-                    <a ui-sref="app.auth.login" class="signin-link">Back to Sign in</a>
+                    <div class="form-group-button">
+                        <button ng-click="idsignupForm.submit(signupForm)" type="submit" class="btn btn-signup">Sign Up</button>
+                    </div>
+                    <div class="form-group-signin-link">
+                        <a ui-sref="app.auth.login" class="signin-link">Back to Sign in</a>
+                    </div>
+
+
                 </div>
 
-               
             </div>
-           
+
         </div>
-        
+
     </div>
-   
-</div>
+</form>
