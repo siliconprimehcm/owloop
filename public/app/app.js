@@ -2,7 +2,7 @@ var loopApp = angular.module('loopApp', [
     'ui.router'
     , 'restangular'
     , 'ngStorage'
-    ,'facebook'
+    , 'facebook'
 
     , 'owloop.auth'
     , 'owloop.user'
@@ -136,15 +136,42 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 }
             }
         })
-       .state('app.user.loop', {
-           url: '/loop',
-           views: {
-               'content@app.user': {
-                   templateUrl: 'public/app/user/loop/loop.html',
-                   controller: 'loopController'
-               }
-           }
-       })
+        .state('app.user.loop', {
+            abstract: true,
+            url: '/loop',
+            views: {
+                'content@app.user': {
+                    templateUrl: 'public/app/user/loop/looplayout.html'
+                }
+            }
+        })
+        .state('app.user.loop.newfeed', {
+            url: '/newfeed',
+            views: {
+                'loopcontent@app.user.loop': {
+                    templateUrl: 'public/app/user/loop/newfeed/newfeed.html'
+                    ,controller: 'newfeedController'
+                }
+            }
+        })
+        .state('app.user.loop.media', {
+            url: '/media',
+            views: {
+                'loopcontent@app.user.loop': {
+                    templateUrl: 'public/app/user/loop/media/media.html'
+                    ,controller: 'mediaController'
+                }
+            }
+        })
+        .state('app.user.loop.setting', {
+            url: '/setting',
+            views: {
+                'loopcontent@app.user.loop': {
+                    templateUrl: 'public/app/user/loop/setting/setting.html'
+                    ,controller: 'settingController'
+                }
+            }
+        })
 });
 
 loopApp.factory("authenticationSvc", function ($q, $localStorage, $state, $timeout) {
