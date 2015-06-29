@@ -39,7 +39,8 @@ body,
             font-size: 18px;
         }
 
-    .navbar-fixed-top .explore {
+    .navbar-fixed-top .explore,
+    .navbar-fixed-top .post-something-link {
         margin-left: 40px;
         margin-top: 8px;
     }
@@ -101,10 +102,11 @@ a {
         padding-right: 7.5px;
         padding-left: 7.5px;
     }
-    .modal-backdrop{
-        bottom: 0;
-        z-index: 1039
-    }
+
+.modal-backdrop {
+    bottom: 0;
+    z-index: 1039;
+}
 /*Navbar*/
 
 /* Non-responsive overrides
@@ -476,7 +478,7 @@ a {
 /*Sprite Image*/
 [class^="icon-x1"],
 [class*="icon-x1"] {
-    background-image: url(../images/ic/ic_sprite_left_1.png);
+    background-image: url(../../images/ic/ic_sprite_left_1.png);
     text-decoration: none;
     position: relative;
     top: 1px;
@@ -774,7 +776,7 @@ a {
 
     .card-main .summary .description {
         color: #a2a2a2;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
     }
 
         .card-main .summary .description .img {
@@ -794,6 +796,28 @@ a {
         line-height: 24px;
         color: #c3c3c3;
     }
+
+        .card-main .footer.post-something-on-page {
+            height: 24px;
+            line-height: 24px;
+            color: #c3c3c3;
+            border-top: 1px solid #bbbbbb;
+            padding-top: 10px;
+        }
+
+            .card-main .footer.post-something-on-page .btn {
+                min-width: 100px;
+            }
+
+            .card-main .footer.post-something-on-page .btn-cancel {
+                background-color: #bbbbbb;
+                color: #fff;
+            }
+
+            .card-main .footer.post-something-on-page .btn-post {
+                background-color: #0abbb5;
+                color: #fff;
+            }
 
         .card-main .footer span {
             display: inline-block;
@@ -815,24 +839,99 @@ a {
 
     .card-main .enter-comments {
         margin-top: 10px;
-        border-top: 1px solid #e5e5e5;
+        /*border-top: 1px solid #e5e5e5;*/
         padding: 10px 0;
     }
 
-        .card-main .enter-comments.no-border {
-            margin-top: 0;
-            border: none;
-            padding: 0;
-        }
+    .card-main .list-post-comment li {
+        border-bottom: 1px solid #e5e5e5;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+    }
 
-        .card-main .enter-comments .form-group {
-            margin-bottom: 10px;
-        }
+    .card-main .enter-comments.no-border {
+        margin-top: 0;
+        border: none;
+        padding: 0;
+    }
+
+    .card-main .enter-comments .form-group {
+        margin-bottom: 10px;
+    }
 
     .card-main .checkbox-inline {
         display: inline-block;
         cursor: pointer;
     }
+
+
+
+    .card-main .list-image ul {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+    .card-main .list-image li {
+        float: left;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 5px;
+        min-height: 130px;
+        min-width: 130px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+        .card-main .list-image li:hover {
+            opacity: 0.7;
+        }
+
+            .card-main .list-image li:hover .fa-remove {
+                display: block;
+            }
+
+        .card-main .list-image li .fa-remove:hover {
+            cursor: pointer;
+        }
+
+        .card-main .list-image li .fa-remove {
+            right: 10px;
+            top: 5px;
+            z-index: 1;
+            position: absolute;
+            color: #fff;
+            font-size: 18px;
+            display: none;
+        }
+
+        .card-main .list-image li img {
+            border-radius: 5px;
+            width: 130px;
+        }
+
+        .card-main .list-image li:last-child div {
+            border: 1px dashed #bbbbbb;
+            min-height: 130px;
+            min-width: 130px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+            .card-main .list-image li:last-child div:hover {
+                cursor: pointer;
+            }
+
+            .card-main .list-image li:last-child div i {
+                position: absolute;
+                font-size: 32px;
+                color: #bdbdbd;
+                left: 50%;
+                margin-left: -16px;
+                margin-top: -16px;
+                top: 50%;
+            }
+
+
 
 .content-column-two {
     margin-left: 700px;
@@ -876,7 +975,19 @@ a {
 .list-card-explore .description {
     color: #bdbdbd;
 }
-
+.list-card-explore .group-button .btn-join{
+    background-color: #0abbb5;
+    color: #fff;
+    margin-left: 40px;
+    margin-right: 40px;
+    min-width: 100px;
+    margin-top: 10px;
+    padding-top: 3px ;
+    padding-bottom: 3px;
+}
+.list-card-explore .group-button .btn-join i{
+    margin-right: 5px
+}
 
 .list-card-sub-one .card-sub {
     padding: 15px;
@@ -907,6 +1018,7 @@ a {
         color: #bdbdbd;
         padding: 0 15px;
     }
+
 /*Post*/
 .list-post .post {
     border-top: 1px solid #e5e5e5;
@@ -1362,11 +1474,11 @@ a {
         }
 
     .result-search-list .profile-avatar .info span.name {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .result-search-list .profile-avatar .info span.sub-description {
-        font-size: 16px;
+        font-size: 14px;
         color: #c3c3c3;
     }
 
@@ -1452,7 +1564,6 @@ a {
 
 .content-create-album {
     position: relative;
-    
 }
 
     .content-create-album .top-create {
@@ -1461,7 +1572,7 @@ a {
         height: 50px;
         text-align: center;
         line-height: 50px;
-        border-radius: 5px 5px 0 0
+        border-radius: 5px 5px 0 0;
     }
 
         .content-create-album .top-create a {
@@ -1490,32 +1601,381 @@ a {
     .content-create-album .invite-friends-list {
         padding: 0 15px;
     }
-    .content-create-album form .form-group{
+
+    .content-create-album form .form-group {
         margin-bottom: 0;
     }
-    .content-create-album form .form-group input{
-        height: 50px;
-        border-radius: 0;
-        border: 0;
-        border-bottom: 1px solid #bbbbbb
+
+        .content-create-album form .form-group input {
+            height: 50px;
+            border-radius: 0;
+            border: 0;
+            border-bottom: 1px solid #bbbbbb;
+        }
+
+    .content-create-album form .form-preview {
+        height: 150px;
     }
-   .content-create-album form .form-preview{
-       height: 150px
-   }
-   .content-create-album .bottom{
-       margin: 20px 100px
-   }
+
+    .content-create-album .bottom {
+        margin: 20px 100px;
+    }
+
     .content-create-album .btn-create {
-         background-color: #0abbb5;
-  color: #fff;
-  width: 100%;
-  height: 50px;
-  font-size: 18px;
-  padding-top: 0;
-  padding-bottom: 0;
-  line-height: 50px;
-}
-.content-create-album .btn-create i{
-    margin-right: 5px
-}
+        background-color: #0abbb5;
+        color: #fff;
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: 50px;
+    }
+
+        .content-create-album .btn-create i {
+            margin-right: 5px;
+        }
 /*---#Loop Media---*/
+
+.content-post-something {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+    .content-post-something .title-category {
+        margin-bottom: 5px;
+    }
+
+        .content-post-something .title-category a {
+            color: #0cc7c2;
+        }
+
+            .content-post-something .title-category a:hover {
+                text-decoration: none;
+            }
+
+    .content-post-something .profile-avatar {
+        margin-bottom: 10px;
+    }
+
+        .content-post-something .profile-avatar .avartar {
+            float: left;
+        }
+
+        .content-post-something .profile-avatar .info {
+            margin-left: 34px;
+            padding-left: 5px;
+        }
+
+            .content-post-something .profile-avatar .info span {
+                display: block;
+            }
+
+        .content-post-something .profile-avatar a:hover {
+            text-decoration: none;
+        }
+
+        .content-post-something .profile-avatar .name a {
+            margin-left: 5px;
+            color: #5d5d5d;
+            font-weight: bold;
+        }
+
+        .content-post-something .profile-avatar .time-created a {
+            margin-left: 5px;
+            color: #bbbbbb;
+        }
+
+    .content-post-something .summary .title {
+        font-size: 16px;
+        font-weight: bold;
+        color: #5d5d5d;
+        margin-bottom: 5px;
+    }
+
+    .content-post-something .summary .description {
+        color: #a2a2a2;
+        margin-bottom: 5px;
+    }
+
+        .content-post-something .summary .description .img {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+        .content-post-something .summary .description img {
+            width: 50%;
+            padding-left: 5px;
+            padding-right: 5px;
+            float: left;
+        }
+
+    .content-post-something .footer {
+        height: 24px;
+        line-height: 24px;
+        color: #c3c3c3;
+        border-top: 1px solid #bbbbbb;
+        padding-top: 10px;
+    }
+
+        .content-post-something .footer span {
+            display: inline-block;
+            height: 24px;
+        }
+
+            .content-post-something .footer span.icon {
+                margin-right: 5px;
+            }
+
+        .content-post-something .footer .totlal-likes {
+            margin-right: 25px;
+        }
+
+        .content-post-something .footer .dots {
+            font-size: 18px;
+            padding-top: 4px;
+        }
+
+        .content-post-something .footer .btn {
+            min-width: 100px;
+        }
+
+        .content-post-something .footer .btn-cancel {
+            background-color: #bbbbbb;
+            color: #fff;
+        }
+
+        .content-post-something .footer .btn-post {
+            background-color: #0abbb5;
+            color: #fff;
+        }
+
+    .content-post-something .enter-comments {
+        margin-top: 10px;
+        /*border-top: 1px solid #e5e5e5;*/
+        padding: 10px 0;
+    }
+
+    .content-post-something .list-post-comment li {
+        border-bottom: 1px solid #e5e5e5;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+    }
+
+    .content-post-something .enter-comments.no-border {
+        margin-top: 0;
+        border: none;
+        padding: 0;
+    }
+
+    .content-post-something .enter-comments .form-group {
+        margin-bottom: 10px;
+    }
+
+    .content-post-something .checkbox-inline {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .content-post-something .post-st-option {
+        right: 10px;
+        position: absolute;
+        top: 35px;
+    }
+
+        .content-post-something .post-st-option .title {
+            margin-right: 5px;
+        }
+
+        .content-post-something .post-st-option > a {
+            color: #0abbb5;
+            font-weight: bold;
+        }
+
+    .content-post-something .dropdown-menu {
+        right: 0;
+        left: auto;
+    }
+
+    .content-post-something .list-image ul {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+    .content-post-something .list-image li {
+        float: left;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 5px;
+        min-height: 130px;
+        min-width: 130px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+        .content-post-something .list-image li:hover {
+            opacity: 0.7;
+        }
+
+            .content-post-something .list-image li:hover .fa-remove {
+                display: block;
+            }
+
+        .content-post-something .list-image li .fa-remove:hover {
+            cursor: pointer;
+        }
+
+        .content-post-something .list-image li .fa-remove {
+            right: 10px;
+            top: 5px;
+            z-index: 1;
+            position: absolute;
+            color: #fff;
+            font-size: 18px;
+            display: none;
+        }
+
+        .content-post-something .list-image li img {
+            border-radius: 5px;
+            width: 130px;
+        }
+
+        .content-post-something .list-image li:last-child div {
+            border: 1px dashed #bbbbbb;
+            min-height: 130px;
+            min-width: 130px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+            .content-post-something .list-image li:last-child div:hover {
+                cursor: pointer;
+            }
+
+            .content-post-something .list-image li:last-child div i {
+                position: absolute;
+                font-size: 32px;
+                color: #bdbdbd;
+                left: 50%;
+                margin-left: -16px;
+                margin-top: -16px;
+                top: 50%;
+            }
+/*---Notification---*/
+
+.result-notification-list {
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 15px;
+    background-color: #fff;
+    position: relative;
+    border: 1px solid #dee2e3;
+    border-bottom: 0;
+}
+
+    .result-notification-list .see-all {
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+        padding: 10px;
+        background-color: #f5f5f5;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: -40px;
+        border: 1px solid #dee2e3;
+    }
+
+    .result-notification-list .profile-avatar {
+        padding: 8px 10px;
+        padding-left: 0;
+    }
+
+        .result-notification-list .profile-avatar .avartar {
+            float: left;
+        }
+
+        .result-notification-list .profile-avatar .info {
+            margin-left: 50px;
+            padding-left: 10px;
+            padding-top: 4px;
+        }
+
+    .result-notification-list li {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+        .result-notification-list li:hover {
+            cursor: pointer;
+        }
+
+    .result-notification-list .profile-avatar .info span.name {
+        font-size: 16px;
+    }
+
+    .result-notification-list .profile-avatar .info span.sub-description {
+        font-size: 14px;
+        color: #c3c3c3;
+    }
+
+    .result-notification-list .profile-avatar .info span {
+        display: block;
+    }
+
+        .result-notification-list .profile-avatar .info span.add-note {
+            display: inline-block;
+            color: #5d5d5d;
+        }
+
+    .result-notification-list .profile-avatar a:hover {
+        text-decoration: none;
+    }
+
+    .result-notification-list .profile-avatar .name a {
+        margin-left: 5px;
+        color: #5d5d5d;
+        font-weight: bold;
+    }
+
+    .result-notification-list .profile-avatar .sub-description a {
+        margin-left: 5px;
+        color: #bbbbbb;
+    }
+/*---#Notification#---*/
+
+/*Dialog*/
+/*modalCreateAlbumSecond*/
+#modalCreateAlbumSecond .modal-dialog{
+    width: 1100px
+}
+.pp-right-col .list-card-media{
+    padding: 30px;
+    border-left: 1px solid rgba(0, 0, 0, .1)
+}
+.pp-right-col .list-card-media .title{
+      color: #bbbbbb;
+      font-weight: normal;
+      font-size: 14px
+}
+.pp-right-col .list-card-media .card-sub{
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+.pp-right-col .list-card-media .card-sub.create-album{
+    border: 1px dashed rgba(0, 0, 0, .1);
+}
+.pp-left-col .title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #5d5d5d;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    
+}
+.pp-left-col  .description{
+    color: #bbbbbb;
+    padding: 10px
+}
+/*#Dialog#*/
