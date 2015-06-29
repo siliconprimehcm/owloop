@@ -94,15 +94,31 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                             return [];
                     });
                 },
-                loopList: function (authenticate, Restangular, authenticationSvc) {
+                publicLoops: function (authenticate, Restangular, authenticationSvc) {
                     var header = authenticationSvc.getHeader();
                     console.log(header);
                     var param = {
                         "lastUpdate": 0,
                         "pageSize": 10,
                         "keyword": "",
-                        "loopType": null,
-                        "getNotifCount":true,
+                        "loopType": 0,
+                        "getNotifCount": true,
+                    };
+
+                    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
+                        debugger;
+                        return data;
+                    });
+                },
+                privateLoops: function (authenticate, Restangular, authenticationSvc) {
+                    var header = authenticationSvc.getHeader();
+                    console.log(header);
+                    var param = {
+                        "lastUpdate": 0,
+                        "pageSize": 10,
+                        "keyword": "",
+                        "loopType": 1,
+                        "getNotifCount": true,
                     };
 
                     return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {

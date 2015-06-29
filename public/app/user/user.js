@@ -1,6 +1,6 @@
 var userModule = angular.module('owloop.user', []);
 
-userModule.controller('layoutController', function ($scope, loopList, $localStorage, $state) {
+userModule.controller('layoutController', function ($scope,  $localStorage, $state) {
     $scope.userData = $localStorage['owloopAuth'];
 
 
@@ -10,17 +10,18 @@ userModule.controller('layoutController', function ($scope, loopList, $localStor
     };
 });
 
-userModule.controller('leftbarController', function ($scope, loopList) {
+userModule.controller('leftbarController', function ($scope,  privateLoops, publicLoops) {
     debugger;
     var pubLoops = [];
     var priLoops = [];
-    if (loopList.statusCode == 0) {
-        for (var i = 0; i < loopList.objectValue.data.length; i++) {
-            if (loopList.objectValue.data[i].type == 0) {
-                pubLoops.push(loopList.objectValue.data[i]);
-            } else {
-                priLoops.push(loopList.objectValue.data[i]);
-            }
+    if (privateLoops.statusCode == 0) {
+        for (var i = 0; i < privateLoops.objectValue.data.length; i++) {
+            priLoops.push(privateLoops.objectValue.data[i]);
+        }
+    }
+    if (publicLoops.statusCode == 0) {
+        for (var i = 0; i < publicLoops.objectValue.data.length; i++) {
+            pubLoops.push(publicLoops.objectValue.data[i]);
         }
     }
     $scope.publicLoops = pubLoops;

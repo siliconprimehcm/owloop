@@ -110,23 +110,4 @@ authModule.controller('authController', function (
         }
     };
 
-    $scope.login = function () {
-
-        Restangular.one('/v1/Customer/LoginEmail').customPOST($scope.user, '', {}, header).then(function (data) {
-            console.log(data);
-            if (data && data.objectValue) {
-                $localStorage['owloopAuth'] = {
-                    authenKey: data.objectValue.authenKey,
-                    customerId: data.objectValue.customerId
-                };
-                $state.go('app.user.homefeed');
-            }
-        });
-    };
-
-    $scope.logout = function () {
-        debugger;
-        $localStorage['owloopAuth'] = null
-        $state.go('app.user.login');
-    };
 });
