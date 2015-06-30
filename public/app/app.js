@@ -76,7 +76,7 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             }
         })
         .state('app.auth.signup_after_login_facebook', {
-            url: '/connect_facebook',
+            url: '/signup_facebook',
             views: {
                 '': {
                     templateUrl: 'public/app/auth/signupafterloginfacebook.html',

@@ -83,9 +83,9 @@ authModule.controller('authController', function (
                 console.log(me);
                 var param = {
                     "socialType": 1,
-                    "profile": me,
-                    "deviceToken": 0,
-                    "accessToken": response
+                    "profile": JSON.stringify(me),
+                    "deviceToken": null,
+                    "accessToken": response.authResponse.accessToken
                 }
 
                 var path = '/' + me.id + '/friends'
