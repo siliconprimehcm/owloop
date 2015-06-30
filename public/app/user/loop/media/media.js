@@ -19,10 +19,14 @@ loopModule.controller('mediaController', function ($scope, Restangular, authenti
 			"pageSize": 10
 	    };
 	    
-    	Restangular.one('/v1/Loop/GetLoopAlbum').customPOST(param, '', {}, header).then(function (data) {
-	    	console.log(data);
-	    });
-    }
+    	// Restangular.one('/v1/Loop/GetLoopAlbum').customPOST(param, '', {}, header).then(function (data) {
+	    // 	console.log(data);
+	    // });
+		$(function () {
+		   $('#modalCreateAlbum').modal('toggle');
+		   $('#modalCreateAlbumSecond').modal('toggle');
+		});
+	}
 
     $scope.$watch('files', function () {
         $scope.upload($scope.files);

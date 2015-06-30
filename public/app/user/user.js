@@ -1,4 +1,6 @@
-var userModule = angular.module('owloop.user', []);
+var userModule = angular.module('owloop.user', [
+    'owloop.user.loop'
+]);
 
 userModule.controller('layoutController', function ($scope, Restangular, $localStorage, $state, authenticationSvc) {
    
