@@ -1,6 +1,4 @@
-var userModule = angular.module('owloop.user', [
-    'owloop.user.loop'
-]);
+var userModule = angular.module('owloop.user', ['owloop.user.loop', 'infinite-scroll']);
 
 userModule.controller('layoutController', function ($scope, Restangular, $localStorage, $state, authenticationSvc) {
    
