@@ -68,8 +68,22 @@ loopModule.controller('mediaController', function ($scope, Restangular, authenti
 		   $('#modalCreateAlbum').modal('toggle');
 		   $('#modalCreateAlbumSecond').modal('toggle');
 		});
-	}
+	};
 
+	$scope.gotoAlbumDetail = function(album){
+		var header = authenticationSvc.getHeader();
+		var param = {
+	        "albumId": 860,
+			"pageSize": 50
+	    };
+	    
+    	Restangular.one('/v1/Album/GetAlbumById').customPOST(param, '', {}, header).then(function (data) {
+    		$scope.photoOfAlbum = data.objectValue.data;
+	    	$(function () {
+			   $('#modalAlbumDetail').modal('toggle');
+			});
+	    });
+	}
 
     $scope.$watch('files', function () {
         $scope.upload($scope.files);
