@@ -970,10 +970,14 @@ a {
     color: #5d5d5d;
     padding: 0;
     margin-bottom: 5px;
+      height: 20px;
+  overflow-y: hidden;
 }
 
 .list-card-explore .description {
     color: #bdbdbd;
+    height: 20px;
+  overflow-y: hidden;
 }
 .list-card-explore .group-button .btn-join{
     background-color: #0abbb5;

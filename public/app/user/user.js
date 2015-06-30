@@ -37,15 +37,12 @@ userModule.controller('layoutController', function ($scope, Restangular, $localS
     };
     
     $scope.OpenModalAddPost = function (name) {
-        debugger;
-        
         $scope.userLoops = $localStorage.userLoops;
         $('#' + name).modal('show');
     };
 });
 
 userModule.controller('leftbarController', function ($scope, privateLoops, publicLoops, $localStorage) {
-    debugger;
     var pubLoops = [];
     var priLoops = [];
     var userLoops = [];
@@ -67,7 +64,6 @@ userModule.controller('leftbarController', function ($scope, privateLoops, publi
 });
 
 userModule.controller('rightbarController', function ($scope, loopPopulars) {
-    debugger;
     console.log('rightbarController');
     $scope.loopPopulars = loopPopulars;
 });
