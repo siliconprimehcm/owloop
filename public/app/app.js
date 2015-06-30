@@ -57,6 +57,33 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 }
             }
         })
+        .state('app.auth.friendlist', {
+            url: '/friendlist',
+            views: {
+                '': {
+                    templateUrl: 'public/app/auth/friendlist.html',
+                    controller: 'authController'
+                }
+            }
+        })
+        .state('app.auth.connect_facebook', {
+            url: '/connect_facebook',
+            views: {
+                '': {
+                    templateUrl: 'public/app/auth/connectfacebook.html',
+                    controller: 'authController'
+                }
+            }
+        })
+        .state('app.auth.signup_after_login_facebook', {
+            url: '/connect_facebook',
+            views: {
+                '': {
+                    templateUrl: 'public/app/auth/signupafterloginfacebook.html',
+                    controller: 'authController'
+                }
+            }
+        })
         .state('app.user', {
             abstract: true,
             url: '/user',
