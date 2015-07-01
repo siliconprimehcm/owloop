@@ -246,6 +246,7 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             views: {
                 'content@app.user': {
                     templateUrl: 'public/app/user/loop/looplayout.html'
+                    ,controller: 'loopController'
                 }
             }
         })
