@@ -8,20 +8,21 @@
                 <div class="content-signup">
                     <div class="form-group">
                         <div class="icon-addon addon-lg">
-                            <input type="email" validator="email" valid-method="submit" message-id="emailSubmit"
+                            <input type="email" validator="email" valid-method="submit" message-id="emailSubmit" server-error
                                    name="emailSubmit" placeholder="Email" class="form-control" ng-model="user.email">
                             <label for="emailSubmit" class="fa fa-search"></label>
                             <span id="emailSubmit"></span>
+                            <span class="validation-invalid" ng-show="signupForm.emailSubmit.$error.server">{{ errors.emailSubmit }}</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="icon-addon addon-lg">
                             <input type="text" placeholder="Username"
-                                   class="form-control" name="name" ng-model="user.username" server-error
+                                   class="form-control" name="name" ng-model="user.username"
                                    validator="required" valid-method="submit" message-id="requiredSubmit">
                             <label for="name" class="fa fa-user"></label>
                             <span id="requiredSubmit"></span>
-                            <span class="validation-invalid" ng-show="signupForm.name.$error.server">{{ errors.name }}</span>
+                           
                         </div>
                     </div>
                     <div class="form-group">

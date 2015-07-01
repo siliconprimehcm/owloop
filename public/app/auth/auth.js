@@ -23,6 +23,7 @@ authModule.controller('authController', function (
                 $validationProvider.validate(form);
             } else {
                 var header = authenticationSvc.getHeader();
+                $scope.user.email = $scope.user.username;
                 Restangular.one('/v1/Customer/LoginEmail').customPOST($scope.user, '', {}, header).then(function (data) {
                     console.log(data);
                     debugger;
@@ -63,8 +64,8 @@ authModule.controller('authController', function (
                         $state.go('app.auth.connect_facebook');          
                     } else {
                         $scope.errors = {};
-                        $scope.signupForm['name'].$setValidity('server', false);
-                        $scope.errors['name'] = data.description;
+                        $scope.signupForm['emailSubmit'].$setValidity('server', false);
+                        $scope.errors['emailSubmit'] = data.description;
                     }
                 });
 
