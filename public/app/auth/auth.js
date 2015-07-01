@@ -113,6 +113,15 @@ authModule.controller('authController', function (
                         };
                         $state.go('app.user.homefeed');
                     }else{
+
+                        $localStorage['owloopAuth'] = {
+                            authenKey: data.objectValue.authenKey,
+                            customerId: data.objectValue.customerId,
+                            firstName: data.objectValue.firstName,
+                            lastName: data.objectValue.lastName,
+                            avatarUrl: data.objectValue.avatarUrl,
+                        };
+                        
                         if(data.objectValue.email){
                             userService.setEmail(data.objectValue.email);
                         };
