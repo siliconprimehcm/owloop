@@ -106,6 +106,7 @@ a {
 .modal-backdrop {
     bottom: 0;
     z-index: 1039;
+    position: fixed
 }
 /*Navbar*/
 
