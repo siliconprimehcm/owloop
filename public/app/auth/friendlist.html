@@ -1,12 +1,12 @@
 <div class="content-invite-friend">
     <div class="top-invite">
         <a href="#">Back</a>
-        <a ng-click="doneFollow()" class="title">Start following your friends</a>
-        <a href="#">Done</a>
+        <a class="title">Start following your friends</a>
+        <a ng-click="doneFollow()" >Done</a>
     </div>
     <div class="invite-friends-list">
         <div class="follow-all">
-            <a href="#">Folllow all</a>
+            <a ng-click="followAll()">Folllow all</a>
         </div>
         <ul>
             <li ng-repeat = 'friend in friends'>
@@ -16,7 +16,7 @@
                     </a>
                     <div class="info">
                         <span class="name">
-                            <a>John Smith</a>
+                            <a>{{friend.name}}</a>
                         </span>
                         <span class="description">
                             <a>
@@ -24,7 +24,7 @@
                             </a>
                         </span>
                     </div>
-                    <div class="profile-button">
+                    <div ng-click='follow(friend.id)' class="profile-button">
                         <a class="btn btn-following"><i class="fa fa-check"></i> Following</a>
                     </div>
                 </div>
