@@ -176,22 +176,28 @@
                             </div>
                             <div class="dropdown post-st-option">
                                 <span class="title">Post to loop</span>
-                                <a id="dLabel" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Famale Professionals
+                                <a id="dLabel" href="#" ng-model="postModel.loopId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{userLoops[0].name}}
                                     <span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="dLabel" ng-selected="$first" ng-model="postModel.loopId">
-                                    <li ng-repeat="userLoop in userLoops">
+                                <ul class="dropdown-menu" aria-labelledby="dLabel"  >
+                                    <li ng-repeat="userLoop in userLoops" ng-click="setLoopValue({{userLoop.loopId}})" >
                                         <a>{{userLoop.name}}</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" ng-model="postModel.title" placeholder="Write your answer, or answer later....">
+                            <input type="text" class="form-control"
+                                   name='title' ng-model="postModel.title"
+                                   placeholder="Write your answer, or answer later...."
+                                   validator="required" valid-method="submit" message-id="titlePostRequire">
+                            <span for="title" id="titlePostRequire"></span>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Post something...." ng-model="postModel.content" class="form-control"></textarea>
+                            <textarea name='content' placeholder="Post something...." ng-model="postModel.content" class="form-control"
+                                      validator="required" valid-method="submit" message-id="contentPostRequire"></textarea>
+                            <span for="content" id="contentPostRequire"></span>
                         </div>
                         <div class="form-group list-image clearfix">
                             <ul ngf-select ng-model="files" ngf-multiple="multiple">
@@ -213,10 +219,15 @@
                         <div class="pull-left text-right">
 
                             <label class="checkbox-inline">
-                                <input type="checkbox"> This is a question
+                                <input type="checkbox" ng-checked="selection.indexOf(0) > -1"
+                                       ng-click="toggleSelection(0)"
+                                       name="postType" value="0"> This is a question
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox">Anonymous
+                                <input type="checkbox"
+                                       ng-checked="selection.indexOf(1) > -1"
+                                       ng-click="toggleSelection(1)"
+                                       name="postType" value="1">Anonymous
                             </label>
 
                         </div>

@@ -1,13 +1,14 @@
-var userModule = angular.module('owloop.user');
-userModule.controller('layoutController', function ($scope, Restangular, $localStorage, $state, authenticationSvc, Upload, $timeout) {
 
+var userModule = angular.module('owloop.user');
+userModule.controller('layoutController', function ($scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Upload, $timeout) {
+    var $validationProvider = $injector.get('$validation');
     var userData = $localStorage['owloopAuth'];
     if (userData && (!userData.avatarUrl || userData.avatarUrl == '')) {
         userData.avatarUrl = '/public/images/item/item_avatar_default.png';
     }
     $scope.userData = userData;
     $scope.postModel = {
-        loopId: 0,
+        loopId: $localStorage.userLoops.length > 0 ? $localStorage.userLoops[0].loopId : 0,
         title: '',
         content: '',
         type: 0,
@@ -15,10 +16,47 @@ userModule.controller('layoutController', function ($scope, Restangular, $localS
         isAnonymous: false
     };
     var header = authenticationSvc.getHeader();
-    $scope.idAddPost = {
+    $scope.setLoopValue = function (loopId) {
+        $scope.postModel.loopId = loopId;
+    };
 
+    $scope.idAddPost = {
         submit: function (form) {
-            Restangular.one('/v1/Post/CreateUpdatePost').customPOST($scope.postModel, '', {}, header).then(function (data) {
+            var isValid = $validationProvider.checkValid(form);
+            if (!isValid) {
+                $validationProvider.validate(form);
+                return;
+            }
+            var isAnonymous = false;
+            var idx = $scope.selection.indexOf(1);
+            if (idx > -1) {
+                isAnonymous = true;
+            }
+            var type = 0;
+            idx = $scope.selection.indexOf(0);
+            if (idx > -1) {
+                type = 1;
+            }
+            var photo = [];
+            if ($scope.photos.length > 0) {
+                for (var i = 0; i < $scope.photos.length; i++) {
+                    photo.push({
+                        fileName: $scope.photos[0].fileName,
+                        displayOrder: i,
+                        description:''
+                    });
+                }
+            }
+            var model = {
+                loopId: $scope.postModel.loopId,
+                title: $scope.postModel.title,
+                content: $scope.postModel.content,
+                photo: photo,
+                isAnonymous: isAnonymous,
+                type:type
+            };
+            header = authenticationSvc.getHeader();
+            Restangular.one('/v1/Post/CreateUpdatePost').customPOST(model, '', {}, header).then(function (data) {
                 console.log(data);
                 debugger;
                 if (data && data.objectValue) {
@@ -26,6 +64,8 @@ userModule.controller('layoutController', function ($scope, Restangular, $localS
                 } else {
 
                 }
+                
+                $('#modalPostSomething').modal('hide');
             });
         }
     };
@@ -44,15 +84,23 @@ userModule.controller('layoutController', function ($scope, Restangular, $localS
         $scope.userDataMoal = userDataMoal;
         $('#' + name).modal('show');
     };
-   
-
+    $scope.selection = [];
+    $scope.toggleSelection = function toggleSelection(postTypeName) {
+        var idx = $scope.selection.indexOf(postTypeName);
+        if (idx > -1) {
+            $scope.selection.splice(idx, 1);
+        }
+        else {
+            $scope.selection.push(postTypeName);
+        }
+    };
     $scope.$watch('files', function () {
         $scope.upload($scope.files);
     });
     $scope.log = '';
 
     $scope.multiple = 1;
-
+    
     $scope.photos = [];
     $scope.upload = function (files) {
         header = authenticationSvc.getHeader();
