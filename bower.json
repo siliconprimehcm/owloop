@@ -15,6 +15,7 @@
     "restangular": "~1.5.1",
     "ngstorage": "~0.3.6",
     "angular-facebook": "~0.2.3",
-    "ng-file-upload": "~5.0.9"
+    "ng-file-upload": "~5.0.9",
+    "ngInfiniteScroll": "1.0.0"
   }
 }
