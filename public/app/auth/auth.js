@@ -170,6 +170,12 @@ authModule.controller('authController', function (
         }
     };
 
+    $scope.followAll = function(){
+        for(var i=0; i < $scope.friends.length; i++){
+            listFollowIds.push($scope.friends[i].id);
+        }
+    };
+
     $scope.doneFollow = function(){
         var header = authenticationSvc.getHeader();
         var param = {
