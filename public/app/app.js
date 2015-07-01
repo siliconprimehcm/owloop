@@ -89,7 +89,7 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             url: '/user',
             views: {
                 '': {
-                    templateUrl: 'public/app/user/layout.html',
+                    templateUrl: 'public/app/user/layout/layout.html',
                     controller: 'layoutController'
                 },
                 'leftbar@app.user': {
