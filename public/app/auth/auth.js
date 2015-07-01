@@ -5,16 +5,22 @@ authModule.config(function (FacebookProvider) {
 });
 
 authModule.controller('authController', function (
-    $scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Facebook) {
+    $scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Facebook, userService) {
     
     var $validationProvider = $injector.get('$validation');
     
     $scope.user = {
-        username: '',
-        email: '',
+        username: userService.getUsername(),
+        email: userService.getEmail(),
         password: '',
         confirm: ''
     };
+
+    $scope.friends = userService.getFriendlist();
+
+    if($scope.user.email){
+        $('#rethu').css({'display': 'none'});
+    }
 
     $scope.idloginForm = {
         checkValid: $validationProvider.checkValid,
@@ -25,7 +31,6 @@ authModule.controller('authController', function (
                 var header = authenticationSvc.getHeader();
                 Restangular.one('/v1/Customer/LoginEmail').customPOST($scope.user, '', {}, header).then(function (data) {
                     console.log(data);
-                    debugger;
                     if (data && data.objectValue) {
                         $localStorage['owloopAuth'] = {
                             authenKey: data.objectValue.authenKey,
@@ -91,7 +96,7 @@ authModule.controller('authController', function (
                 var path = '/' + me.id + '/friends'
                 Facebook.api(path, function (data) {
                     console.log(data);
-                    $scope.friends = data;
+                    userService.setFriendlist(data.data);
                 });
 
                 var header = authenticationSvc.getHeader();
@@ -107,8 +112,15 @@ authModule.controller('authController', function (
                         };
                         $state.go('app.user.homefeed');
                     }else{
+                        if(data.objectValue.email){
+                            userService.setEmail(data.objectValue.email);
+                        };
+
+                        if(data.objectValue.username){
+                            userService.setUsername(data.objectValue.username);
+                        };
+
                         $state.go('app.auth.signup_after_login_facebook');
-                        $scope.user.email = data.objectValue.email;
                     };
                 });
 
@@ -121,7 +133,7 @@ authModule.controller('authController', function (
         var param = $scope.user;
         var header = authenticationSvc.getHeader();
         Restangular.one('/v1/Customer/UpdatedInfo').customPOST(param, '', {}, header).then(function (data) {
-            $state.go(app.auth.friendlist);
+            $state.go('app.auth.friendlist');
         });
     };
 
@@ -163,9 +175,10 @@ authModule.controller('authController', function (
             customerIds: listFollowIds
         };
         Restangular.one('/v1/Customer/FollowCustomer').customPOST(param, '', {}, header).then(function (data) {
-            console.log(data.objectValue.data);
-            $state.go('app.user.homefeed');
+            //console.log(data.objectValue.data);
+            // $state.go('app.user.homefeed');
         });
+        $state.go('app.user.homefeed');
     }
 
     $scope.$watch(function () {
@@ -176,6 +189,33 @@ authModule.controller('authController', function (
         $scope.facebookReady = true;
     });
 
+});
+
+authModule.service('userService', function() {
+
+    this.setEmail = function(email) {
+        this.email = email;
+    };
+
+    this.setUsername = function(username) {
+        this.username = username;
+    };
+
+    this.setFriendlist = function(friendlist) {
+        this.friendlist = friendlist;
+    };
+
+    this.getEmail = function() {
+        return this.email;
+    };
+
+    this.getUsername = function() {
+        return this.username;
+    };
+
+    this.getFriendlist = function() {
+        return this.friendlist;
+    };
 });
 
 authModule.directive('serverError', function () {

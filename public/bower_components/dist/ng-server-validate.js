@@ -103,7 +103,6 @@ angular.module('server-validate', [])
                         serverValidateService.clearServerErrors($form);
 
                         var foundErrors = false;
-                        debugger;
                         if ($scope.modelState) {
                             if (errorFormat && errorFormat == 'Microsoft.Owin') {
                                 // expecting server response like: { error: '[inputName]', error_description: '[errorType]' }
