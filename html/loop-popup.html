@@ -304,6 +304,10 @@
                 </div>
                 <div class="card-main ">
                     <a href="#" class="btn btn-default"data-toggle="modal" data-target="#modalInviteFriend">Invite friends</a>
+                    <a href="#" class="btn btn-default" data-toggle="modal" data-target="#modalCreateAlbum">Create album</a>
+                    <a href="#" class="btn btn-default" data-toggle="modal" data-target="#modalCreateAlbumSecond">Create album 2</a>
+                    <a href="#" class="btn btn-default" data-toggle="modal" data-target="#modalEditName">Edit name</a>
+                    <a href="#" class="btn btn-default" data-toggle="modal" data-target="#modalViewPhoto">View Photo</a>
                 </div>
             </div>
 
@@ -507,6 +511,168 @@
             </div>
         </div>
     </div>
+
+    <!-- Create Album 1 Modal -->
+    <div class="modal fade" id="modalCreateAlbum" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="content-create-album">
+                    <div class="top-create">
+                        <a href="#" data-dismiss="modal" aria-label="Close">Cancel</a>
+                        <a href="#" class="title">Create album</a>
+                        <a href="#">Done</a>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Album title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Album description" class="form-control">
+                        </div>
+                        <div class="form-preview"></div>
+                        <div class="bottom">
+                            <a class="btn btn-create">
+                                <i class="fa fa-upload"></i>
+                                Upload album photos
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Album 2 Modal -->
+    <div class="modal fade" id="modalCreateAlbumSecond" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="content-create-album">
+                    <div class="top-create">
+                        <a href="#" data-dismiss="modal" aria-label="Close">Cancel</a>
+                        <a href="#" class="title">Create album</a>
+                        <a href="#">Done</a>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-xs-4 pp-left-col">
+                            <div class="content-description">
+                                <div class="title">Street style lovers</div>
+                                <div class="description">
+                                    Donec et ullamcorper ligula. Vestibulum ante ipsum primis Donec et ullamcorper ligula. Vestibulum ante ipsum primis
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-8 pp-right-col">
+                            <div class="list-card-media">
+                                <div class="row gutter-half-15">
+                                    <div class="col-xs-4">
+                                        <div class="card-sub create-album">
+                                            <i class="fa fa-plus"></i>
+                                            <div class="label">
+                                                Add more photo
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="card-sub">
+                                            <div class="img" style="background-image: url('images/item/item_demo.jpg')">
+                                            </div>
+                                            <div class="title">Street style lovers</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="card-sub">
+                                            <div class="img" style="background-image: url('images/item/item_demo.jpg')">
+                                            </div>
+                                            <div class="title">Street style lovers</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="card-sub">
+                                            <div class="img" style="background-image: url('images/item/item_demo.jpg')">
+                                            </div>
+                                            <div class="title">Street style lovers</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="card-sub">
+                                            <div class="img" style="background-image: url('images/item/item_demo.jpg')">
+                                            </div>
+                                            <div class="title">Street style lovers</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Name -->
+    <div class="modal fade" id="modalEditName" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="content-edit-name">
+                    <form>
+                        <div class="top-create">
+                            <a href="#" data-dismiss="modal" aria-label="Close">Cancel</a>
+                            <a href="#" class="title">Edit name</a>
+                            <a href="#">Done</a>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Enter your loop's new name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Enter your loop's new description" class="form-control">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Photo -->
+    <div class="modal fade" id="modalViewPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="content-view-photo">
+                    <div class="row no-gutters">
+                        <div class="col-xs-8 pp-left-col">
+                            <div class="img">
+                                <img src="images/item/item_demo.jpg" class="main-img" />
+                            </div>
+                            <div class="bottom">
+                                <div class="top-content">
+                                    <div class="title">Wage Negotiation</div>
+                                    <div class="create-by">
+                                        Created by <b>Trong Tran</b>    at 12:45 pm
+                                    </div>
+                                </div>
+                                <div class="bottom-content clearfix">
+                                    <div class="pull-left">
+                                        <span class="icon"><i class="fa fa-heart"></i></span>
+                                        <span class="icon"><i class="fa fa-comments"></i></span>
+                                        <span class="icon"><i class="fa fa-ellipsis-h"></i></span>
+                                    </div>
+                                    <div class="pull-right">
+                                        <div class="totlal-likes">150 likes</div>
+                                        <div class="totlal-comments">89 comments</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

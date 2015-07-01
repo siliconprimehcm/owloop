@@ -1636,6 +1636,63 @@ a {
         .content-create-album .btn-create i {
             margin-right: 5px;
         }
+
+
+        
+.list-view-album .card-sub {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    border: 1px solid #bbbbbb;
+}
+
+.list-view-album .img {
+    width: 100%;
+    height: 210px;
+    margin: auto;
+    background-position: top center;
+}
+
+.list-view-album .title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #5d5d5d;
+    text-align: left;
+    margin-bottom: 5px;
+    padding: 0 10px;
+}
+
+.list-view-album .description {
+    color: #bdbdbd;
+    padding: 0 10px;
+    margin-bottom: 5px;
+}
+.summary-view-album {
+    position: relative;
+    color: #bcbcbc;
+      padding-right: 140px;
+      margin-bottom: 10px
+}
+.summary-view-album .btn-contribute{
+      background-color: #0abbb5;
+  color: #fff;
+  min-width: 100px;
+  float: right;
+  font-weight: bold;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+.summary-view-album .title{
+    font-weight: bold
+}
+.summary-view-album .create-by{
+    font-size: 12px
+}
+.summary-view-album .create-by span{
+    margin-right: 15px
+}
 /*---#Loop Media---*/
 
 .content-post-something {
@@ -1952,22 +2009,23 @@ a {
 #modalCreateAlbumSecond .modal-dialog{
     width: 1100px
 }
-.pp-right-col .list-card-media{
+
+#modalCreateAlbumSecond .pp-right-col .list-card-media{
     padding: 30px;
     border-left: 1px solid rgba(0, 0, 0, .1)
 }
-.pp-right-col .list-card-media .title{
+#modalCreateAlbumSecond .pp-right-col .list-card-media .title{
       color: #bbbbbb;
       font-weight: normal;
       font-size: 14px
 }
-.pp-right-col .list-card-media .card-sub{
+#modalCreateAlbumSecond .pp-right-col .list-card-media .card-sub{
     border: 1px solid rgba(0, 0, 0, .1);
 }
-.pp-right-col .list-card-media .card-sub.create-album{
+#modalCreateAlbumSecond .pp-right-col .list-card-media .card-sub.create-album{
     border: 1px dashed rgba(0, 0, 0, .1);
 }
-.pp-left-col .title{
+#modalCreateAlbumSecond .pp-left-col .title{
     font-size: 18px;
     font-weight: bold;
     color: #5d5d5d;
@@ -1975,8 +2033,102 @@ a {
     border-bottom: 1px solid rgba(0, 0, 0, .1);
     
 }
-.pp-left-col  .description{
+#modalCreateAlbumSecond .pp-left-col  .description{
     color: #bbbbbb;
     padding: 10px
 }
+
+#modalViewPhoto .modal-dialog{
+    width: 1000px
+}
+
+#modalViewPhoto .pp-left-col{
+    text-align: center;
+    background-color: #000;
+    position: relative;
+}
+#modalViewPhoto .pp-left-col .main-img{
+    min-height: 500px;
+    max-height: 600px;
+    text-align: center;
+    margin: 0 auto
+}
+#modalViewPhoto .pp-left-col .bottom{
+    position:absolute;
+    background: rgba(0, 0, 0, .5);
+    bottom:0;
+    color: #fff;
+    left: 0;
+    right: 0;
+    text-align: left;
+    padding: 15px;
+}
+#modalViewPhoto .pp-left-col .bottom .top-content{
+    border-bottom: 1px solid #fff;
+    padding-bottom: 8px;
+}
+#modalViewPhoto .pp-left-col .bottom .bottom-content{
+    padding-top: 10px;
+    font-size: 12px
+}
+#modalViewPhoto .pp-left-col .bottom .title{
+    font-size: 14px;
+    font-weight: bold;
+}
+#modalViewPhoto .pp-left-col .bottom .create-by{
+    font-size: 12px;
+}
+#modalViewPhoto .pp-left-col .bottom .bottom-content .icon{
+    font-size: 18px;
+    margin-right: 10px
+}
+
+.content-edit-name {
+    position: relative;
+    padding-bottom: 100px
+}
+
+    .content-edit-name .top-create {
+        width: 100%;
+        background-color: #0abbb5;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 5px 5px 0 0;
+    }
+
+        .content-edit-name .top-create a {
+            display: block;
+            float: left;
+            width: 20%;
+            font-size: 18px;
+        }
+
+            .content-edit-name .top-create a:first-child {
+                text-align: left;
+                padding-left: 15px;
+            }
+
+            .content-edit-name .top-create a:last-child {
+                text-align: right;
+                padding-right: 15px;
+            }
+
+        .content-edit-name .top-create .title {
+            font-size: 22px;
+            color: #fff;
+            width: 60%;
+        }
+
+    .content-edit-name form .form-group {
+        margin-bottom: 0;
+    }
+
+        .content-edit-name form .form-group input {
+            height: 50px;
+            border-radius: 0;
+            border: 0;
+            border-bottom: 1px solid #bbbbbb;
+        }
+
 /*#Dialog#*/
