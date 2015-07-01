@@ -1,7 +1,7 @@
 <div class="content-invite-friend">
     <div class="top-invite">
         <a href="#">Back</a>
-        <a href="#" class="title">Start following your friends</a>
+        <a ng-click="doneFollow()" class="title">Start following your friends</a>
         <a href="#">Done</a>
     </div>
     <div class="invite-friends-list">
@@ -9,130 +9,7 @@
             <a href="#">Folllow all</a>
         </div>
         <ul>
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>John Smith</a>
-                        </span>
-                        <span class="description">
-                            <a>
-                                Senior Design / <span class="company">Lazada</span>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="profile-button">
-                        <a class="btn btn-following"><i class="fa fa-check"></i> Following</a>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>John Smith</a>
-                        </span>
-                        <span class="description">
-                            <a>
-                                Senior Design / <span class="company">Lazada</span>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="profile-button">
-                        <a class="btn btn-follow"><i class="fa fa-plus"></i>  Follow</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>John Smith</a>
-                        </span>
-                        <span class="description">
-                            <a>
-                                Senior Design / <span class="company">Lazada</span>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="profile-button">
-                        <a class="btn btn-following"><i class="fa fa-check"></i> Following</a>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>John Smith</a>
-                        </span>
-                        <span class="description">
-                            <a>
-                                Senior Design / <span class="company">Lazada</span>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="profile-button">
-                        <a class="btn btn-follow"><i class="fa fa-plus"></i>  Follow</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>John Smith</a>
-                        </span>
-                        <span class="description">
-                            <a>
-                                Senior Design / <span class="company">Lazada</span>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="profile-button">
-                        <a class="btn btn-following"><i class="fa fa-check"></i> Following</a>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>John Smith</a>
-                        </span>
-                        <span class="description">
-                            <a>
-                                Senior Design / <span class="company">Lazada</span>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="profile-button">
-                        <a class="btn btn-follow"><i class="fa fa-plus"></i>  Follow</a>
-                    </div>
-                </div>
-            </li>
-            <li>
+            <li ng-repeat = 'friend in friends'>
                 <div class="profile-avatar clearfix">
                     <a href="#" class="avartar">
                         <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
@@ -153,11 +30,6 @@
                 </div>
             </li>
         </ul>
-        <div class="bottom-invite">
-            <a class="btn btn-invite">
-                Invite friends from outside OwLoop
-            </a>
-        </div>
     </div>
     
 </div>
