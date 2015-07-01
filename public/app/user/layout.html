@@ -124,7 +124,7 @@
                     <a href="#" class="profile-nav" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <img src="{{userData.avatarUrl}}" width="26" height="26" class="img-circle" />
                         <span class="name">
-                           {{userData.firstName +" " + userData.lastName}}
+                            {{userData.firstName +" " + userData.lastName}}
                         </span>
                         <span class="down">
                             <i class="fa fa-caret-down"></i>
@@ -157,68 +157,73 @@
 <div class="modal fade" id="modalPostSomething" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="content-create-album">
+            <div class="content-post-something">
                 <form id="idAddPost" name="addPostForm">
-                    <div class="form-group">
-                        <div class="col-xs-6">
-                            <div>
-                                <img src="{{userDataMoal.avatarUrl}}" class="img-circle" />
+                    <div class="enter-comments no-border">
+                        <div class="profile-avatar clearfix">
+                            <a href="#" class="avartar">
+                                <img src="{{userDataMoal.avatarUrl}}" width="34" height="34" class="img-circle">
+                            </a>
+                            <div class="info">
+                                <span class="name">
+                                    <a>{{userDataMoal.firstName + " " + userDataMoal.lastName}}</a>
+                                </span>
+                                <span class="time-created">
+                                    <a>
+                                        created a question 2 hours ago
+                                    </a>
+                                </span>
                             </div>
-                            <div>
-                                <label>{{userDataMoal.firstName}}</label>
-                                <label>{{userDataMoal.firstName + " " + userDataMoal.lastName}}</label>
+                            <div class="dropdown post-st-option">
+                                <span class="title">Post to loop</span>
+                                <a id="dLabel" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Famale Professionals
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dLabel" ng-selected="$first" ng-model="postModel.loopId">
+                                    <li ng-repeat="userLoop in userLoops">
+                                        <a>{{userLoop.name}}</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="col-xs-6">
-                            <label> Post to loop:</label>
-                            <select ng-model="postModel.loopId" convert-to-number>
-                                <option ng-repeat="userLoop in userLoops" ng-selected="$first" value="{{userLoop.loopId}}">{{userLoop.name}}</option>
-                            </select>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="postModel.title" placeholder="Write your answer, or answer later....">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="title" class="form-control" ng-model="postModel.title">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Post Somethings" ng-model="postModel.content" class="form-control">
-                    </div>
-                    <div class="form-preview"></div>
-                    <div class="bottom">
-                        <div class="list-card-media">
-                            <div class="row gutter-half-15">
-                                <div class="col-xs-4">
-                                    <div class="card-sub create-album" ngf-select ng-model="files" ngf-multiple="multiple">
+                        <div class="form-group">
+                            <textarea placeholder="Post something...." ng-model="postModel.content" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group list-image clearfix">
+                            <ul ngf-select ng-model="files" ngf-multiple="multiple">
+                               
+                                <li ng-repeat='photo in photos'>
+                                    <img ng-src="{{photo.imageUrl | trusted}}">
+                                    <i class="fa fa-remove"></i>
+                                </li>
+                                <li>
+                                    <div>
                                         <i class="fa fa-plus"></i>
-                                        <div class="label">
-                                            Add more photo
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-4" ng-repeat='photo in photos'>
-                                    <div class="card-sub">
-                                        <img class="img" ng-src="{{photo.imageUrl | trusted}}">
-                                        </img>
-                                        <input class="title" ng-model="photo.description"> </input>
-                                    </div>
-                                </div>
-
-
-                            </div>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
 
-                    <div>
-                        <input type="checkbox"
-                               name="postType[]"
-                               value="0">This is a question
-                        <input type="checkbox"
-                               name="postType[]"
-                               value="0">Anonymous
                     </div>
-                   
-                   
-                    <div class="form-group-button">
-                        <button ng-click="idAddPost.submit(addPostForm)" type="submit" class="btn btn-signup">Add Post</button>
+                    <div class="footer clearfix">
+                        <div class="pull-left text-right">
+
+                            <label class="checkbox-inline">
+                                <input type="checkbox"> This is a question
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox">Anonymous
+                            </label>
+
+                        </div>
+                        <div class="pull-right">
+                            <a href="#" data-dismiss="modal" aria-label="Close" class="btn btn-cancel">Cancel</a>
+                            <a href="#" class="btn btn-post" ng-click="idAddPost.submit(addPostForm)" type="submit">Post</a>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -227,42 +232,4 @@
 </div>
 
 
-<div class="modal fade" id="modalCreatePostImage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="content-create-album">
-                <div class="top-create">
-                    <a href="#" data-dismiss="modal" aria-label="Close">Cancel</a>
-                    <a href="#" class="title">Create album</a>
-                    <a ng-click="createAlbum()">Done</a>
-                </div>
-                <div class="row no-gutters">
-                    <div class="col-xs-8 pp-right-col">
-                        <div class="list-card-media">
-                            <div class="row gutter-half-15">
-                                <div class="col-xs-4">
-                                    <div class="card-sub create-album" ngf-select ng-model="files" ngf-multiple="multiple">
-                                        <i class="fa fa-plus"></i>
-                                        <div class="label">
-                                            Add more photo
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4" ng-repeat='photo in photos'>
-                                    <div class="card-sub">
-                                        <img class="img" ng-src="{{photo.imageUrl | trusted}}">
-                                        </img>
-                                        <input class="title" ng-model="photo.description"> </input>
-                                    </div>
-                                </div>
 
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
