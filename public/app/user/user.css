@@ -529,6 +529,19 @@ a {
     padding: 15px 0 15px;
 }
 
+.function-list .list-item button.title {
+    width: 100%;
+  border: none;
+  height: 30px;
+  background-color: white;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding-bottom: 25px;
+  padding-top: 10px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+}
+
 .function-list ul li a {
     color: #5d5d5d;
     display: block;

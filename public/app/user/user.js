@@ -29,3 +29,27 @@ userModule.filter('trusted', ['$sce', function ($sce) {
         return $sce.trustAsResourceUrl(url);
     };
 }]);
+
+
+//userModule.factory('loopInLayoutService', function($http, $log, $q, Restangular) {
+//    return {
+//        getPopularLoops: function(header, param) {
+//            var deferred = $q.defer();
+//            var popularLoops = [];
+
+//            Restangular.one('/v1/Loop/GetPopularLoop').customPOST(param, '', {}, header).then(function(data) {
+//                if (data.statusCode == 0) {
+//                    for (var i = 0; i < data.objectValue.data.length; i++) {
+//                        popularLoops.push(data.objectValue.data[i]);
+//                    }
+//                    deferred.resolve({ popularLoops: popularLoops });
+//                }
+//            }, function(msg, code) {
+//                deferred.reject(msg);
+//                $log.error(msg, code);
+//            });
+
+//            return deferred.promise;
+//        }
+//    };
+//});

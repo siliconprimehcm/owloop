@@ -3,7 +3,7 @@
         <div class="function-list">
             <div class="list-item">
                 <div class="item-main">
-                    <div class="title">My loops public </div>
+                    <button class="title">Public</button>
                     <ul>
                         <li class="line" ng-repeat="loop in loopCategories" ng-click="getLoopOfCategories(loop.categoryId)">
                             <a>
@@ -15,56 +15,10 @@
                     </ul>
                 </div>
                 <div class="item-main">
-                    <div class="title">My loops private</div>
-                    <!--<ul>
-                        <li class="line">
-                            <a>
-                                <span class="icon"><i class="icon-x1-play"></i></span>
-                                <span class="name">Nulla at sapien at ju...</span>
-                                <span class="count">1</span>
-                            </a>
-                        </li>
-                        <li class="line">
-                            <a>
-                                <span class="icon"><i class="icon-x1-diagram"></i></span>
-                                <span class="name">Sed in ornare</span>
-                                <span class="count">99+</span>
-                            </a>
-                        </li>
-                        <li class="line">
-                            <a>
-                                <span class="icon"><i class="icon-x1-fleg"></i></span>
-                                <span class="name">WWCD New York</span>
-                                <span class="count">2</span>
-                            </a>
-                        </li>
-                        <li class="line">
-                            <a>
-                                <span class="icon"><i class="icon-x1-bus"></i></span>
-                                <span class="name">Maecenas po neque</span>
-                                <span class="count">4</span>
-                            </a>
-                        </li>
-                        <li class="line">
-                            <a>
-                                <span class="icon"><i class="icon-x1-bag"></i></span>
-                                <span class="name">Quisque turpis nibh</span>
-                                <span class="count">15</span>
-                            </a>
-                        </li>
-                    </ul>-->
+                    <button class="title" ng-click="getPrivateLoopOfCategories()">Private</button>
                 </div>
                 <div class="item-main">
-                    <div class="title">My profiles</div>
-                    <ul>
-                        <li class="line">
-                            <a>
-                                <span class="icon"><i class="icon-x1-fleg"></i></span>
-                                <span class="name">Edit my profile</span>
-                                <span class="count"></span>
-                            </a>
-                        </li>
-                    </ul>
+                    <button class="title">Create new Loop</button>
                 </div>
 
             </div>

@@ -172,7 +172,11 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 'content@app.user': {
                     templateUrl: 'public/app/user/explore/explore.html'
                     , controller: 'exploreController'
-                }
+                },
+                'rightbar@app.user': {
+                    templateUrl: 'public/app/user/rightbar.html'
+                   , controller: 'exploreController'
+                },
             }
         })
         .state('app.user.question', {
