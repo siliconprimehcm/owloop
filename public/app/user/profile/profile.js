@@ -3,6 +3,14 @@ var userModule = angular.module('owloop.user');
 userModule.controller('profileController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService) {
     var header = authenticationSvc.getHeader();
 
+  
+    Restangular.one('/v1/Customer/GetProfile').customPOST({}, '', {}, header).then(function (data) {
+        var userData = data.objectValue;
+        if (userData && (!userData.avatarUrl || userData.avatarUrl == '')) {
+            userData.avatarUrl = '/public/images/item/item_avatar_default.png';
+        }
+        $scope.userData = userData;
+    });
     var paramPublicLoops = {
         "lastUpdate": 0,
         "pageSize": 10,

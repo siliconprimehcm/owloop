@@ -1,35 +1,35 @@
 <div class="content-column-one ">
     <div class="cover-wrapper">
-        <div class="cover" style="background-image: url('images/item/item_cover.jpg');"></div>
+        <div class="cover" style="background-image: url('/public/images/item/item_cover.jpg');"></div>
         <div class="cover-profile">
             <div class="avatar">
-                <img src="images/item/item_avatar.jpg" />
+                <img src="{{userData.avatarUrl}}" />
             </div>
-            <div class="name">Phuong Nguyen</div>
+            <div class="name">{{userData.totalPost}}</div>
         </div>
         <div class="statitics">
             <ul>
                 <li>
                     <a href="#">
-                        <div class="number">145</div>
+                        <div class="number">{{userData.totalPost}}</div>
                         <div class="name">posts</div>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <div class="number">759</div>
+                        <div class="number">{{userData.totalPhoto}}</div>
                         <div class="name">photos</div>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <div class="number">145</div>
+                        <div class="number">{{userData.totalFollower}}</div>
                         <div class="name">follower</div>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <div class="number">145</div>
+                        <div class="number">{{userData.totalFollowing}}</div>
                         <div class="name">following</div>
                     </a>
                 </li>
@@ -41,7 +41,7 @@
                 <li><a href="#">Loops</a></li>
                 <li><a href="#">About</a></li>
             </ul>
-            <a href="#" class="btn btn-followed">Followed</a>
+            <!--<a href="#" class="btn btn-followed">Followed</a>-->
         </div>
     </div>
     <div class="card-main ">
