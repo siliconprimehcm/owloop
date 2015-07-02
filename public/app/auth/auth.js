@@ -29,8 +29,11 @@ authModule.controller('authController', function (
                 $validationProvider.validate(form);
             } else {
                 var header = authenticationSvc.getHeader();
-                $scope.user.email = $scope.user.username;
-                Restangular.one('/v1/Customer/LoginEmail').customPOST($scope.user, '', {}, header).then(function (data) {
+                var model = {
+                    "emailOrUsername": $scope.user.username,
+                    "password": $scope.user.password
+                };
+                Restangular.one('/v1/Customer/LoginEmail').customPOST(model, '', {}, header).then(function (data) {
                     console.log(data);
                     if (data && data.objectValue) {
                         $localStorage['owloopAuth'] = {

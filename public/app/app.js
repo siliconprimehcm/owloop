@@ -225,7 +225,15 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 'content@app.user': {
                     templateUrl: 'public/app/user/profile/profile.html',
                     controller: 'profileController'
-                }
+                },
+                'leftbar@app.user': {
+                    templateUrl: 'public/app/user/leftbar.html'
+                    , controller: 'profileController'
+                },
+                'rightbar@app.user': {
+                    templateUrl: 'public/app/user/rightbar.html'
+                   , controller: 'profileController'
+                },
             }
         })
         .state('app.user.loop', {
