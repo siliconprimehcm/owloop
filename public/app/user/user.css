@@ -1896,9 +1896,10 @@ a {
         min-width: 130px;
         border-radius: 5px;
         position: relative;
+        margin-bottom: 10px
     }
 
-        .content-post-something .list-image li:hover {
+        .content-post-something .list-image li div:hover {
             opacity: 0.7;
         }
 

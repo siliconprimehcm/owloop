@@ -1,7 +1,10 @@
 
 var userModule = angular.module('owloop.user');
+
 userModule.controller('layoutController', function ($scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Upload, $timeout, privateLoops, publicLoops) {
-    
+    $scope.fisrtUserLoopName = "";
+    $scope.userLoops = $localStorage.userLoops;
+
     var $validationProvider = $injector.get('$validation');
     var userData = $localStorage['owloopAuth'];
     if (userData && (!userData.avatarUrl || userData.avatarUrl == '')) {
@@ -17,8 +20,10 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
         isAnonymous: false
     };
     var header = authenticationSvc.getHeader();
-    $scope.setLoopValue = function (loopId) {
-        $scope.postModel.loopId = loopId;
+    $scope.setLoopValue = function (index) {
+        var item = $scope.userLoops[index];
+        $scope.postModel.loopId = item.loopId;
+        $scope.fisrtUserLoopName = item.name;
     };
 
     $scope.idAddPost = {
@@ -59,9 +64,9 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
             header = authenticationSvc.getHeader();
             Restangular.one('/v1/Post/CreateUpdatePost').customPOST(model, '', {}, header).then(function (data) {
                 console.log(data);
-                debugger;
                 if (data && data.objectValue) {
-
+                    $scope.userLoops.unshift(data.objectValue);
+                    console.log($scope.userLoops)
                 } else {
 
                 }
@@ -75,7 +80,7 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
         $localStorage['owloopAuth'] = null;
         $state.go('app.auth.login');
     };
-
+    
     $scope.OpenModalAddPost = function (name) {
         var userLoops = [];
         if (privateLoops.statusCode == 0) {
@@ -89,6 +94,8 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
             }
         }
         $scope.userLoops = userLoops;
+        $scope.fisrtUserLoopName = $scope.userLoops[0].name;
+
         var userDataMoal = $localStorage['owloopAuth'];
         if (userDataMoal && (!userDataMoal.avatarUrl || userDataMoal.avatarUrl == '')) {
             userDataMoal.avatarUrl = '/public/images/item/item_avatar_default.png';
