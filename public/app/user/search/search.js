@@ -4,7 +4,11 @@ userModule.controller('searchController', function ($rootScope, $scope, Restangu
  
     var header = authenticationSvc.getHeader();
  
-    var paramPublicLoops = {
+    var categoryIdRemind = 0;
+
+    var header = authenticationSvc.getHeader();
+ 
+    var param = {
         "lastUpdate": 0,
         "pageSize": 10,
         "keyword": "",
@@ -37,5 +41,17 @@ userModule.controller('searchController', function ($rootScope, $scope, Restangu
             $scope.loopPopulars= [];
     });
     
+    $scope.publicLoops = function (authenticate, Restangular, authenticationSvc) {
+        param.loopType = 0;
+        return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function(data) {
+            return data;
+        });
+    };
 
+    $scope.privateLoops = function (authenticate, Restangular, authenticationSvc) {
+        param.loopType = 1;
+        return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function(data) {
+            return data;
+        });
+    };
 });
