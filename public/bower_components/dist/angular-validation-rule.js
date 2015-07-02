@@ -19,6 +19,9 @@
                     confirmpassword: function (value) {
                         return value == $('[name=password]').val();
                     },
+                    passwordlength: function (value, scope, element, attrs, param) {
+                        return value.length >= param;
+                    },
                 };
 
                 var defaultMsg = {
@@ -48,6 +51,10 @@
                     },
                     confirmpassword: {
                         error: 'The 2 passwords you input do not match. Make sure there is no typo involved!',
+                        success: ''
+                    },
+                    passwordlength: {
+                        error: 'Password needs to contain at least 6 characters',
                         success: ''
                     }
                 };

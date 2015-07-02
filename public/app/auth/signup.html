@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <div class="icon-addon addon-lg">
                             <input type="password" name="password" placeholder="Password"
-                                   validator="required" valid-method="submit" message-id="passwordrequiredSubmit"
+                                   validator="required, passwordlength" valid-method="submit" message-id="passwordrequiredSubmit"
                                    class="form-control" ng-model="user.password">
                             <label for="password" class="fa fa-lock"></label>
                             <span id="passwordrequiredSubmit"></span>

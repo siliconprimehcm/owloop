@@ -181,8 +181,8 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dLabel"  >
-                                    <li ng-repeat="userLoop in userLoops" ng-click="setLoopValue({{userLoop.loopId}})" >
-                                        <a>{{userLoop.name}}</a>
+                                    <li ng-repeat="userLoop in userLoops"  >
+                                        <a ng-click="setLoopValue(userLoop.loopId)">{{userLoop.name}}</a>
                                     </li>
                                 </ul>
                             </div>

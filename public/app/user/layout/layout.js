@@ -1,6 +1,7 @@
 
 var userModule = angular.module('owloop.user');
-userModule.controller('layoutController', function ($scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Upload, $timeout) {
+userModule.controller('layoutController', function ($scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Upload, $timeout, privateLoops, publicLoops) {
+    
     var $validationProvider = $injector.get('$validation');
     var userData = $localStorage['owloopAuth'];
     if (userData && (!userData.avatarUrl || userData.avatarUrl == '')) {
@@ -8,7 +9,7 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
     }
     $scope.userData = userData;
     $scope.postModel = {
-        loopId: $localStorage.userLoops.length > 0 ? $localStorage.userLoops[0].loopId : 0,
+        loopId: publicLoops.objectValue.data.length > 0 ? publicLoops.objectValue.data[0].loopId : 0,
         title: '',
         content: '',
         type: 0,
@@ -76,7 +77,18 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
     };
 
     $scope.OpenModalAddPost = function (name) {
-        $scope.userLoops = $localStorage.userLoops;
+        var userLoops = [];
+        if (privateLoops.statusCode == 0) {
+            for (var i = 0; i < privateLoops.objectValue.data.length; i++) {
+                userLoops.push(privateLoops.objectValue.data[i]);
+            }
+        }
+        if (publicLoops.statusCode == 0) {
+            for (var i = 0; i < publicLoops.objectValue.data.length; i++) {
+                userLoops.push(publicLoops.objectValue.data[i]);
+            }
+        }
+        $scope.userLoops = userLoops;
         var userDataMoal = $localStorage['owloopAuth'];
         if (userDataMoal && (!userDataMoal.avatarUrl || userDataMoal.avatarUrl == '')) {
             userDataMoal.avatarUrl = '/public/images/item/item_avatar_default.png';
