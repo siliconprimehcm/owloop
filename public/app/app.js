@@ -188,13 +188,17 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             url: '/search',
             views: {
                 'leftbar@app.user': {
-                    templateUrl: 'public/app/user/search/leftbar.html'
+                    templateUrl: 'public/app/user/leftbar.html'
                     , controller: 'searchController'
                 },
                 'content@app.user': {
                     templateUrl: 'public/app/user/search/search.html'
                     , controller: 'searchController'
-                }
+                },
+                'rightbar@app.user': {
+                    templateUrl: 'public/app/user/rightbar.html'
+                    , controller: 'searchController'
+                },
             }
         })
         .state('app.user.post', {
