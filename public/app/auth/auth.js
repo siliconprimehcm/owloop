@@ -7,7 +7,7 @@ authModule.config(function (FacebookProvider) {
 authModule.controller('authController', function (
     $scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Facebook, userService) {
     
-    if($localStorage.hasOwnProperty('owloopAuth')){
+    if($localStorage.hasOwnProperty('owloopAuth') && $localStorage['owloopAuth']){
         return $state.go('app.user.homefeed');
     }
 
@@ -46,6 +46,7 @@ authModule.controller('authController', function (
                             firstName: data.objectValue.firstName,
                             lastName: data.objectValue.lastName,
                             avatarUrl: data.objectValue.avatarUrl,
+                            username: data.objectValue.username,
                         };
                         $state.go('app.user.homefeed');
                     } else {
@@ -71,8 +72,12 @@ authModule.controller('authController', function (
                     if (data && data.objectValue) {
                         $localStorage['owloopAuth'] = {
                             authenKey: data.objectValue.authenKey,
-                            customerId: data.objectValue.customerId
-                        }; 
+                            customerId: data.objectValue.customerId,
+                            firstName: data.objectValue.firstName,
+                            lastName: data.objectValue.lastName,
+                            avatarUrl: data.objectValue.avatarUrl,
+                            username: data.objectValue.username,
+                        };
                         $state.go('app.auth.connect_facebook');          
                     } else {
                         $scope.errors = {};
@@ -117,6 +122,7 @@ authModule.controller('authController', function (
                             firstName: data.objectValue.firstName,
                             lastName: data.objectValue.lastName,
                             avatarUrl: data.objectValue.avatarUrl,
+                            username: data.objectValue.username,
                         };
                         $state.go('app.user.homefeed');
                     }else{
@@ -127,6 +133,7 @@ authModule.controller('authController', function (
                             firstName: data.objectValue.firstName,
                             lastName: data.objectValue.lastName,
                             avatarUrl: data.objectValue.avatarUrl,
+                            username: data.objectValue.username,
                         };
                         
                         if(data.objectValue.email){
