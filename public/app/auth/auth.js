@@ -7,6 +7,10 @@ authModule.config(function (FacebookProvider) {
 authModule.controller('authController', function (
     $scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Facebook, userService) {
     
+    if($localStorage.hasOwnProperty('owloopAuth')){
+        return $state.go('app.user.homefeed');
+    }
+
     var $validationProvider = $injector.get('$validation');
     
     $scope.user = {
