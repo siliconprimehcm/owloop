@@ -1063,6 +1063,8 @@ a {
     top: 0;
     width: 100%;
     bottom: 0;
+    background: url(../../../public/images/bg/bg_signup.jpg);
+    background-size: cover;
 }
 
     .container-login .img-bg {
@@ -1127,12 +1129,12 @@ a {
 
 .content-login {
     position: absolute;
-    width: 500px;
-    bottom: 100px;
-    left: 50%;
-    margin-left: -250px;
+    width: 460px;
+    top: 100px;
+    margin-left: -230px;
     background-color: #fff;
     border-radius: 5px;
+    left: 50%;
 }
 
     .content-login .content-signup,
@@ -2131,4 +2133,15 @@ a {
             border-bottom: 1px solid #bbbbbb;
         }
 
+
+
+         .modal {
+    overflow-y: auto;
+    }
+.modal-open {
+overflow: auto;
+}
+.modal-open[style] {
+padding-right: 0px !important;
+}
 /*#Dialog#*/
