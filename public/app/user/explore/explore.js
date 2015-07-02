@@ -122,6 +122,78 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
             });
         }
     };
+
+    $scope.newLoop = {
+        name:'',
+        description:'',
+        loopId:''
+    }
+    $scope.createNewLoop = function(){
+        var header = authenticationSvc.getHeader();
+        var param = {
+            "name": $scope.newLoop.name,
+            "description": $scope.newLoop.description,
+            "avatarFileName": '',
+            "OnlyAdminCanPost": false
+        };
+        
+        Restangular.one('/v1/Loop/CreateLoop').customPOST(param, '', {}, header).then(function (data) {
+            console.log(data);
+            $scope.newLoop.loopId = data.objectValue.loopId;
+            $scope.newLoop.name = '';
+            $scope.newLoop.description = '';
+            getUserFriend();
+        });
+    };
+
+    $scope.inviteFriendJoinLoop = function(){
+        var header = authenticationSvc.getHeader();
+        var param = {
+            "loopId": $scope.newLoop.loopId,
+            "friendIds": listInviteIds
+        };
+        
+        Restangular.one('/v1/Loop/InviteJoinLoop').customPOST(param, '', {}, header).then(function (data) {
+            console.log(data);
+            $(function () {
+               $('#modalInviteFriendToNewLoop').modal('toggle');
+            });
+        });
+    };
+
+    var listInviteIds = [];
+    $scope.inviteClick = function(id){
+        console.log(id);
+        for(var i=0; i<listInviteIds.length; i++){
+            if(id == listInviteIds[i]){
+                listInviteIds.splice(i, 1);
+                break;
+            }else{
+                if(i == listInviteIds.length - 1){
+                    listInviteIds.push(id)
+                }
+            }
+        }
+    };
+
+    function getUserFriend(){
+
+        var param = {
+            "lastUpdate": 0,
+            "pageSize": 100,
+            "keyword": "keyword",
+            "followType": 0,
+        };
+        
+        Restangular.one('/v1/Customer/GetMyFriend').customPOST(param, '', {}, header).then(function (data) {
+            console.log(data);
+            $scope.friends = data.objectValue.data;
+            $(function () {
+               $('#modalCreateNewLoop').modal('toggle');
+               $('#modalInviteFriendToNewLoop').modal('toggle');
+            });
+        });
+    }
     
 });
 
