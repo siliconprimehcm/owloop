@@ -8,7 +8,7 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
     $rootScope.categoryIdRemind = 0;
     var header = authenticationSvc.getHeader();
     var  param = {
-        pageSize: 10
+        pageSize: 100
     };
     Restangular.one('/v1/Loop/GetPopularLoop').customPOST(param, '', {}, header).then(function (data) {
         if (data.statusCode == 0)
@@ -49,7 +49,7 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
     $scope.getLoopOfCategories = function (categoryId) {
         $rootScope.timeLastUpdate = 0;
        
-        var param = {
+        param = {
             "categoryId": categoryId,
             "lastUpdate": 0,
             "pageSize": 5,
