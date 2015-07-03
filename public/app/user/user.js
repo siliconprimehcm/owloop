@@ -1,5 +1,6 @@
 var userModule = angular.module('owloop.user', ['owloop.user.loop', 'infinite-scroll', 'validation', 'validation.rule', 'server-validate']);
 userModule.controller('leftbarController', function ($scope, privateLoops, publicLoops, $localStorage) {
+    $scope.userId = $localStorage['owloopAuth'].customerId;
     var pubLoops = [];
     var priLoops = [];
     var userLoops = [];

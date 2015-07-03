@@ -25,7 +25,10 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
         $scope.postModel.loopId = item.loopId;
         $scope.fisrtUserLoopName = item.name;
     };
-
+    $scope.redirectProfile = function () {
+        window.location.href = '#/user/profile/' + $localStorage['owloopAuth'].customerId;
+    };
+    
     $scope.idAddPost = {
         submit: function (form) {
             var isValid = $validationProvider.checkValid(form);
