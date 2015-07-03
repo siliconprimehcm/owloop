@@ -4,8 +4,8 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
     console.log('exploreController');
     $rootScope.loopOfCategorys = [];
     $scope.loopCategories = [];
-    var categoryIdRemind = 0;
     $rootScope.timeLastUpdate = 0;
+    $rootScope.categoryIdRemind = 0;
     var header = authenticationSvc.getHeader();
     var  param = {
         pageSize: 10
@@ -38,8 +38,8 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
 
                 for (var i = 0; i < data.objectValue.firstLoops.data.length; i++) {
                     loopOfCategorys.push(data.objectValue.firstLoops.data[i]);
-                    categoryIdRemind = data.objectValue.firstLoops.data[0].categoryId;
                 }
+                $rootScope.categoryIdRemind = data.objectValue.firstLoops.data[0].categoryId;
                 $rootScope.loopOfCategorys = loopOfCategorys;
                 
             }
@@ -48,7 +48,7 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
 
     $scope.getLoopOfCategories = function (categoryId) {
         $rootScope.timeLastUpdate = 0;
-        categoryIdRemind = categoryId;
+       
         var param = {
             "categoryId": categoryId,
             "lastUpdate": 0,
@@ -60,16 +60,17 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
         promise.then(function (result) {
             $rootScope.loopOfCategorys = result.resultLoopOfCategorys;
             $rootScope.timeLastUpdate = result.resultLastUpdate;
+            $rootScope.categoryIdRemind = categoryId;
         }, function (errorResult) {
             $log.error('failure load', errorResult);
+            $rootScope.categoryIdRemind = categoryId;
         });
     };
 
-
+    
     $scope.getPrivateLoopOfCategories = function () {
-        categoryIdRemind = -1;
         $rootScope.timeLastUpdate = 0;
-        var param = {
+        param = {
             "lastUpdate": 0,
             "pageSize": 10,
             "keyword": ""
@@ -79,14 +80,16 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
         promise.then(function (result) {
             $rootScope.loopOfCategorys = result.resultLoopOfCategorys;
             $rootScope.timeLastUpdate = result.resultLastUpdate;
+            $rootScope.categoryIdRemind = -1;
         }, function (errorResult) {
             $log.error('failure load', errorResult);
+            $rootScope.categoryIdRemind = -1;
         });
     };
    
     
     $scope.loadMore = function () {
-        if (categoryIdRemind == -1) {
+        if ($rootScope.categoryIdRemind == -1) {
             param = {
                 "lastUpdate": $rootScope.timeLastUpdate,
                 "pageSize": 10,
@@ -104,7 +107,7 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
             });
         } else {
             param = {
-                "categoryId": categoryIdRemind,
+                "categoryId": $rootScope.categoryIdRemind,
                 "lastUpdate": $rootScope.timeLastUpdate,
                 "pageSize": 5,
                 "keyword": ""
