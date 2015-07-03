@@ -2,37 +2,41 @@ var userModule = angular.module('owloop.user');
 
 userModule.controller('homefeedController', function ($rootScope, $scope, authenticationSvc, Restangular, feedService) {
     console.log('homefeedController');
-    $rootScope.questionsPosts = [];
-    $rootScope.posts = [];
-    $rootScope.loopPopulars = [];
-
+    $rootScope.feedHome = [];
+    $rootScope.lastUpdateFeed = 0;
     var header = authenticationSvc.getHeader();
     var param = {
-        "loopId": 1
+        "lastUpdate": $rootScope.lastUpdateFeed,
+        "pageSize": 10,
+        "getComment": false,
+        "commentPageSize": 3
     };
 
     $scope.loadMoreFeed = function () {
         var promise = feedService.getFeed(header, param);
         promise.then(function (result) {
-            for (var i = 0; i < result.questionsPosts.length; i++) {
-                $rootScope.questionsPosts.push(result.questionsPosts[i]);
-            }
-            for (var i = 0; i < result.posts.length; i++) {
-                $rootScope.posts.push(result.posts[i]);
+            $rootScope.lastUpdateFeed = result.lastUpdate;
+            if (result.hasMore) {
+                for (var i = 0; i < result.data.length; i++) {
+                    $rootScope.feedHome.push(result.data[i]);
+                }
             }
         });
     };
 });
+
 userModule.factory('feedService', function ($q, Restangular) {
     return {
         getFeed: function (header, param) {
             var deferred = $q.defer();
 
-            Restangular.one('/v1/Customer/GetHomeFeedInfo').customPOST(param, '', {}, header).then(function (data) {
+            Restangular.one('/v1/Feed/GetFeeds').customPOST(param, '', {}, header).then(function (result) {
                 deferred.resolve({
-                    questionsPosts: data.objectValue.questionsPosts,
-                    posts: data.objectValue.posts,
-                    loopPopulars: data.objectValue.loopPopulars
+                    data: result.objectValue.data,
+                    lastUpdate: result.objectValue.lastUpdate,
+                    hasMore: result.objectValue.hasMore,
+                    firstUpdate: result.objectValue.firstUpdate,
+                    statusCode: result.objectValue.statusCode
                 });
             });
 

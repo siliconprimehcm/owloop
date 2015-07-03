@@ -1,48 +1,10 @@
 <div class="content-column-one ">
     <div infinite-scroll='loadMoreFeed()' infinite-scroll-distance='0'>
-        <div class="question-post" ng-repeat="post in questionsPosts">
-            <div class="card-main ">
-                <div class="title-category">
-                    <a href="#">Female Professionals</a>
-                </div>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="{{post.OwnerAvatarUrl}}" height="34" width="34" class="img-circle" />
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>{{post.OwnerUserName}} default name</a>
-                        </span>
-                        <span class="time-created">
-                            <a>
-                                created a question 2 hours ago
-                            </a>
-                        </span>
-                    </div>
-                </div>
-                <div class="summary">
-                    <div class="title">{{post.Title}}</div>
-                    <div class="description">
-                        {{post.Content}}
-                    </div>
-                </div>
-                <div class="footer clearfix">
-                    <div class="pull-left totlal-likes">
-                        <span class="icon"><i class="fa fa-heart"></i></span>
-                        <span>{{post.TotalLike}} likes</span>
-                    </div>
-                    <div class="pull-left total-comments">
-                        <span class="icon"><i class="fa fa-comments"></i></span>
-                        <span>{{post.TotalComment}} Replies</span>
-                    </div>
-                    <div class="pull-right dots">
-                        <span><i class="fa fa-ellipsis-h"></i></span>
-                    </div>
-                </div>
-            </div>
+        <div class="feed-home" ng-repeat="feed in feedHome">
+            <feed-template feed="feed"></feed-template>
         </div>
 
-        <div class="post-normal" ng-repeat="post in posts">
+        <!--<div class="post-normal" ng-repeat="post in posts">
             <div class="card-main ">
                 <div class="title-category">
                     <a href="#">Female Professionals</a>
@@ -82,7 +44,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
     </div>

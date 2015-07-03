@@ -1,0 +1,245 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container clearfix">
+        <div class="logo pull-left">
+            <a href="./#/user/homefeed">
+                <img src="/public/images/ic/ic_logo.png" />
+            </a>
+        </div>
+        <form class="navbar-left form-inline form-search">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search Owloop">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                </div>
+            </div>
+        </form>
+        <div class="explore pull-left">
+            <a ui-sref="app.user.explore">Explore</a>
+        </div>
+        <div class="post-something-link pull-left">
+            <a href="#" ng-click="OpenModalAddPost('modalPostSomething')">Post Something</a>
+        </div>
+        <div class="pull-right">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./#/user/homefeed">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge">1</span>
+                    </a>
+                    <div class="dropdown-menu notification-list">
+                        <i class="fa fa-caret-up"></i>
+                        <ul>
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="/public/images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John T.</a> <span class="add-note">started following you</span>
+                                        </span>
+                                        <span class="time-created">
+                                            <a>
+                                                created a question 2 hours ago
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="./public/images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John T.</a> <span class="add-note">started following you</span>
+                                        </span>
+                                        <span class="time-created">
+                                            <a>
+                                                created a question 2 hours ago
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="./public/images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John T.</a> <span class="add-note">started following you</span>
+                                        </span>
+                                        <span class="time-created">
+                                            <a>
+                                                created a question 2 hours ago
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="./public/images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John T.</a> <span class="add-note">started following you</span>
+                                        </span>
+                                        <span class="time-created">
+                                            <a>
+                                                created a question 2 hours ago
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="profile-avatar clearfix">
+                                    <a href="#" class="avartar">
+                                        <img src="./public/images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">
+                                            <a>John T.</a> <span class="add-note">started following you</span>
+                                        </span>
+                                        <span class="time-created">
+                                            <a>
+                                                created a question 2 hours ago
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="see-all">See All</div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="profile-nav" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <img src="{{userData.avatarUrl}}" width="26" height="26" class="img-circle" />
+                        <span class="name">
+                            {{userData.firstName +" " + userData.lastName}}
+                        </span>
+                        <span class="down">
+                            <i class="fa fa-caret-down"></i>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <i class="fa fa-caret-up"></i>
+                        <li><a href="#">Invite friends</a></li>
+                        <li><a href="#">Edit your profile</a></li>
+                        <li><a href="#">Change password</a></li>
+                        <li><a href="#">Link account</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#" ng-click="logout()">Log off</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div ui-view="leftbar"></div>
+    <div class="main-column">
+        <div ui-view="content"></div>
+        <div ui-view="rightbar"></div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalPostSomething" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="content-post-something">
+                <form id="idAddPost" name="addPostForm">
+                    <div class="enter-comments no-border">
+                        <div class="profile-avatar clearfix">
+                            <a href="#" class="avartar">
+                                <img src="{{userDataMoal.avatarUrl}}" width="34" height="34" class="img-circle">
+                            </a>
+                            <div class="info">
+                                <span class="name">
+                                    <a>{{userDataMoal.firstName + " " + userDataMoal.lastName}}</a>
+                                </span>
+                                <span class="time-created">
+                                    <a>
+                                        created a question 2 hours ago
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="dropdown post-st-option">
+                                <span class="title">Post to loop</span>
+                                <a id="dLabel" href="#" ng-model="postModel.loopId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{fisrtUserLoopName}}
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dLabel"  >
+                                    <li ng-repeat="userLoop in userLoops" ng-click="setLoopValue($index)" >
+                                        <a>{{userLoop.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                   name='title' ng-model="postModel.title"
+                                   placeholder="Write your answer, or answer later...."
+                                   validator="required" valid-method="submit" message-id="titlePostRequire">
+                            <span for="title" id="titlePostRequire"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea name='content' placeholder="Post something...." ng-model="postModel.content" class="form-control"
+                                      validator="required" valid-method="submit" message-id="contentPostRequire"></textarea>
+                            <span for="content" id="contentPostRequire"></span>
+                        </div>
+                        <div class="form-group list-image clearfix">
+                            <ul >
+                                <li ng-repeat='photo in photos'>
+                                    <img ng-src="{{photo.imageUrl | trusted}}">
+                                    <i class="fa fa-remove"></i>
+                                </li>
+                                <li>
+                                    <div ngf-select ng-model="files" ngf-multiple="multiple">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="footer clearfix">
+                        <div class="pull-left text-right">
+
+                            <label class="checkbox-inline">
+                                <input type="checkbox" ng-checked="selection.indexOf(0) > -1"
+                                       ng-click="toggleSelection(0)"
+                                       name="postType" value="0"> This is a question
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox"
+                                       ng-checked="selection.indexOf(1) > -1"
+                                       ng-click="toggleSelection(1)"
+                                       name="postType" value="1">Anonymous
+                            </label>
+
+                        </div>
+                        <div class="pull-right">
+                            <a href="#" data-dismiss="modal" aria-label="Close" class="btn btn-cancel">Cancel</a>
+                            <a href="#" class="btn btn-post" ng-click="idAddPost.submit(addPostForm)" type="submit">Post</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

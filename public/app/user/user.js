@@ -53,3 +53,13 @@ userModule.filter('trusted', ['$sce', function ($sce) {
 //        }
 //    };
 //});
+
+userModule.directive('feedTemplate', function () {
+    return {
+        restrict: 'E',
+        scope: {
+            feed: "=feed"
+        },
+        templateUrl: '/public/app/user/share/templates/feed_template.html',
+    }
+})

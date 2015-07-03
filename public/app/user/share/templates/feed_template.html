@@ -1,0 +1,49 @@
+﻿<div class="card-main ">
+    <div class="title-category">
+        <a href="#">{{feed.loop.name}} </a>
+    </div>
+    <div class="profile-avatar clearfix">
+        <a href="#" class="avartar">
+            <img src="{{feed.customer.avatarUrl}}" height="34" width="34" class="img-circle" />
+        </a>
+        <div class="info">
+            <span class="name">
+                <a>{{feed.customer.fullName}}</a>
+            </span>
+            <span class="time-created">
+                <a>
+                    created a question 2 hours ago
+                </a>
+            </span>
+        </div>
+    </div>
+    <div class="summary">
+        <div class="title">{{feed.post.title}}</div>
+        <div class="description">
+            {{feed.post.content}}
+        </div>
+    </div>
+    <div class="footer clearfix">
+        <div class="pull-left totlal-likes">
+            <span class="icon"><i class="fa fa-heart"></i></span>
+            <span ng-if="feed.post.totalLike > 1">
+                {{feed.post.totalLike}} likes
+            </span>
+            <span ng-if="feed.post.totalLike <= 1">
+                {{feed.post.totalLike}} like
+            </span>
+        </div>
+        <div class="pull-left total-comments">
+            <span class="icon"><i class="fa fa-comments"></i></span>
+            <span ng-if="feed.post.totalComment > 1">
+                {{feed.post.totalComment}} replies
+            </span>
+            <span ng-if="feed.post.totalComment <= 1">
+                {{feed.post.totalComment}} reply
+            </span>
+        </div>
+        <div class="pull-right dots">
+            <span><i class="fa fa-ellipsis-h"></i></span>
+        </div>
+    </div>
+</div>

@@ -49,7 +49,7 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
                     photo.push({
                         fileName: $scope.photos[0].fileName,
                         displayOrder: i,
-                        description:''
+                        description: ''
                     });
                 }
             }
@@ -59,18 +59,18 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
                 content: $scope.postModel.content,
                 photo: photo,
                 isAnonymous: isAnonymous,
-                type:type
+                type: type
             };
             header = authenticationSvc.getHeader();
             Restangular.one('/v1/Post/CreateUpdatePost').customPOST(model, '', {}, header).then(function (data) {
                 console.log(data);
                 if (data && data.objectValue) {
-                    $scope.userLoops.unshift(data.objectValue);
-                    console.log($scope.userLoops)
+                    $scope.feedHome.unshift(data.objectValue);
+                    console.log($scope.feedHome)
                 } else {
 
                 }
-                
+
                 $('#modalPostSomething').modal('hide');
             });
         }
@@ -80,7 +80,7 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
         $localStorage['owloopAuth'] = null;
         $state.go('app.auth.login');
     };
-    
+
     $scope.OpenModalAddPost = function (name) {
         var userLoops = [];
         if (privateLoops.statusCode == 0) {
@@ -119,7 +119,7 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
     $scope.log = '';
 
     $scope.multiple = 1;
-    
+
     $scope.photos = [];
     $scope.upload = function (files) {
         header = authenticationSvc.getHeader();
@@ -150,5 +150,5 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
             }
         }
     };
-    
+
 });
