@@ -47,6 +47,8 @@ loopModule.controller('newfeedController', function ($scope, Restangular, authen
 
     };
 
+    
+
 });
 
 loopModule.directive('ngEnter', function () {

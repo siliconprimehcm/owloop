@@ -269,7 +269,7 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
         })
         .state('app.user.loop', {
             abstract: true,
-            url: '/loop',
+            url: '/loop/:loopId',
             views: {
                 'content@app.user': {
                     templateUrl: 'public/app/user/loop/looplayout.html'

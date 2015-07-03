@@ -114,25 +114,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="content-create-album">
-                <div class="top-create">
-                    <a href="#" data-dismiss="modal" aria-label="Close">Cancel</a>
-                    <a href="#" class="title">Create album</a>
-                    <a ng-click="createAlbum()" >Done</a>
-                </div>
+                
                 <div class="row no-gutters">
 
                     <div class="col-xs-8 pp-right-col">
                         <div class="list-card-media">
                             <div class="row gutter-half-15">
-                                <div class="col-xs-4">
-                                    <div class="card-sub create-album" ngf-select ng-model="files" ngf-multiple="multiple">
-                                        <i class="fa fa-plus"></i>
-                                        <div class="label">
-                                            Add more photo
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4" ng-repeat = 'photo in photos'>
+                                
+                                <div class="col-xs-4" ng-repeat = 'photo in photoOfAlbum'>
                                     <div class="card-sub">
                                         <img class="img" ng-src="{{photo.imageUrl | trusted}}">
                                         </img>

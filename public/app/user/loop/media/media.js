@@ -1,12 +1,12 @@
 var loopModule = angular.module('owloop.user.loop');
 
-loopModule.controller('mediaController', function ($scope, Restangular, authenticationSvc, Upload, $timeout) {
-    
+loopModule.controller('mediaController', function ($scope, Restangular, authenticationSvc, Upload, $timeout, $state, $stateParams) {
+    console.log($stateParams.loopId)
     getAlbum();
     function getAlbum(){
     	var header = authenticationSvc.getHeader();
 	    var param = {
-	        "loopId": 860,
+	        "loopId": $stateParams.loopId,
 			"lastUpdate": 0,
 			"pageSize": 10
 	    };
@@ -24,7 +24,7 @@ loopModule.controller('mediaController', function ($scope, Restangular, authenti
     $scope.createAlbum = function(){
     	var header = authenticationSvc.getHeader();
     	var param = {
-	        "loopId": 860,
+	        "loopId": $stateParams.loopId,
 			"title": $scope.newAlbum.title,
 			"description": $scope.newAlbum.description,
 			"photos": $scope.photos
@@ -45,7 +45,7 @@ loopModule.controller('mediaController', function ($scope, Restangular, authenti
 	$scope.createAlbumDone = function(){
 		var header = authenticationSvc.getHeader();
 		var param = {
-	        "loopId": 860,
+	        "loopId": $stateParams.loopId,
 			"title": $scope.newAlbum.title,
 			"description": $scope.newAlbum.description
 	    };
@@ -73,7 +73,7 @@ loopModule.controller('mediaController', function ($scope, Restangular, authenti
 	$scope.gotoAlbumDetail = function(album){
 		var header = authenticationSvc.getHeader();
 		var param = {
-	        "albumId": 860,
+	        "albumId": album.albumId,
 			"pageSize": 50
 	    };
 	    

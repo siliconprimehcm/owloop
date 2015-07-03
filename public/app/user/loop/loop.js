@@ -4,7 +4,7 @@ var loopModule = angular.module('owloop.user.loop', [
 ]);
 
 
-loopModule.controller('loopController', function ($scope, Restangular, authenticationSvc) {
+loopModule.controller('loopController', function ($scope, Restangular, authenticationSvc, $stateParams, $state) {
     
     $scope.joinLoop = function(id){
     	var header = authenticationSvc.getHeader();
@@ -18,4 +18,17 @@ loopModule.controller('loopController', function ($scope, Restangular, authentic
 
 	    });
 	};
+
+	$scope.gotoLoopNewfeed = function(){
+		console.log($stateParams.loopId);
+		$state.go('app.user.loop.newfeed', {'loopId':$stateParams.loopId});
+	};
+
+	$scope.gotoLoopMedia = function(){
+        $state.go('app.user.loop.media');
+    };
+
+    $scope.gotoLoopSetting = function(){
+        $state.go('app.user.loop.setting');
+    };
 });

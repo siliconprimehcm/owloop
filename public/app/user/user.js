@@ -1,5 +1,5 @@
 var userModule = angular.module('owloop.user', ['owloop.user.profile', 'owloop.user.loop', 'infinite-scroll', 'validation', 'validation.rule', 'server-validate']);
-userModule.controller('leftbarController', function ($scope, privateLoops, publicLoops, $localStorage) {
+userModule.controller('leftbarController', function ($scope, privateLoops, publicLoops, $localStorage, $state) {
     $scope.userId = $localStorage['owloopAuth'].customerId;
     var pubLoops = [];
     var priLoops = [];
@@ -19,6 +19,11 @@ userModule.controller('leftbarController', function ($scope, privateLoops, publi
     $scope.publicLoops = pubLoops;
     $scope.privateLoops = priLoops;
     $localStorage.userLoops = userLoops;
+
+    $scope.gotoThisLoop = function(loop){
+        console.log(loop);
+        $state.go('app.user.loop.newfeed', {'loopId': loop.loopId});
+    }
 });
 
 userModule.controller('rightbarController', function ($scope, loopPopulars) {

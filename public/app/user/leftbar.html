@@ -20,7 +20,7 @@
                     <div class="title">My loops private</div>
                     <ul>
                         <li class="line" ng-repeat="loop in privateLoops">
-                            <a>
+                            <a ng-click='gotoThisLoop(loop)'>
                                 <span class="icon"><i class="icon-x1-play"></i></span>
                                 <span class="name">{{loop.name}}</span>
                                 <span class="count">{{loop.notifCount}}</span>
