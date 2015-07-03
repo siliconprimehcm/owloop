@@ -161,7 +161,7 @@
              */
             this.checkValid = function(form) {
                 if (form.$valid === undefined) {
-                    return false;
+                    return true;
                 }
                 return (form && form.$valid === true);
             };

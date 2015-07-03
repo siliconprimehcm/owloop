@@ -1,12 +1,12 @@
+var userModule = angular.module('owloop.user.profile');
 
-var userModule = angular.module('owloop.user.profile', ['ngFileUpload']);
-userModule.controller('profileController', function ($rootScope, $scope, Restangular, $localStorage, authenticationSvc, $stateParams) {
+userModule.controller('loopProfileController', function ($rootScope, $scope, Restangular, $localStorage, authenticationSvc, $stateParams) {
     var header = authenticationSvc.getHeader();
     var customerId = '';
     if ($stateParams.userId) {
         customerId = $stateParams.userId;
     } else {
-        customerId = $localStorage['owloopAuth'].customerId;
+        customerId =  $localStorage['owloopAuth'].customerId;
     }
     var paramProfile = {
         "customerId": customerId
@@ -18,7 +18,6 @@ userModule.controller('profileController', function ($rootScope, $scope, Restang
         }
         $scope.userData = userData;
     });
-
     var paramPublicLoops = {
         "lastUpdate": 0,
         "pageSize": 10,
