@@ -4,25 +4,29 @@ userModule.controller('homefeedController', function ($rootScope, $scope, authen
     console.log('homefeedController');
     $rootScope.feedHome = [];
     $rootScope.lastUpdateFeed = 0;
+    $scope.hasMore = true;
     var header = authenticationSvc.getHeader();
     var param = {
-        "lastUpdate": $rootScope.lastUpdateFeed,
         "pageSize": 10,
         "getComment": false,
         "commentPageSize": 3
     };
 
     $scope.loadMoreFeed = function () {
-        var promise = feedService.getFeed(header, param);
-        promise.then(function (result) {
-            $rootScope.lastUpdateFeed = result.lastUpdate;
-            if (result.hasMore) {
+        param.lastUpdate = $rootScope.lastUpdateFeed;
+        if ($scope.hasMore) {
+            var promise = feedService.getFeed(header, param);
+            promise.then(function (result) {
+                $scope.hasMore = result.hasMore;
+                $rootScope.lastUpdateFeed = result.lastUpdate;
                 for (var i = 0; i < result.data.length; i++) {
                     $rootScope.feedHome.push(result.data[i]);
                 }
-            }
-        });
-    };
+
+            });
+
+        }
+   };
 });
 
 userModule.factory('feedService', function ($q, Restangular) {
