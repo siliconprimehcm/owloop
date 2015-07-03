@@ -224,7 +224,7 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             }
         })
         .state('app.user.profile', {
-            url: '/profile',
+            url: '/profile/:userId',
             views: {
                 'content@app.user': {
                     templateUrl: 'public/app/user/profile/profile.html',
