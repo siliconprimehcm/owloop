@@ -1,13 +1,15 @@
-var userModule = angular.module('owloop.user.profile');
+var loopProfileModule = angular.module('owloop.user.profile');
 
-userModule.controller('loopProfileController', function ($rootScope, $scope, Restangular, $localStorage, authenticationSvc, $stateParams) {
+loopProfileModule.controller('loopProfileController', function ( $scope, Restangular, $localStorage, authenticationSvc, $stateParams) {
     var header = authenticationSvc.getHeader();
+    $scope.timeLastUpdate = 0;
     var customerId = '';
     if ($stateParams.userId) {
         customerId = $stateParams.userId;
     } else {
         customerId =  $localStorage['owloopAuth'].customerId;
     }
+    
     var paramProfile = {
         "customerId": customerId
     };
@@ -18,36 +20,39 @@ userModule.controller('loopProfileController', function ($rootScope, $scope, Res
         }
         $scope.userData = userData;
     });
-    var paramPublicLoops = {
+    
+    var param = {
         "lastUpdate": 0,
         "pageSize": 10,
         "keyword": "",
-        "getNotifCount": true,
-        "loopType": 0
+        "friendId": customerId
     };
-    Restangular.one('/v1/Loop/GetMyLoop').customPOST(paramPublicLoops, '', {}, header).then(function (data) {
-        $scope.publicLoops = data.objectValue.data;
+    Restangular.one('/v1/Loop/GetFriendLoop').customPOST(param, '', {}, header).then(function (data) {
+        if (data.statusCode == 0) {
+            $scope.loopOfCategorys = data.objectValue.data;
+            $scope.timeLastUpdate = data.objectValue.lastUpdate;
+        } else {
+            $scope.loopOfCategorys = [];
+            $scope.timeLastUpdate = 0;
+        }
     });
-
-    var paramPrivateLoops = {
-        "lastUpdate": 0,
-        "pageSize": 10,
-        "keyword": "",
-        "getNotifCount": true,
-        "loopType": 1
+   
+    $scope.loadMore = function () {
+        param = {
+            "lastUpdate": $scope.timeLastUpdate,
+            "pageSize": 10,
+            "keyword": "",
+            "friendId": customerId
+        };
+        Restangular.one('/v1/Loop/GetFriendLoop').customPOST(param, '', {}, header).then(function (data) {
+            if (data.statusCode == 0) {
+                if (data.objectValue.data.length > 0) {
+                    for (var i = 0; i < data.objectValue.data.length; i++) {
+                        $scope.loopOfCategorys.push(data.objectValue.data[i]);
+                    }
+                    $scope.timeLastUpdate = data.objectValue.lastUpdate;
+                }
+            }
+        });
     };
-    Restangular.one('/v1/Loop/GetMyLoop').customPOST(paramPrivateLoops, '', {}, header).then(function (data) {
-        $scope.privateLoops = data.objectValue.data;
-    });
-
-    var paramPopularLoops = {
-        "pageSize": 10
-    };
-
-    Restangular.one('/v1/Loop/GetPopularLoop').customPOST(paramPopularLoops, '', {}, header).then(function (data) {
-        if (data.statusCode == 0)
-            $scope.loopPopulars = data.objectValue.data;
-        else
-            $scope.loopPopulars = [];
-    });
 });

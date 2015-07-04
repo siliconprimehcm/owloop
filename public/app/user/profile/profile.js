@@ -1,6 +1,6 @@
 
-var userModule = angular.module('owloop.user.profile', ['ngFileUpload']);
-userModule.controller('profileController', function ($rootScope, $scope, Restangular, $localStorage, authenticationSvc, $stateParams) {
+var profileModule = angular.module('owloop.user.profile', []);
+profileModule.controller('profileController', function ($rootScope, $scope, Restangular, $localStorage, authenticationSvc, $stateParams) {
     var header = authenticationSvc.getHeader();
     var customerId = '';
     if ($stateParams.userId) {

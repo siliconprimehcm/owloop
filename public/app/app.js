@@ -225,10 +225,10 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
         })
      .state('app.user.profile', {
          abstract: true,
-         url: '/profile',
+         url: '/profile/{userId}',
          views: {
              'content@app.user': {
-                 templateUrl: 'public/app/user/profile/activity/activity.html',
+                 templateUrl: 'public/app/user/profile/profileLayout.html',
                  controller: 'profileController'
              },
              'leftbar@app.user': {
@@ -242,23 +242,31 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
          }
      })
         .state('app.user.profile.activity', {
-            url: '/:userId/activity',
+            url: '/activity',
             views: {
-                'content@app.user.profile': {
+                'profilecontent@app.user.profile': {
                     templateUrl: 'public/app/user/profile/activity/activity.html',
+                    controller: 'activityprofileController'
+                },
+                'topProfilecontent@app.user.profile': {
+                    templateUrl: 'public/app/user/profile/topProfile.html',
                     controller: 'activityprofileController'
                 }
             }
         })
-    .state('app.user.profile.loop', {
-        url: '/:userId/loop',
-        views: {
-            'content@app.user.profile': {
-                templateUrl: 'public/app/user/profile/loop/loop.html',
-                controller: 'loopProfileController'
-            },
-        }
-    })
+        .state('app.user.profile.loop', {
+            url: '/loop',
+            views: {
+                'profilecontent@app.user.profile': {
+                    templateUrl: 'public/app/user/profile/loop/loop.html',
+                    controller: 'loopProfileController'
+                },
+                'topProfilecontent@app.user.profile': {
+                    templateUrl: 'public/app/user/profile/topProfile.html',
+                    controller: 'loopProfileController'
+                }
+            }
+        })
         .state('app.user.loop', {
             abstract: true,
             url: '/loop',
