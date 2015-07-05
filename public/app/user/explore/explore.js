@@ -196,7 +196,23 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
                $('#modalInviteFriendToNewLoop').modal('toggle');
             });
         });
-    }
+    };
+
+    $scope.myImage='';
+    $scope.myCroppedImage='';
+
+    var handleFileSelect=function(evt) {
+        console.log('aaaaa')
+        var file=evt.currentTarget.files[0];
+        var reader = new FileReader();
+        reader.onload = function (evt) {
+            $scope.$apply(function($scope){
+                $scope.myImage=evt.target.result;
+            });
+        };
+        reader.readAsDataURL(file);
+    };
+    angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
     
 });
 

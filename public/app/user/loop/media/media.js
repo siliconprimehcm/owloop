@@ -1,10 +1,12 @@
 var loopModule = angular.module('owloop.user.loop');
 
 loopModule.controller('mediaController', function ($scope, Restangular, authenticationSvc, Upload, $timeout, $state, $stateParams) {
+
     console.log($stateParams.loopId)
     getAlbum();
     function getAlbum(){
     	var header = authenticationSvc.getHeader();
+    	
 	    var param = {
 	        "loopId": $stateParams.loopId,
 			"lastUpdate": 0,
@@ -71,18 +73,7 @@ loopModule.controller('mediaController', function ($scope, Restangular, authenti
 	};
 
 	$scope.gotoAlbumDetail = function(album){
-		var header = authenticationSvc.getHeader();
-		var param = {
-	        "albumId": album.albumId,
-			"pageSize": 50
-	    };
-	    
-    	Restangular.one('/v1/Album/GetAlbumById').customPOST(param, '', {}, header).then(function (data) {
-    		$scope.photoOfAlbum = data.objectValue.data;
-	    	$(function () {
-			   $('#modalAlbumDetail').modal('toggle');
-			});
-	    });
+		$state.go('app.user.loop.media.album', {'albumId': album.albumId});
 	}
 
     $scope.$watch('files', function () {

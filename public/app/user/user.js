@@ -1,23 +1,11 @@
-var userModule = angular.module('owloop.user', ['owloop.user.profile', 'owloop.user.loop', 'infinite-scroll', 'validation', 'validation.rule', 'server-validate']);
-userModule.controller('leftbarController', function ($scope, privateLoops, publicLoops, $localStorage, $state) {
-    $scope.userId = $localStorage['owloopAuth'].customerId;
-    var pubLoops = [];
-    var priLoops = [];
-    var userLoops = [];
-    if (privateLoops.statusCode == 0) {
-        for (var i = 0; i < privateLoops.objectValue.data.length; i++) {
-            priLoops.push(privateLoops.objectValue.data[i]);
-            userLoops.push(privateLoops.objectValue.data[i]);
-        }
-    }
-    if (publicLoops.statusCode == 0) {
-        for (var i = 0; i < publicLoops.objectValue.data.length; i++) {
-            pubLoops.push(publicLoops.objectValue.data[i]);
-            userLoops.push(publicLoops.objectValue.data[i]);
-        }
-    }
-    $scope.publicLoops = pubLoops;
-    $scope.privateLoops = priLoops;
+var userModule = angular.module('owloop.user', ['owloop.user.profile', 'owloop.user.loop', 'infinite-scroll', 'validation', 'validation.rule', 'server-validate', 'ngImgCrop']);
+
+userModule.controller('leftbarController', function ($scope, Restangular, authenticationSvc, $localStorage, $state, publicLoops, privateLoops) {
+    
+    $scope.privateLoops = privateLoops.objectValue.data;
+    $scope.publicLoops = publicLoops.objectValue.data;
+    userLoops = $scope.privateLoops.concat($scope.publicLoops);
+
     $localStorage.userLoops = userLoops;
 
     $scope.gotoThisLoop = function(loop){
@@ -26,15 +14,38 @@ userModule.controller('leftbarController', function ($scope, privateLoops, publi
     }
 });
 
-userModule.controller('rightbarController', function ($scope, loopPopulars) {
-    console.log('rightbarController');
-    $scope.loopPopulars = loopPopulars;
+userModule.controller('rightbarController', function ($scope, Restangular, authenticationSvc) {
+
+    getPopularLoop();
+    function getPopularLoop(){
+        var header = authenticationSvc.getHeader();
+        var param = {
+            "pageSize": 10
+        };
+
+        Restangular.one('/v1/Loop/GetPopularLoop').customPOST(param, '', {}, header).then(function (data) {
+            $scope.loopPopulars = data.objectValue.data;
+            
+        });
+    };
+
 });
+
 userModule.filter('trusted', ['$sce', function ($sce) {
     return function (url) {
         return $sce.trustAsResourceUrl(url);
     };
 }]);
+
+userModule.directive('feedTemplate', function () {
+    return {
+        restrict: 'E',
+        scope: {
+            feed: "=feed"
+        },
+        templateUrl: 'public/app/user/share/templates/feed_template.html',
+    }
+})
 
 
 //userModule.factory('loopInLayoutService', function($http, $log, $q, Restangular) {
@@ -60,12 +71,3 @@ userModule.filter('trusted', ['$sce', function ($sce) {
 //    };
 //});
 
-userModule.directive('feedTemplate', function () {
-    return {
-        restrict: 'E',
-        scope: {
-            feed: "=feed"
-        },
-        templateUrl: '/public/app/user/share/templates/feed_template.html',
-    }
-})

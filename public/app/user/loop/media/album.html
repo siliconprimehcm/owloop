@@ -1,0 +1,25 @@
+<div class="card-main ">
+    <div class="summary-view-album">
+        <div class="title">Share photos from your favorite LA hikes</div>
+        <div class="description">
+            Don't forget give us some colors from the hike. Where is it? How long did it take you to complete? 
+            What are your favorite moments?
+        </div>
+        <div class="create-by">
+            <span>Create by <b>Trong Tran</b> at 12:45 pm</span>
+            <span><i class="fa fa-users"></i> Contributors</span>
+        </div>
+        <a href="#" class="btn btn-contribute"><i class="fa fa-plus"></i> Contribute</a>
+    </div>
+    <div class="list-view-album">
+        <div class="row gutter-half-15">
+            <div class="col-xs-4" ng-repeat='photo in photoOfAlbum'>
+                <div class="card-sub">
+                    <div class="img" ng-src="{{photo.imageUrlThumb | trusted}}">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

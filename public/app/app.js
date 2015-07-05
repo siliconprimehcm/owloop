@@ -89,8 +89,8 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             url: '/user',
             views: {
                 '': {
-                    templateUrl: 'public/app/user/layout/layout.html',
-                    controller: 'layoutController'
+                    templateUrl: 'public/app/user/layout/layout.html'
+                   ,controller: 'layoutController'
                 },
                 'leftbar@app.user': {
                     templateUrl: 'public/app/user/leftbar.html'
@@ -108,49 +108,32 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 authenticate: function (authenticationSvc) {
                     return authenticationSvc.requireLogin();
                 },
-
-                loopPopulars: function (Restangular, authenticationSvc) {
+                publicLoops:function(authenticate,Restangular, authenticationSvc){
                     var header = authenticationSvc.getHeader();
-                    var param = {
-                        "pageSize": 10
-                    };
-                    return Restangular.one('/v1/Loop/GetPopularLoop').customPOST(param, '', {}, header).then(function (data) {
-                        if (data.statusCode == 0)
-                            return data.objectValue.data;
-                        else
-                            return [];
-                    });
-                },
-                publicLoops: function (authenticate, Restangular, authenticationSvc) {
-                    var header = authenticationSvc.getHeader();
-                    console.log(header);
                     var param = {
                         "lastUpdate": 0,
-                        "pageSize": 10,
+                        "pageSize": 50,
                         "keyword": "",
                         "loopType": 0,
-                        "getNotifCount": true,
+                        "getNotifCount": true
                     };
-
                     return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
-                        return data;
-                    });
+                        return data
+                    })
                 },
-                privateLoops: function (authenticate, Restangular, authenticationSvc) {
+                privateLoops:function(authenticate, Restangular, authenticationSvc){
                     var header = authenticationSvc.getHeader();
-                    console.log(header);
                     var param = {
                         "lastUpdate": 0,
-                        "pageSize": 10,
+                        "pageSize": 50,
                         "keyword": "",
                         "loopType": 1,
-                        "getNotifCount": true,
+                        "getNotifCount": true
                     };
-
                     return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
-                        return data;
-                    });
-                },
+                        return data
+                    })
+                }
             }
         })
         .state('app.user.homefeed', {
@@ -292,6 +275,15 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 'loopcontent@app.user.loop': {
                     templateUrl: 'public/app/user/loop/media/media.html'
                     ,controller: 'mediaController'
+                }
+            }
+        })
+        .state('app.user.loop.media.album', {
+            url: '/album/:albumId',
+            views: {
+                'loopcontent@app.user.loop': {
+                    templateUrl: 'public/app/user/loop/media/album.html'
+                    ,controller: 'albumController'
                 }
             }
         })
