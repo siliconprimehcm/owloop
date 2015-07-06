@@ -1,6 +1,6 @@
 var userModule = angular.module('owloop.user');
 
-userModule.controller('exploreController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService) {
+userModule.controller('exploreController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService, Upload, $timeout, $state) {
     console.log('exploreController');
     $rootScope.loopOfCategorys = [];
     $scope.loopCategories = [];
@@ -130,13 +130,15 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
         name:'',
         description:'',
         loopId:''
-    }
+    };
+
+    var loopAvatarImage = '';
     $scope.createNewLoop = function(){
         var header = authenticationSvc.getHeader();
         var param = {
             "name": $scope.newLoop.name,
             "description": $scope.newLoop.description,
-            "avatarFileName": '',
+            "avatarFileName": loopAvatarImage,
             "OnlyAdminCanPost": false
         };
         
@@ -161,6 +163,7 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
             $(function () {
                $('#modalInviteFriendToNewLoop').modal('toggle');
             });
+            $state.go('app.user.loop.newfeed', {loopId: $scope.newLoop.loopId})
         });
     };
 
@@ -208,12 +211,53 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
         reader.onload = function (evt) {
             $scope.$apply(function($scope){
                 $scope.myImage=evt.target.result;
+                
             });
         };
         reader.readAsDataURL(file);
+
     };
     angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
     
+    
+    $scope.uploadAvatar = function () {
+        var header = authenticationSvc.getHeader();
+        delete header['Content-type'];
+        console.log($scope.myCroppedImage);
+        Upload.upload({
+            url: 'http://owloopstaging-api.azurewebsites.net/v1/File/UploadTempPhotos',
+            headers: header,
+
+            fields: {
+                'username': 'no need'
+            },
+            file: thisIsMagic($scope.myCroppedImage)
+        }).progress(function (evt) {
+            
+        }).success(function (data, status, headers, config) {
+            $timeout(function() {
+                loopAvatarImage = data.objectValue.data[0].fileName;
+            });
+        });
+    };
+
+
+    function thisIsMagic(dataURI) {
+        var byteString;
+        if (dataURI.split(',')[0].indexOf('base64') >= 0)
+            byteString = atob(dataURI.split(',')[1]);
+        else
+            byteString = unescape(dataURI.split(',')[1]);
+
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+        var ia = new Uint8Array(byteString.length);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+
+        return new Blob([ia], {type:mimeString});
+    }
 });
 
 userModule.factory('loopInCategoryService', function ($http, $log, $q, Restangular) {

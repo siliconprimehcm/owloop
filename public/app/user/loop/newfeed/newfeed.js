@@ -1,12 +1,12 @@
 var loopModule = angular.module('owloop.user.loop');
 
-loopModule.controller('newfeedController', function ($scope, Restangular, authenticationSvc) {
+loopModule.controller('newfeedController', function ($scope, Restangular, authenticationSvc, $stateParams) {
 
     getAllFeed();
     function getAllFeed(){
     	var header = authenticationSvc.getHeader();
 	    var param = {
-	        "loopId": 860,
+	        "loopId": $stateParams.loopId,
 			"lastUpdate": 0,
 			"pageSize": 10
 	    };
@@ -21,7 +21,7 @@ loopModule.controller('newfeedController', function ($scope, Restangular, authen
     	console.log("enter");
     	var header = authenticationSvc.getHeader();
 	    var param = {
-	        "loopId": 860,
+	        "loopId": $stateParams.loopId,
 			"lastUpdate": 0,
 			"pageSize": 10
 	    };
