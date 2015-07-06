@@ -1,4 +1,4 @@
-var userModule = angular.module('owloop.user', ['owloop.user.profile', 'owloop.user.loop', 'infinite-scroll', 'validation', 'validation.rule', 'server-validate', 'ngImgCrop']);
+var userModule = angular.module('owloop.user', ['owloop.user.profile', 'owloop.user.search', 'owloop.user.loop', 'infinite-scroll', 'validation', 'validation.rule', 'server-validate', 'ngImgCrop']);
 
 userModule.controller('leftbarController', function ($scope, Restangular, authenticationSvc, $localStorage, $state) {
     var userLoops = [];

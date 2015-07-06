@@ -1,6 +1,6 @@
-var userModule = angular.module('owloop.user');
 
-userModule.controller('searchController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService) {
+var userModule = angular.module('owloop.user.search', []);
+userModule.controller('searchController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService, $stateParams) {
  
     var header = authenticationSvc.getHeader();
     var param1 = {
@@ -13,9 +13,6 @@ userModule.controller('searchController', function ($rootScope, $scope, Restangu
     Restangular.one('/v1/Loop/GetMyLoop').customPOST(param1, '', {}, header).then(function (data) {
         if (data.statusCode == 0) {
             $scope.publicLoops = data.objectValue.data;
-            for (var i = 0; i < data.objectValue.data.length; i++) {
-                userLoops.push(data.objectValue.data[i]);
-            }
         } else {
             $scope.publicLoops = [];
         }
@@ -30,9 +27,6 @@ userModule.controller('searchController', function ($rootScope, $scope, Restangu
     Restangular.one('/v1/Loop/GetMyLoop').customPOST(param2, '', {}, header).then(function (data) {
         if (data.statusCode == 0) {
             $scope.privateLoops = data.objectValue.data;
-            for (var i = 0; i < data.objectValue.data.length; i++) {
-                userLoops.push(data.objectValue.data[i]);
-            }
         } else {
             $scope.privateLoops = [];
         }

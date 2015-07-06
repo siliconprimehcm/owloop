@@ -163,6 +163,7 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             }
         })
         .state('app.user.search', {
+            abstract: true,
             url: '/search',
             views: {
                 'leftbar@app.user': {
@@ -179,6 +180,15 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 },
             }
         })
+            .state('app.user.search.people', {
+                url: '/people/{keyword}',
+                views: {
+                    'searchContent@app.user.search': {
+                        templateUrl: 'public/app/user/search/people/searchpeople.html',
+                        controller: 'searchpeopleController'
+                    },
+                }
+            })
      .state('app.user.profile', {
          abstract: true,
          url: '/profile/{userId}',
