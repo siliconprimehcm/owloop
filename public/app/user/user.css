@@ -2193,3 +2193,8 @@ a {
   width:500px;
   height:350px;
 }
+
+
+*[ng-click] {
+    cursor: pointer;
+}

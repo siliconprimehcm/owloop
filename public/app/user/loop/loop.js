@@ -1,11 +1,26 @@
 var loopModule = angular.module('owloop.user.loop', [
 
-	'ngFileUpload'
+	
 ]);
 
 
 loopModule.controller('loopController', function ($scope, Restangular, authenticationSvc, $stateParams, $state) {
     
+	getLoopById();
+	$scope.loopProfile = {};
+    function getLoopById(){
+    	var header = authenticationSvc.getHeader();
+	    var param = {
+	        "loopId": $stateParams.loopId
+	    };
+	    Restangular.one('/v1/Loop/GetLoopById').customPOST(param, '', {}, header).then(function (data) {
+	    	$scope.loopProfile['avatarUrl'] = data.objectValue.avatarUrl;
+	    	$scope.loopProfile['name'] = data.objectValue.name;
+	    	$scope.loopProfile['description'] = data.objectValue.description;
+	    });
+    }
+
+
     $scope.joinLoop = function(id){
     	var header = authenticationSvc.getHeader();
     	var param = {
