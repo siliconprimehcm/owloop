@@ -799,7 +799,8 @@ a {
         }
 
         .card-main .summary .description img {
-            width: 50%;
+            min-width: 33.33333%;
+            max-width: 50%;
             padding-left: 5px;
             padding-right: 5px;
             float: left;

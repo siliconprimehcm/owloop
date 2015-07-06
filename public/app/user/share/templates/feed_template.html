@@ -20,7 +20,12 @@
     <div class="summary">
         <div class="title">{{feed.post.title}}</div>
         <div class="description">
-            {{feed.post.content}}
+            <p>
+                {{feed.post.content}}
+            </p>
+            <p ng-if="feed.post.photos.data.length > 0" class="img clearfix">
+                <img ng-repeat="images in feed.post.photos.data" src="{{images.imageUrl}}" />
+            </p>
         </div>
     </div>
     <div class="footer clearfix">

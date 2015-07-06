@@ -158,15 +158,15 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="content-post-something">
-                <form id="idAddPost" name="addPostForm">
+                <form name="postForm" ng-submit="submitPostForm()">
                     <div class="enter-comments no-border">
                         <div class="profile-avatar clearfix">
                             <a href="#" class="avartar">
-                                <img src="{{userDataMoal.avatarUrl}}" width="34" height="34" class="img-circle">
+                                <img src="{{userData.avatarUrl}}" width="34" height="34" class="img-circle">
                             </a>
                             <div class="info">
                                 <span class="name">
-                                    <a>{{userDataMoal.firstName + " " + userDataMoal.lastName}}</a>
+                                    <a>{{userData.firstName + " " + userData.lastName}}</a>
                                 </span>
                                 <span class="time-created">
                                     <a>
@@ -185,19 +185,20 @@
                                         <a>{{userLoop.name}}</a>
                                     </li>
                                 </ul>
+                                <input type="hidden" ng-model="postModel.loopId"/>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control"
-                                   name='title' ng-model="postModel.title"
-                                   placeholder="Write your answer, or answer later...."
-                                   validator="required" valid-method="submit" message-id="titlePostRequire">
-                            <span for="title" id="titlePostRequire"></span>
+                        <div class="form-group" ng-class="{ 'has-error' : postForm.title.$invalid && ! postForm.title.$pristine}">
+                            <input type="text" name="title" class="form-control" 
+                                   ng-model="postModel.title" required
+                                   placeholder="Write your answer, or answer later....">
+                            <span ng-show="postForm.title.$invalid && !postForm.title.$pristine" class="help-block">Title is required.</span>
                         </div>
-                        <div class="form-group">
-                            <textarea name='content' placeholder="Post something...." ng-model="postModel.content" class="form-control"
-                                      validator="required" valid-method="submit" message-id="contentPostRequire"></textarea>
-                            <span for="content" id="contentPostRequire"></span>
+                        <div class="form-group" ng-class="{ 'has-error' : postForm.content.$invalid && ! postForm.content.$pristine}">
+                            <textarea name='content' placeholder="Post something...." 
+                                      ng-model="postModel.content" class="form-control"
+                                      required></textarea>
+                            <span ng-show="postForm.content.$invalid && !postForm.content.$pristine" class="help-block">Description is required.</span>
                         </div>
                         <div class="form-group list-image clearfix">
                             <ul >
@@ -217,23 +218,20 @@
                     </div>
                     <div class="footer clearfix">
                         <div class="pull-left text-right">
-
                             <label class="checkbox-inline">
-                                <input type="checkbox" ng-checked="selection.indexOf(0) > -1"
-                                       ng-click="toggleSelection(0)"
+                                <input type="checkbox" 
+                                       ng-model="postModel.postType"
                                        name="postType" value="0"> This is a question
                             </label>
                             <label class="checkbox-inline">
                                 <input type="checkbox"
-                                       ng-checked="selection.indexOf(1) > -1"
-                                       ng-click="toggleSelection(1)"
-                                       name="postType" value="1">Anonymous
+                                       ng-model="postModel.postType"
+                                       name="postType" value="1"> Anonymous
                             </label>
-
                         </div>
                         <div class="pull-right">
                             <a href="#" data-dismiss="modal" aria-label="Close" class="btn btn-cancel">Cancel</a>
-                            <a href="#" class="btn btn-post" ng-click="idAddPost.submit(addPostForm)" type="submit">Post</a>
+                            <button class="btn btn-post"  type="submit" ng-disabled="postForm.$invalid">Post</button>
                         </div>
                     </div>
                 </form>

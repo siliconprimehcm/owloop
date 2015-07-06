@@ -1,7 +1,8 @@
 <div class="content-column-one ">
-    <div infinite-scroll='loadMoreFeed()' infinite-scroll-distance='0'>
+    <div infinite-scroll='loadMoreFeed()' infinite-scroll-disabled='busyLoading' infinite-scroll-distance='0'>
         <div class="feed-home" ng-repeat="feed in feedHome">
             <feed-template feed="feed"></feed-template>
         </div>
+        <div ng-show='busyLoading'>Loading data...</div>
     </div>
 </div>
