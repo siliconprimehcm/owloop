@@ -51,11 +51,6 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
     $scope.log = '';
     $scope.photos = [];
     $scope.userData = $localStorage['owloopAuth'];
-    if ($scope.userData && (!$scope.userData.avatarUrl || $scope.userData.avatarUrl == '')) {
-        $scope.userData.avatarUrl = '/public/images/item/item_avatar_default.png';
-    }
-
-
 
     $scope.OpenModalAddPost = function (name) {
         $('#' + name).modal('show');
