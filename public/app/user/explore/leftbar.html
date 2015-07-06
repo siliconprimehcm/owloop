@@ -5,10 +5,10 @@
                 <div class="item-main">
                     <button class="title">Public</button>
                     <ul>
-                        <li class="line" ng-repeat="loop in loopCategories" ng-click="getLoopOfCategories(loop.categoryId)">
+                        <li class="line" ng-repeat="category in loopCategories" ng-click="getLoopOfCategories(category)">
                             <a>
                                 <span class="icon"><i class="icon-x1-play"></i></span>
-                                <span class="name">{{loop.name}}</span>
+                                <span class="name">{{category.name}}</span>
                                 <!--<span class="count">1</span>-->
                             </a>
                         </li>
@@ -41,7 +41,7 @@
                 <form>
                     <div class="top-create">
                         <a href="#" data-dismiss="modal" aria-label="Close">Cancel</a>
-                        <a href="#" class="title">Edit name</a>
+                        <a href="#" class="title">Create new loop</a>
                         <a ng-click="createNewLoop()" href="#">Next</a>
                     </div>
                     <div class="form-group">
