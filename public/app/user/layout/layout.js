@@ -3,8 +3,17 @@ var userModule = angular.module('owloop.user');
 
 userModule.controller('layoutController', function ($scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Upload, $timeout, privateLoops, publicLoops) {
     var header = authenticationSvc.getHeader();
+    $scope.privateLoops = privateLoops.objectValue.data;
+    $scope.publicLoops = publicLoops.objectValue.data;
+    userLoops = $scope.privateLoops.concat($scope.publicLoops);
+
+    $localStorage.userLoops = userLoops;
     $scope.userLoops = $localStorage.userLoops;
-    $scope.fisrtUserLoopName = $scope.userLoops[0].name;
+    if (typeof $scope.userLoops == undefined)
+    {
+        $scope.userLoops = {}
+    }
+    $scope.fisrtUserLoopName = typeof $scope.userLoops != "undefined" ? $scope.userLoops[0].name : "";
     $scope.log = '';
     $scope.photos = [];
     $scope.userData = $localStorage['owloopAuth'];
