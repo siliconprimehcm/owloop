@@ -841,8 +841,11 @@ a {
 
             .card-main .footer span.icon {
                 margin-right: 5px;
+                display: inline-block
             }
-
+            .card-main .footer span.icon:hover{
+                cursor: pointer
+            }
         .card-main .footer .totlal-likes {
             margin-right: 25px;
         }
@@ -854,7 +857,7 @@ a {
 
     .card-main .enter-comments {
         margin-top: 10px;
-        /*border-top: 1px solid #e5e5e5;*/
+        border-top: 1px solid #e5e5e5;
         padding: 10px 0;
     }
 

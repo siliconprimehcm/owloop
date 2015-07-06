@@ -4,7 +4,7 @@
             <a href="#">{{postItem.loopId}}</a>
         </div>
         <div class="list-post">
-            <div class="post">
+            <div class="post post-main">
                 <div class="profile-avatar clearfix ">
                     <a href="#" class="avartar">
                         <img src="{{postItem.customerAvatarUrl}}" width="34" height="34" class="img-circle">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="footer clearfix">
-                    <div class="pull-left totlal-likes">
+                    <div class="pull-left totlal-likes" ng-click="LikeUnlike(stateLike)" ng-class="has-like: {stateLike == true}">
                         <span class="icon"><i class="fa fa-heart"></i></span>
                         <span>{{postItem.totalLike}} {{ postItem.totalLike > 1 | iif: "likes" : "like"}}</span>
                     </div>
@@ -40,59 +40,20 @@
                     </div>
                 </div>
             </div>
-            <div class="post">
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Jessica Alba</a>
-                        </span>
-                        <span class="time-created">
-                            <a>
-                                created a question 2 hours ago
-                            </a>
-                        </span>
-                    </div>
-                </div>
-                <div class="summary">
-                    <div class="description">
-                        Sed congue consectetur nunc, a vehicula enim consectetur sed
-                    </div>
-                </div>
-                <div class="footer clearfix">
-                    <div class="pull-left totlal-likes">
-                        <span class="icon"><i class="fa fa-heart"></i></span>
-                        <span>135 likes</span>
-                    </div>
-                    <div class="pull-left total-comments">
-                        <span class="icon"><i class="fa fa-comments"></i></span>
-                        <span>6 Replies</span>
-                    </div>
-                    <div class="pull-right dots">
-                        <span><i class="fa fa-ellipsis-h"></i></span>
-                    </div>
-                </div>
-            </div>
         </div>
-            
-
-            
-
 
         <div class="enter-comments">
             <div class="profile-avatar clearfix">
                 <a href="#" class="avartar">
-                    <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                    <img src="{{postItem.customerAvatarUrl}}" width="34" height="34" class="img-circle">
                 </a>
                 <div class="info">
                     <span class="name">
-                        <a>Jessica Alba</a>
+                        <a href="#">{{postItem.customerUsername}}</a>
                     </span>
                     <span class="time-created">
                         <a>
-                            created a question 2 hours ago
+                            created a question  {{postItem.createTs | date: 'yyyy-MM-dd HH:mm:ss'}}
                         </a>
                     </span>
                 </div>
