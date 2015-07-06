@@ -12,7 +12,7 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
         "getNotifCount": true
     };
     Restangular.one('/v1/Loop/GetMyLoop').customPOST(param1, '', {}, header).then(function (data) {
-        if (data.stateCode == 0) {
+        if (data.statusCode == 0) {
             $scope.publicLoops = data.objectValue.data;
             for (var i = 0; i < data.objectValue.data.length; i++) {
                 userLoops.push(data.objectValue.data[i]);
@@ -29,7 +29,7 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
         "getNotifCount": true
     };
     Restangular.one('/v1/Loop/GetMyLoop').customPOST(param2, '', {}, header).then(function (data) {
-        if (data.stateCode == 0) {
+        if (data.statusCode == 0) {
             $scope.privateLoops = data.objectValue.data;
             for (var i = 0; i < data.objectValue.data.length; i++) {
                 userLoops.push(data.objectValue.data[i]);

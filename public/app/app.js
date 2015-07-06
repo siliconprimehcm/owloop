@@ -19,7 +19,6 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
     $urlRouterProvider.otherwise('/user/homefeed');
 
     $stateProvider
-
         .state('app', {
             abstract: true,
             url: '',
@@ -108,32 +107,6 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 authenticate: function (authenticationSvc) {
                     return authenticationSvc.requireLogin();
                 },
-                //publicLoops:function(authenticate,Restangular, authenticationSvc){
-                //    var header = authenticationSvc.getHeader();
-                //    var param = {
-                //        "lastUpdate": 0,
-                //        "pageSize": 50,
-                //        "keyword": "",
-                //        "loopType": 0,
-                //        "getNotifCount": true
-                //    };
-                //    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
-                //        return data
-                //    })
-                //},
-                //privateLoops:function(authenticate, Restangular, authenticationSvc){
-                //    var header = authenticationSvc.getHeader();
-                //    var param = {
-                //        "lastUpdate": 0,
-                //        "pageSize": 50,
-                //        "keyword": "",
-                //        "loopType": 1,
-                //        "getNotifCount": true
-                //    };
-                //    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
-                //        return data
-                //    })
-                //}
             }
         })
         .state('app.user.homefeed', {
@@ -171,23 +144,6 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 }
             }
         })
-        .state('app.user.search', {
-            url: '/search',
-            views: {
-                'leftbar@app.user': {
-                    templateUrl: 'public/app/user/search/leftbar.html'
-                    , controller: 'searchController'
-                },
-                'content@app.user': {
-                    templateUrl: 'public/app/user/search/search.html'
-                    , controller: 'searchController'
-                },
-                'rightbar@app.user': {
-                    templateUrl: 'public/app/user/rightbar.html'
-                    , controller: 'searchController'
-                },
-            }
-        })
         .state('app.user.post', {
             url: '/post/:postId',
             views: {
@@ -204,6 +160,23 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                     templateUrl: 'public/app/user/albumdetail/albumdetail.html',
                     controller: 'albumController'
                 }
+            }
+        })
+        .state('app.user.search', {
+            url: '/search',
+            views: {
+                'leftbar@app.user': {
+                    templateUrl: 'public/app/user/leftbar.html'
+                    , controller: 'searchController'
+                },
+                'content@app.user': {
+                    templateUrl: 'public/app/user/search/search.html'
+                    , controller: 'searchController'
+                },
+                'rightbar@app.user': {
+                    templateUrl: 'public/app/user/rightbar.html'
+                    , controller: 'searchController'
+                },
             }
         })
      .state('app.user.profile', {

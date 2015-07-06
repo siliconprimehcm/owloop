@@ -3,31 +3,39 @@ var userModule = angular.module('owloop.user');
 userModule.controller('searchController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService) {
  
     var header = authenticationSvc.getHeader();
- 
-    var categoryIdRemind = 0;
-
-    var header = authenticationSvc.getHeader();
- 
-    var param = {
+    var param1 = {
         "lastUpdate": 0,
-        "pageSize": 10,
+        "pageSize": 50,
         "keyword": "",
-        "getNotifCount": true,
-        "loopType": 0
+        "loopType": 0,
+        "getNotifCount": true
     };
-    Restangular.one('/v1/Loop/GetMyLoop').customPOST(paramPublicLoops, '', {}, header).then(function (data) {
-        $scope.publicLoops = data.objectValue.data;
+    Restangular.one('/v1/Loop/GetMyLoop').customPOST(param1, '', {}, header).then(function (data) {
+        if (data.statusCode == 0) {
+            $scope.publicLoops = data.objectValue.data;
+            for (var i = 0; i < data.objectValue.data.length; i++) {
+                userLoops.push(data.objectValue.data[i]);
+            }
+        } else {
+            $scope.publicLoops = [];
+        }
     });
-    
-    var paramPrivateLoops = {
+    var param2 = {
         "lastUpdate": 0,
-        "pageSize": 10,
+        "pageSize": 50,
         "keyword": "",
-        "getNotifCount": true,
-        "loopType": 1
+        "loopType": 1,
+        "getNotifCount": true
     };
-    Restangular.one('/v1/Loop/GetMyLoop').customPOST(paramPrivateLoops, '', {}, header).then(function (data) {
-        $scope.privateLoops = data.objectValue.data;
+    Restangular.one('/v1/Loop/GetMyLoop').customPOST(param2, '', {}, header).then(function (data) {
+        if (data.statusCode == 0) {
+            $scope.privateLoops = data.objectValue.data;
+            for (var i = 0; i < data.objectValue.data.length; i++) {
+                userLoops.push(data.objectValue.data[i]);
+            }
+        } else {
+            $scope.privateLoops = [];
+        }
     });
     
     var paramPopularLoops = {

@@ -13,9 +13,9 @@ profileModule.controller('profileController', function ($rootScope, $scope, Rest
     };
     Restangular.one('/v1/Customer/GetProfile').customPOST(paramProfile, '', {}, header).then(function (data) {
         var userData = data.objectValue;
-        if (userData && (!userData.avatarUrl || userData.avatarUrl == '')) {
-            userData.avatarUrl = '/public/images/item/item_avatar_default.png';
-        }
+        //if (userData && (!userData.avatarUrl || userData.avatarUrl == '')) {
+        //    userData.avatarUrl = '/public/images/item/item_avatar_default.png';
+        //}
         $scope.userData = userData;
     });
 
