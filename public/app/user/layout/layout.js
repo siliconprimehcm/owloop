@@ -1,11 +1,45 @@
 
 var userModule = angular.module('owloop.user');
 
-userModule.controller('layoutController', function ($scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Upload, $timeout, privateLoops, publicLoops) {
+userModule.controller('layoutController', function ($scope, $injector, Restangular, $localStorage, $state, authenticationSvc, Upload, $timeout) {
+    var userLoops = [];
     var header = authenticationSvc.getHeader();
-    $scope.privateLoops = privateLoops.objectValue.data;
-    $scope.publicLoops = publicLoops.objectValue.data;
-    userLoops = $scope.privateLoops.concat($scope.publicLoops);
+    var param1 = {
+        "lastUpdate": 0,
+        "pageSize": 50,
+        "keyword": "",
+        "loopType": 0,
+        "getNotifCount": true
+    };
+    Restangular.one('/v1/Loop/GetMyLoop').customPOST(param1, '', {}, header).then(function (data) {
+        if (data.stateCode == 0) {
+            $scope.publicLoops = data.objectValue.data;
+            for (var i = 0; i < data.objectValue.data.length; i++) {
+                userLoops.push(data.objectValue.data[i]);
+            }
+        } else {
+            $scope.publicLoops = [];
+        }
+    });
+    var param2 = {
+        "lastUpdate": 0,
+        "pageSize": 50,
+        "keyword": "",
+        "loopType": 1,
+        "getNotifCount": true
+    };
+    Restangular.one('/v1/Loop/GetMyLoop').customPOST(param2, '', {}, header).then(function (data) {
+        if (data.stateCode == 0) {
+            $scope.privateLoops = data.objectValue.data;
+            for (var i = 0; i < data.objectValue.data.length; i++) {
+                userLoops.push(data.objectValue.data[i]);
+            }
+        } else {
+            $scope.privateLoops = [];
+        }
+    });
+
+    //userLoops = $scope.privateLoops.concat($scope.publicLoops);
 
     $localStorage.userLoops = userLoops;
     $scope.userLoops = $localStorage.userLoops;
@@ -13,7 +47,7 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
     {
         $scope.userLoops = {}
     }
-    $scope.fisrtUserLoopName = typeof $scope.userLoops != "undefined" ? $scope.userLoops[0].name : "";
+    $scope.fisrtUserLoopName = typeof $scope.userLoops != "undefined" && $scope.userLoops.length>0 ? $scope.userLoops[0].name : "";
     $scope.log = '';
     $scope.photos = [];
     $scope.userData = $localStorage['owloopAuth'];
@@ -27,8 +61,9 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
         $('#' + name).modal('show');
     };
 
+    var loopIdTemp = !$scope.userLoops[0] ? 0 : $scope.userLoops[0].loopId;
     $scope.postModel = {
-        loopId: $scope.userLoops[0].loopId,
+        loopId: loopIdTemp,
         title: '',
         content: '',
         type: false,

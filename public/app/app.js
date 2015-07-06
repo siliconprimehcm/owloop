@@ -108,32 +108,32 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
                 authenticate: function (authenticationSvc) {
                     return authenticationSvc.requireLogin();
                 },
-                publicLoops:function(authenticate,Restangular, authenticationSvc){
-                    var header = authenticationSvc.getHeader();
-                    var param = {
-                        "lastUpdate": 0,
-                        "pageSize": 50,
-                        "keyword": "",
-                        "loopType": 0,
-                        "getNotifCount": true
-                    };
-                    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
-                        return data
-                    })
-                },
-                privateLoops:function(authenticate, Restangular, authenticationSvc){
-                    var header = authenticationSvc.getHeader();
-                    var param = {
-                        "lastUpdate": 0,
-                        "pageSize": 50,
-                        "keyword": "",
-                        "loopType": 1,
-                        "getNotifCount": true
-                    };
-                    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
-                        return data
-                    })
-                }
+                //publicLoops:function(authenticate,Restangular, authenticationSvc){
+                //    var header = authenticationSvc.getHeader();
+                //    var param = {
+                //        "lastUpdate": 0,
+                //        "pageSize": 50,
+                //        "keyword": "",
+                //        "loopType": 0,
+                //        "getNotifCount": true
+                //    };
+                //    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
+                //        return data
+                //    })
+                //},
+                //privateLoops:function(authenticate, Restangular, authenticationSvc){
+                //    var header = authenticationSvc.getHeader();
+                //    var param = {
+                //        "lastUpdate": 0,
+                //        "pageSize": 50,
+                //        "keyword": "",
+                //        "loopType": 1,
+                //        "getNotifCount": true
+                //    };
+                //    return Restangular.one('/v1/Loop/GetMyLoop').customPOST(param, '', {}, header).then(function (data) {
+                //        return data
+                //    })
+                //}
             }
         })
         .state('app.user.homefeed', {
