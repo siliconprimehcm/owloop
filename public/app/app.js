@@ -119,7 +119,7 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             }
         })
         .state('app.user.explore', {
-            url: '/explore/:categoryName',
+            url: '/explore',
             views: {
                 'leftbar@app.user': {
                     templateUrl: 'public/app/user/explore/leftbar.html'

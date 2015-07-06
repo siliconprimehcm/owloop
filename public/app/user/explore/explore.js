@@ -1,6 +1,6 @@
 var userModule = angular.module('owloop.user');
 
-userModule.controller('exploreController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService, Upload, $timeout, $state) {
+userModule.controller('exploreController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService, Upload, $timeout, $state, $location) {
 
     $rootScope.loopOfCategorys = [];
     $scope.loopCategories = [];
@@ -34,7 +34,9 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
 
     $scope.getLoopOfCategories = function (category) {
 
-        $state.go('app.user.explore', {'categoryName':category.name });
+        //$state.go('app.user.explore', {'categoryName':category.name });
+        $location.search('categoryName', category.name);
+
         $rootScope.timeLastUpdate = 0;
        
         param = {
@@ -48,7 +50,7 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
         promise.then(function (result) {
             $rootScope.loopOfCategorys = result.resultLoopOfCategorys;
             $rootScope.timeLastUpdate = result.resultLastUpdate;
-            $rootScope.categoryIdRemind = categoryId;
+            $rootScope.categoryIdRemind = category.categoryId;
         }, function (errorResult) {
             $log.error('failure load', errorResult);
             $rootScope.categoryIdRemind = categoryId;
