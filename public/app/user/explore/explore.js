@@ -1,9 +1,10 @@
 var userModule = angular.module('owloop.user');
 
 userModule.controller('exploreController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService, Upload, $timeout, $state) {
-    console.log('exploreController');
+
     $rootScope.loopOfCategorys = [];
     $scope.loopCategories = [];
+
     $rootScope.timeLastUpdate = 0;
     $rootScope.categoryIdRemind = 0;
     var header = authenticationSvc.getHeader();
@@ -24,33 +25,20 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
 
     Restangular.one('/v1/Loop/GetLoopCategory').customPOST(param, '', {}, header).then(function (data) {
         if (data.statusCode == 0) {
-            var loopCategories = [];
-
-            if (data.objectValue.data.length > 0) {
-                for (var i = 0; i < data.objectValue.data.length; i++) {
-                    loopCategories.push(data.objectValue.data[i]);
-                }
-                $scope.loopCategories = loopCategories;
-            }
-
-            var loopOfCategorys = [];
-            if (data.objectValue.firstLoops.data.length > 0) {
-
-                for (var i = 0; i < data.objectValue.firstLoops.data.length; i++) {
-                    loopOfCategorys.push(data.objectValue.firstLoops.data[i]);
-                }
-                $rootScope.categoryIdRemind = data.objectValue.firstLoops.data[0].categoryId;
-                $rootScope.loopOfCategorys = loopOfCategorys;
-                
-            }
+            $scope.loopCategories = data.objectValue.data;
+            $rootScope.categoryIdRemind = data.objectValue.firstLoops.data[0].categoryId;
+            $rootScope.loopOfCategorys = data.objectValue.firstLoops.data;
+     
         }
     });
 
-    $scope.getLoopOfCategories = function (categoryId) {
+    $scope.getLoopOfCategories = function (category) {
+
+        $state.go('app.user.explore', {'categoryName':category.name });
         $rootScope.timeLastUpdate = 0;
        
         param = {
-            "categoryId": categoryId,
+            "categoryId": category.categoryId,
             "lastUpdate": 0,
             "pageSize": 5,
             "keyword": ""
@@ -130,6 +118,18 @@ userModule.controller('exploreController', function ($rootScope, $scope, Restang
         name:'',
         description:'',
         loopId:''
+    };
+
+    $scope.joinLoop = function(loopId){
+        var header = authenticationSvc.getHeader();
+        var param = {
+            "loopId": loopId,
+            "leaveLoop": false
+        };
+        
+        Restangular.one('/v1/Loop/JoinLoop').customPOST(param, '', {}, header).then(function (data) {
+            console.log(data);
+        });
     };
 
     var loopAvatarImage = '';

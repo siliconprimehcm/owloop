@@ -41,6 +41,11 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
 
     //userLoops = $scope.privateLoops.concat($scope.publicLoops);
 
+    $scope.privateLoops = privateLoops.objectValue.data;
+    if(publicLoops.objectValue){
+        $scope.publicLoops = publicLoops.objectValue.data || [];
+    }
+
     $localStorage.userLoops = userLoops;
     $scope.userLoops = $localStorage.userLoops;
     if (typeof $scope.userLoops == undefined)

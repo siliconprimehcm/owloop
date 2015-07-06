@@ -6,7 +6,8 @@
                     <div class="img" style="background-image: url('{{loop.avatarUrl}}')">
                     </div>
                     <div class="title">{{myVar}} {{loop.name}}</div>
-                    <div class="description">{{loop.name}}</div>
+                    <div class="description">{{loop.name}} </div>
+                    <div ng-click="joinLoop(loop.loopId)">Join </div>
                 </div>
             </div>
             <!--<div class="col-xs-4">

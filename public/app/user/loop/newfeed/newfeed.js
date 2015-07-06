@@ -8,11 +8,12 @@ loopModule.controller('newfeedController', function ($scope, Restangular, authen
 	    var param = {
 	        "loopId": $stateParams.loopId,
 			"lastUpdate": 0,
-			"pageSize": 10
+			"firstUpdate": 10,
+            "pageSize": 50,
+            "pageSizeComment": 50
 	    };
-	    Restangular.one('/v1/Loop/GetLoopAlbum').customPOST(param, '', {}, header).then(function (data) {
+	    Restangular.one('/v1/Feed/GetFeeds').customPOST(param, '', {}, header).then(function (data) {
 	    	console.log(data.objectValue.data);
-	    	$scope.albums = data.objectValue.data;
 	    });
     };
 
@@ -31,8 +32,18 @@ loopModule.controller('newfeedController', function ($scope, Restangular, authen
 	    });
     };
 
-    $scope.like = function(){
+    $scope.like = function(post, comment){
     	console.log("like");
+        var header = authenticationSvc.getHeader();
+        var param = {
+            "postId": post.postId,
+            "commentId":comment.commentId,
+            "unlike":false
+        };
+        Restangular.one('/v1/Post/LikeUnlike').customPOST(param, '', {}, header).then(function (data) {
+            console.log(data.objectValue.data);
+
+        });
     };
 
     $scope.reply = function(){
