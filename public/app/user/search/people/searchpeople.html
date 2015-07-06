@@ -1,143 +1,24 @@
 ﻿<div class="content-search">
     <div class="result-search-list">
         <ul>
-            <li>
+            <li ng-repeat="people in peoples">
                 <div class="profile-avatar clearfix">
                     <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
+                        <img src="{{people.avatarUrl}}" width="50" height="50" class="img-circle">
                     </a>
                     <div class="info">
                         <span class="name">
-                            <a>Mary Smith</a>
+                            <a>{{people.username}}</a>
                         </span>
-                        <span class="sub-description">
+                        <!--<span class="sub-description">
                             <a>
                                 Volutpat Turpis Lectu
                             </a>
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Mary Smith</a>
-                        </span>
-                        <span class="sub-description">
-                            <a>
-                                Volutpat Turpis Lectu
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Mary Smith</a>
-                        </span>
-                        <span class="sub-description">
-                            <a>
-                                Volutpat Turpis Lectu
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Mary Smith</a>
-                        </span>
-                        <span class="sub-description">
-                            <a>
-                                Volutpat Turpis Lectu
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Mary Smith</a>
-                        </span>
-                        <span class="sub-description">
-                            <a>
-                                Volutpat Turpis Lectu
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Mary Smith</a>
-                        </span>
-                        <span class="sub-description">
-                            <a>
-                                Volutpat Turpis Lectu
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Mary Smith</a>
-                        </span>
-                        <span class="sub-description">
-                            <a>
-                                Volutpat Turpis Lectu
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="profile-avatar clearfix">
-                    <a href="#" class="avartar">
-                        <img src="images/item/item_avatar_default.png" width="50" height="50" class="img-circle">
-                    </a>
-                    <div class="info">
-                        <span class="name">
-                            <a>Mary Smith</a>
-                        </span>
-                        <span class="sub-description">
-                            <a>
-                                Volutpat Turpis Lectu
-                            </a>
-                        </span>
+                        </span>-->
                     </div>
                 </div>
             </li>
         </ul>
-        <div class="see-all">See All</div>
+        <div class="see-all" ng-click="loadMorePeople()" ng-class="{'hidden': isHasMore == false}">See All</div>
     </div>
 </div>
