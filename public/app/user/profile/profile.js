@@ -1,6 +1,6 @@
 
 var profileModule = angular.module('owloop.user.profile', []);
-profileModule.controller('profileController', function ($rootScope, $scope, Restangular, $localStorage, authenticationSvc, $stateParams) {
+profileModule.controller('profileController', function ($rootScope, $scope, Restangular, $localStorage, authenticationSvc, $stateParams, $state) {
     var header = authenticationSvc.getHeader();
     var customerId = '';
     if ($stateParams.userId) {
@@ -51,4 +51,9 @@ profileModule.controller('profileController', function ($rootScope, $scope, Rest
         else
             $scope.loopPopulars = [];
     });
+    
+    $scope.redirectToProfilefunction = function (nametab) {
+        $state.go('app.user.profile.' + nametab, { 'userId': $localStorage['owloopAuth'].customerId });
+    };
+
 });

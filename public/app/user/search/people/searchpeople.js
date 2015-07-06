@@ -1,6 +1,6 @@
 var loopProfileModule = angular.module('owloop.user.search');
 
-loopProfileModule.controller('searchpeopleController', function ( $scope, Restangular, $localStorage, authenticationSvc, $stateParams) {
+loopProfileModule.controller('searchpeopleController', function ($scope, Restangular, $localStorage, authenticationSvc, $stateParams, $state) {
     var header = authenticationSvc.getHeader();
     $scope.timeLastUpdate = 0;
     $scope.isHasMore = false;
@@ -43,4 +43,7 @@ loopProfileModule.controller('searchpeopleController', function ( $scope, Restan
         });
     };
     
+    $scope.gotoProfile= function(userId) {
+        $state.go('app.user.profile.activity', { 'userId': userId });
+    }
 });

@@ -37,7 +37,7 @@ loopProfileModule.controller('loopProfileController', function ( $scope, Restang
         }
     });
    
-    $scope.loadMore = function () {
+    $scope.loadMoreLoopProfile = function () {
         param = {
             "lastUpdate": $scope.timeLastUpdate,
             "pageSize": 10,

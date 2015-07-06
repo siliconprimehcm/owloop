@@ -1,6 +1,6 @@
 
 var userModule = angular.module('owloop.user.search', []);
-userModule.controller('searchController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService, $stateParams) {
+userModule.controller('searchController', function ($rootScope, $scope, Restangular, authenticationSvc, loopInCategoryService, $stateParams, $state) {
  
     var header = authenticationSvc.getHeader();
     var param1 = {
