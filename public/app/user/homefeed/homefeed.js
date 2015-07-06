@@ -17,6 +17,7 @@ userModule.controller('homefeedController', function ($rootScope, $scope, authen
         if ($scope.busyLoading) return;
         $scope.busyLoading = true;
         param.lastUpdate = $rootScope.lastUpdateFeed;
+
         var promise = feedService.getFeed(header, param);
         if ($scope.hasMore) {
             promise.then(function (result) {

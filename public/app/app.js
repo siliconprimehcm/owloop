@@ -189,7 +189,7 @@ loopApp.config(function ($httpProvider, RestangularProvider, $urlRouterProvider,
             }
         })
         .state('app.user.post', {
-            url: '/post',
+            url: '/post/:postId',
             views: {
                 'content@app.user': {
                     templateUrl: 'public/app/user/postdetail/postdetail.html',

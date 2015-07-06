@@ -18,7 +18,10 @@
         </div>
     </div>
     <div class="summary">
-        <div class="title">{{feed.post.title}}</div>
+        <a href="#/user/post/{{feed.post.postId}}">
+            <div class="title">{{feed.post.title}}</div>
+        </a>
+        
         <div class="description">
             <p>
                 {{feed.post.content}}

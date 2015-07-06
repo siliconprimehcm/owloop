@@ -1,88 +1,46 @@
-<div class="main-column">
-    <div class="content-column-one ">
-        <div class="card-main ">
-            <div class="title-category">
-                <a href="#">Female Professionals</a>
-            </div>
-            <div class="list-post">
-                <div class="post">
-                    <div class="profile-avatar clearfix ">
-                        <a href="#" class="avartar">
-                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
-                        </a>
-                        <div class="info">
-                            <span class="name">
-                                <a>Jessica Alba</a>
-                            </span>
-                            <span class="time-created">
-                                <a>
-                                    created a question 2 hours ago
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="summary">
-                        <div class="title">Wage Negotiation </div>
-                        <div class="description">
-                            Why do criminals and criminal organizations traffic in humans? This question can be answered with one word: money. Human trafficking is the third most profitable business for organized crime; the first and second are drug and arms trafficking. Pino Arlacchi, Director General for the International Seminar on Trafficking in Human Beings in Brazil, states that many drug traffickers are switching to human trafficking due to higher profits and lower risk. The United Nations estimates the total number of people trafficked every year is between 700 thousand and 1 million. It also estimates that 79 percent of these victims are trafficked for sexual exploitation. Human trafficking takes place in every country and it generates tens of billions of dollars of profit each year.
-                        </div>
-                    </div>
-                    <div class="footer clearfix">
-                        <div class="pull-left totlal-likes">
-                            <span class="icon"><i class="fa fa-heart"></i></span>
-                            <span>135 likes</span>
-                        </div>
-                        <div class="pull-left total-comments hidden">
-                            <span class="icon"><i class="fa fa-comments"></i></span>
-                            <span>6 Replies</span>
-                        </div>
-                        <div class="pull-right dots">
-                            <span><i class="fa fa-ellipsis-h"></i></span>
-                        </div>
+<div class="content-column-one ">
+    <div class="card-main ">
+        <div class="title-category">
+            <a href="#">{{postItem.loopId}}</a>
+        </div>
+        <div class="list-post">
+            <div class="post">
+                <div class="profile-avatar clearfix ">
+                    <a href="#" class="avartar">
+                        <img src="{{postItem.customerAvatarUrl}}" width="34" height="34" class="img-circle">
+                    </a>
+                    <div class="info">
+                        <span class="name">
+                            <a>{{postItem.customerUsername}}</a>
+                        </span>
+                        <span class="time-created">
+                            <a>
+                                created a question  {{postItem.createTs | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </a>
+                        </span>
                     </div>
                 </div>
-                <div class="post">
-                    <div class="profile-avatar clearfix">
-                        <a href="#" class="avartar">
-                            <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
-                        </a>
-                        <div class="info">
-                            <span class="name">
-                                <a>Jessica Alba</a>
-                            </span>
-                            <span class="time-created">
-                                <a>
-                                    created a question 2 hours ago
-                                </a>
-                            </span>
-                        </div>
+                <div class="summary">
+                    <div class="title">{{postItem.title}}</div>
+                    <div class="description">
+                        {{postItem.content}}
                     </div>
-                    <div class="summary">
-                        <div class="description">
-                            Sed congue consectetur nunc, a vehicula enim consectetur sed
-                        </div>
+                </div>
+                <div class="footer clearfix">
+                    <div class="pull-left totlal-likes">
+                        <span class="icon"><i class="fa fa-heart"></i></span>
+                        <span>{{postItem.totalLike}} {{ postItem.totalLike > 1 | iif: "likes" : "like"}}</span>
                     </div>
-                    <div class="footer clearfix">
-                        <div class="pull-left totlal-likes">
-                            <span class="icon"><i class="fa fa-heart"></i></span>
-                            <span>135 likes</span>
-                        </div>
-                        <div class="pull-left total-comments">
-                            <span class="icon"><i class="fa fa-comments"></i></span>
-                            <span>6 Replies</span>
-                        </div>
-                        <div class="pull-right dots">
-                            <span><i class="fa fa-ellipsis-h"></i></span>
-                        </div>
+                    <div class="pull-left total-comments hidden">
+                        <span class="icon"><i class="fa fa-comments"></i></span>
+                        <span>{{postItem.totalComment}} {{ postItem.totalComment > 1 | iif: "likes" : "like"}}</span>
+                    </div>
+                    <div class="pull-right dots">
+                        <span><i class="fa fa-ellipsis-h"></i></span>
                     </div>
                 </div>
             </div>
-            
-
-            
-
-
-            <div class="enter-comments">
+            <div class="post">
                 <div class="profile-avatar clearfix">
                     <a href="#" class="avartar">
                         <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
@@ -98,32 +56,53 @@
                         </span>
                     </div>
                 </div>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Write your answer, or answer later....">
+                <div class="summary">
+                    <div class="description">
+                        Sed congue consectetur nunc, a vehicula enim consectetur sed
                     </div>
-                </form>
+                </div>
+                <div class="footer clearfix">
+                    <div class="pull-left totlal-likes">
+                        <span class="icon"><i class="fa fa-heart"></i></span>
+                        <span>135 likes</span>
+                    </div>
+                    <div class="pull-left total-comments">
+                        <span class="icon"><i class="fa fa-comments"></i></span>
+                        <span>6 Replies</span>
+                    </div>
+                    <div class="pull-right dots">
+                        <span><i class="fa fa-ellipsis-h"></i></span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="content-column-two">
-        <div class="title">Most Popular</div>
-        <div class="list-card-sub-one">
-            <div class="card-sub">
-                <div class="img" style="background-image: url('images/item/item_demo.jpg')"></div>
-                <div class="title">Street style lovers</div>
-                <div class="description">Donec et ullamcorper ligula. Vestibulum ante ipsum primis</div>
+            
+
+            
+
+
+        <div class="enter-comments">
+            <div class="profile-avatar clearfix">
+                <a href="#" class="avartar">
+                    <img src="images/item/item_avatar_default.png" width="34" height="34" class="img-circle">
+                </a>
+                <div class="info">
+                    <span class="name">
+                        <a>Jessica Alba</a>
+                    </span>
+                    <span class="time-created">
+                        <a>
+                            created a question 2 hours ago
+                        </a>
+                    </span>
+                </div>
             </div>
-            <div class="card-sub">
-                <div class="img" style="background-image: url('images/item/item_demo.jpg')"></div>
-                <div class="title">Street style lovers</div>
-                <div class="description">Donec et ullamcorper ligula. Vestibulum ante ipsum primis</div>
-            </div>
-            <div class="card-sub">
-                <div class="img" style="background-image: url('images/item/item_demo.jpg')"></div>
-                <div class="title">Street style lovers</div>
-                <div class="description">Donec et ullamcorper ligula. Vestibulum ante ipsum primis</div>
-            </div>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Write your answer, or answer later....">
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
