@@ -31,7 +31,7 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
         loopId: $scope.userLoops[0].loopId,
         title: '',
         content: '',
-        type: 0,
+        type: false,
         photos: [],
         isAnonymous: false
     };
@@ -52,19 +52,20 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
             if ($scope.photos.length > 0) {
                 for (var i = 0; i < $scope.photos.length; i++) {
                     $scope.postModel.photos.push({
-                        fileName: $scope.photos[0].fileName,
+                        fileName: $scope.photos[i].fileName,
                         displayOrder: i,
                         description: ''
                     });
                 }
             }
+
             var param = {
                 loopId: $scope.postModel.loopId,
                 title: $scope.postModel.title,
                 content: $scope.postModel.content,
                 photos: $scope.postModel.photos,
                 isAnonymous: $scope.postModel.isAnonymous,
-                type: $scope.postModel.type
+                type: $scope.postModel.type == 0 ? false : true
             };
 
             Restangular.one('/v1/Post/CreateUpdatePost').customPOST(param, '', {}, header).then(function (data) {
@@ -94,6 +95,19 @@ userModule.controller('layoutController', function ($scope, $injector, Restangul
                             "totalLike": data.objectValue.totalLike,
                         }
                     }
+                    var defaultForm = {
+                        loopId: $scope.userLoops[0].loopId,
+                        title: '',
+                        content: '',
+                        type: false,
+                        photos: [],
+                        isAnonymous: false
+                    };
+
+                    $scope.photos = [];
+                    $scope.postForm.$setPristine();
+                    $scope.postModel = defaultForm;
+
                     $scope.feedHome.unshift(item);
                     console.log($scope.feedHome)
                 }
